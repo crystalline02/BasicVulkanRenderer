@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/src/main.cpp" "src/CMakeFiles/VulkanRenderer.dir/main.obj" "gcc" "src/CMakeFiles/VulkanRenderer.dir/main.obj.d"
+  "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/src/entry_point.cpp" "src/CMakeFiles/VulkanRenderer.dir/entry_point.obj" "gcc" "src/CMakeFiles/VulkanRenderer.dir/entry_point.obj.d"
   "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/src/vulkan_app.cpp" "src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj" "gcc" "src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj.d"
   )
 

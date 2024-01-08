@@ -68,20 +68,20 @@ include src/CMakeFiles/VulkanRenderer.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/VulkanRenderer.dir/flags.make
 
-src/CMakeFiles/VulkanRenderer.dir/main.obj: src/CMakeFiles/VulkanRenderer.dir/flags.make
-src/CMakeFiles/VulkanRenderer.dir/main.obj: src/CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp
-src/CMakeFiles/VulkanRenderer.dir/main.obj: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/src/main.cpp
-src/CMakeFiles/VulkanRenderer.dir/main.obj: src/CMakeFiles/VulkanRenderer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/VulkanRenderer.dir/main.obj"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\src && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/VulkanRenderer.dir/main.obj -MF CMakeFiles\VulkanRenderer.dir\main.obj.d -o CMakeFiles\VulkanRenderer.dir\main.obj -c C:\Users\ZhenKou\OneDrive\project\vulkan_learn\src\main.cpp
+src/CMakeFiles/VulkanRenderer.dir/entry_point.obj: src/CMakeFiles/VulkanRenderer.dir/flags.make
+src/CMakeFiles/VulkanRenderer.dir/entry_point.obj: src/CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp
+src/CMakeFiles/VulkanRenderer.dir/entry_point.obj: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/src/entry_point.cpp
+src/CMakeFiles/VulkanRenderer.dir/entry_point.obj: src/CMakeFiles/VulkanRenderer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/VulkanRenderer.dir/entry_point.obj"
+	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\src && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/VulkanRenderer.dir/entry_point.obj -MF CMakeFiles\VulkanRenderer.dir\entry_point.obj.d -o CMakeFiles\VulkanRenderer.dir\entry_point.obj -c C:\Users\ZhenKou\OneDrive\project\vulkan_learn\src\entry_point.cpp
 
-src/CMakeFiles/VulkanRenderer.dir/main.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanRenderer.dir/main.i"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\src && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\vulkan_learn\src\main.cpp > CMakeFiles\VulkanRenderer.dir\main.i
+src/CMakeFiles/VulkanRenderer.dir/entry_point.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanRenderer.dir/entry_point.i"
+	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\src && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\vulkan_learn\src\entry_point.cpp > CMakeFiles\VulkanRenderer.dir\entry_point.i
 
-src/CMakeFiles/VulkanRenderer.dir/main.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanRenderer.dir/main.s"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\src && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\vulkan_learn\src\main.cpp -o CMakeFiles\VulkanRenderer.dir\main.s
+src/CMakeFiles/VulkanRenderer.dir/entry_point.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanRenderer.dir/entry_point.s"
+	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\src && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\vulkan_learn\src\entry_point.cpp -o CMakeFiles\VulkanRenderer.dir\entry_point.s
 
 src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj: src/CMakeFiles/VulkanRenderer.dir/flags.make
 src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj: src/CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp
@@ -100,25 +100,25 @@ src/CMakeFiles/VulkanRenderer.dir/vulkan_app.s: cmake_force
 
 # Object files for target VulkanRenderer
 VulkanRenderer_OBJECTS = \
-"CMakeFiles/VulkanRenderer.dir/main.obj" \
+"CMakeFiles/VulkanRenderer.dir/entry_point.obj" \
 "CMakeFiles/VulkanRenderer.dir/vulkan_app.obj"
 
 # External object files for target VulkanRenderer
 VulkanRenderer_EXTERNAL_OBJECTS =
 
-src/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/main.obj
-src/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj
-src/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/build.make
-src/VulkanRenderer.exe: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/lib/libglfw3.a
-src/VulkanRenderer.exe: D:/VulkanSDK/1.3.268.0/Lib/vulkan-1.lib
-src/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/linkLibs.rsp
-src/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/objects1.rsp
-src/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable VulkanRenderer.exe"
+C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/entry_point.obj
+C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj
+C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/build.make
+C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/VulkanRenderer.exe: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/lib/libglfw3.a
+C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/VulkanRenderer.exe: D:/VulkanSDK/1.3.268.0/Lib/vulkan-1.lib
+C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/linkLibs.rsp
+C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/objects1.rsp
+C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable C:\Users\ZhenKou\OneDrive\project\vulkan_learn\bin\VulkanRenderer.exe"
 	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\VulkanRenderer.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-src/CMakeFiles/VulkanRenderer.dir/build: src/VulkanRenderer.exe
+src/CMakeFiles/VulkanRenderer.dir/build: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/VulkanRenderer.exe
 .PHONY : src/CMakeFiles/VulkanRenderer.dir/build
 
 src/CMakeFiles/VulkanRenderer.dir/clean:

@@ -517,9 +517,9 @@
 },
 {
   "directory": "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/src",
-  "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp -g -o CMakeFiles\\VulkanRenderer.dir\\main.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\src\\main.cpp",
-  "file": "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/src/main.cpp",
-  "output": "src/CMakeFiles/VulkanRenderer.dir/main.obj"
+  "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp -g -o CMakeFiles\\VulkanRenderer.dir\\entry_point.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\src\\entry_point.cpp",
+  "file": "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/src/entry_point.cpp",
+  "output": "src/CMakeFiles/VulkanRenderer.dir/entry_point.obj"
 },
 {
   "directory": "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/src",

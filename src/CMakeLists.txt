@@ -1,6 +1,6 @@
 project(VulkanRenderer LANGUAGES CXX)
 set(SOURCES 
-    main.cpp
+    entry_point.cpp
     vulkan_app.cpp)
 add_executable(VulkanRenderer ${SOURCES})
 target_include_directories(VulkanRenderer PRIVATE
@@ -12,4 +12,4 @@ target_link_libraries(VulkanRenderer PRIVATE
     glfw
     ${VULKAN_LIB_DIR}/vulkan-1.lib)
 set_target_properties(VulkanRenderer PROPERTIES 
-    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)

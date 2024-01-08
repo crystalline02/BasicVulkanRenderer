@@ -1,12 +1,12 @@
 file(REMOVE_RECURSE
-  "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/libVulkanRenderer.dll.a"
-  "CMakeFiles/VulkanRenderer.dir/main.obj"
-  "CMakeFiles/VulkanRenderer.dir/main.obj.d"
+  "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/VulkanRenderer.exe"
+  "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/VulkanRenderer.exe.manifest"
+  "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/VulkanRenderer.pdb"
+  "CMakeFiles/VulkanRenderer.dir/entry_point.obj"
+  "CMakeFiles/VulkanRenderer.dir/entry_point.obj.d"
   "CMakeFiles/VulkanRenderer.dir/vulkan_app.obj"
   "CMakeFiles/VulkanRenderer.dir/vulkan_app.obj.d"
-  "VulkanRenderer.exe"
-  "VulkanRenderer.exe.manifest"
-  "VulkanRenderer.pdb"
+  "libVulkanRenderer.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.
