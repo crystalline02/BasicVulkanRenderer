@@ -2,6 +2,7 @@
 
 #include <stdexcept>
 #include <iostream>
+#include <map>
 
 #include "vulkan_fn.h"
 
@@ -24,14 +25,15 @@ void VulkanApp::init_window()
 
 void VulkanApp::init_vulkan()
 {
-    create_instance();
+    createInstance();
     if(load_vkInstanceFunctions(m_vkInstance) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to load vulkan instance functions.");
     if(m_enableValidationLayer)
-        create_debug_messenger();
+        createDebugMessenger();
+    createPhysicalDevices();
 }
 
-void VulkanApp::create_instance()
+void VulkanApp::createInstance()
 {
     // VkApplicationInfo
     VkApplicationInfo appInfo = {};
@@ -77,7 +79,7 @@ void VulkanApp::create_instance()
         throw std::runtime_error("VK ERROR: Failed to create VkInstance.");
 }
 
-void VulkanApp::create_debug_messenger()
+void VulkanApp::createDebugMessenger()
 {
     if(!m_enableValidationLayer) return;
     VkDebugUtilsMessengerCreateInfoEXT messengerCreateInfo = {};
@@ -85,6 +87,33 @@ void VulkanApp::create_debug_messenger()
     if(vkCreateDebugUtilsMessengerEXT(m_vkInstance, &messengerCreateInfo, nullptr, &m_vkMessenger) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create vkDebugUtilsMessengerCreateInfoEXT.");
 }
+
+void VulkanApp::createPhysicalDevices()
+{
+    // Get all physical devices
+    uint32_t vk_physicalDeviceCount;
+    vkEnumeratePhysicalDevices(m_vkInstance, &vk_physicalDeviceCount, nullptr);
+    if(vk_physicalDeviceCount == 0) 
+        throw std::runtime_error("VK ERROR: Failed to find any GPUs with vulkan support.");
+    std::vector<VkPhysicalDevice> vk_physicalDevices(vk_physicalDeviceCount);
+    vkEnumeratePhysicalDevices(m_vkInstance, &vk_physicalDeviceCount, vk_physicalDevices.data());
+
+    // Pick a physical device
+    std::multimap<uint64_t, VkPhysicalDevice> score_devices;
+    for(const VkPhysicalDevice& physicalDevice: vk_physicalDevices)
+        score_devices.insert({ratePhysicalDevice(physicalDevice), physicalDevice});
+    if(score_devices.rbegin()->first > 0) 
+    {
+        m_vkPhysicalDevice = score_devices.rbegin()->second;
+        
+        // Log selected GPU
+        VkPhysicalDeviceProperties deviceProperties;
+        vkGetPhysicalDeviceProperties(m_vkPhysicalDevice, &deviceProperties);
+        std::cout << "VK INFO: " << deviceProperties.deviceName << " is selected as a vulkan physical device.Score: " 
+            << score_devices.rbegin()->first <<  ".\n";
+    }
+    else throw std::runtime_error("VK ERROR: No suitable physical device for current application.");
+}   
 
 void VulkanApp::populateMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT& messengerCreateInfo)
 {
@@ -99,6 +128,24 @@ void VulkanApp::populateMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT& 
         VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT;
     messengerCreateInfo.pfnUserCallback = VulkanApp::debugMessageCallback;
     messengerCreateInfo.pUserData = nullptr;
+}
+
+uint64_t VulkanApp::ratePhysicalDevice(const VkPhysicalDevice& physicalDevice)
+{
+    uint64_t rate = 0;
+    VkPhysicalDeviceProperties physicalDeviceProperties;
+    VkPhysicalDeviceFeatures physicalDeviceFeatrues;
+    vkGetPhysicalDeviceProperties(physicalDevice, &physicalDeviceProperties);
+    vkGetPhysicalDeviceFeatures(physicalDevice, &physicalDeviceFeatrues);
+    if(!physicalDeviceFeatrues.geometryShader) return 0;
+    switch(physicalDeviceProperties.deviceType)
+    {
+        case VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU:     rate += 1000; break;
+        case VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU:   rate += 500; break;
+        case VK_PHYSICAL_DEVICE_TYPE_CPU:              rate += 100; break;
+    }
+    rate += (physicalDeviceProperties.limits.maxImageDimension2D >> 8);
+    return rate;
 }
 
 void VulkanApp::main_loop()
@@ -180,7 +227,6 @@ VKAPI_ATTR VkBool32 VKAPI_CALL VulkanApp::debugMessageCallback(VkDebugUtilsMessa
 {
     if(messageSeverity < VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT) return VK_FALSE;
     std::cerr << "Validation error: " << pCallbackData->pMessage << std::endl;
-
     std::cerr << "SEVERITY:";
     switch(messageSeverity)
     {
