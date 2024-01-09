@@ -113,7 +113,7 @@ void VulkanApp::createPhysicalDevices()
             << score_devices.rbegin()->first <<  ".\n";
     }
     else throw std::runtime_error("VK ERROR: No suitable physical device for current application.");
-}   
+}
 
 void VulkanApp::populateMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT& messengerCreateInfo)
 {
