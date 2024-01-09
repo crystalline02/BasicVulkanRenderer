@@ -61,20 +61,20 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-iezc5r"
-      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-iezc5r"
+      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-19vifg"
+      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-19vifg"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
     buildResult:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-iezc5r
+        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-19vifg
         
-        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_7bdcd/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_7bdcd.dir\\build.make CMakeFiles/cmTC_7bdcd.dir/build
-        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-iezc5r'
-        Building C object CMakeFiles/cmTC_7bdcd.dir/CMakeCCompilerABI.c.obj
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_7bdcd.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
+        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_13e30/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_13e30.dir\\build.make CMakeFiles/cmTC_13e30.dir/build
+        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-19vifg'
+        Building C object CMakeFiles/cmTC_13e30.dir/CMakeCCompilerABI.c.obj
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_13e30.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
         Using built-in specs.
         COLLECT_GCC=C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe
         Target: x86_64-w64-mingw32
@@ -82,8 +82,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib
         gcc version 13.1.0 (x86_64-posix-seh-rev1, Built by MinGW-Builds project) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_7bdcd.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_7bdcd.dir\\'
-         C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/cc1.exe -quiet -v -iprefix C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_7bdcd.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=core2 -march=nocona -version -o C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccYCgvsk.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_13e30.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_13e30.dir\\'
+         C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/cc1.exe -quiet -v -iprefix C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_13e30.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=core2 -march=nocona -version -o C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccYyMYvZ.s
         GNU C17 (x86_64-posix-seh-rev1, Built by MinGW-Builds project) version 13.1.0 (x86_64-w64-mingw32)
         	compiled by GNU C version 13.1.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.25-GMP
         
@@ -100,17 +100,17 @@ events:
          C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include
         End of search list.
         Compiler executable checksum: 01a95d743b0846cbb61de93d2dfa1fb7
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_7bdcd.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_7bdcd.dir\\'
-         C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_7bdcd.dir\\CMakeCCompilerABI.c.obj C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccYCgvsk.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_13e30.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_13e30.dir\\'
+         C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_13e30.dir\\CMakeCCompilerABI.c.obj C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccYyMYvZ.s
         GNU assembler version 2.39 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.39
         COMPILER_PATH=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_7bdcd.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_7bdcd.dir\\CMakeCCompilerABI.c.'
-        Linking C executable cmTC_7bdcd.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_7bdcd.dir\\link.txt --verbose=1
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_7bdcd.dir/objects.a
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_7bdcd.dir/objects.a @CMakeFiles\\cmTC_7bdcd.dir\\objects1.rsp
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe  -v -Wl,--whole-archive CMakeFiles\\cmTC_7bdcd.dir/objects.a -Wl,--no-whole-archive -o cmTC_7bdcd.exe -Wl,--out-implib,libcmTC_7bdcd.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_13e30.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_13e30.dir\\CMakeCCompilerABI.c.'
+        Linking C executable cmTC_13e30.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_13e30.dir\\link.txt --verbose=1
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_13e30.dir/objects.a
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_13e30.dir/objects.a @CMakeFiles\\cmTC_13e30.dir\\objects1.rsp
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe  -v -Wl,--whole-archive CMakeFiles\\cmTC_13e30.dir/objects.a -Wl,--no-whole-archive -o cmTC_13e30.exe -Wl,--out-implib,libcmTC_13e30.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
         Using built-in specs.
         COLLECT_GCC=C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe
         COLLECT_LTO_WRAPPER=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe
@@ -121,10 +121,10 @@ events:
         gcc version 13.1.0 (x86_64-posix-seh-rev1, Built by MinGW-Builds project) 
         COMPILER_PATH=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7bdcd.exe' '-mtune=core2' '-march=nocona' '-dumpdir' 'cmTC_7bdcd.'
-         C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/collect2.exe -plugin C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/liblto_plugin.dll -plugin-opt=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccatDgKt.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/buildroot/x86_64-1310-posix-seh-ucrt-rt_v11-rev1/mingw64 -m i386pep -Bdynamic -o cmTC_7bdcd.exe C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0 -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../.. --whole-archive CMakeFiles\\cmTC_7bdcd.dir/objects.a --no-whole-archive --out-implib libcmTC_7bdcd.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7bdcd.exe' '-mtune=core2' '-march=nocona' '-dumpdir' 'cmTC_7bdcd.'
-        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-iezc5r'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_13e30.exe' '-mtune=core2' '-march=nocona' '-dumpdir' 'cmTC_13e30.'
+         C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/collect2.exe -plugin C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/liblto_plugin.dll -plugin-opt=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\cczvVJf5.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/buildroot/x86_64-1310-posix-seh-ucrt-rt_v11-rev1/mingw64 -m i386pep -Bdynamic -o cmTC_13e30.exe C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0 -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../.. --whole-archive CMakeFiles\\cmTC_13e30.dir/objects.a --no-whole-archive --out-implib libcmTC_13e30.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_13e30.exe' '-mtune=core2' '-march=nocona' '-dumpdir' 'cmTC_13e30.'
+        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-19vifg'
         
       exitCode: 0
   -
@@ -156,12 +156,12 @@ events:
     message: |
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld\\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-iezc5r]
+        ignore line: [Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-19vifg]
         ignore line: []
-        ignore line: [Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_7bdcd/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_7bdcd.dir\\build.make CMakeFiles/cmTC_7bdcd.dir/build]
-        ignore line: [mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-iezc5r']
-        ignore line: [Building C object CMakeFiles/cmTC_7bdcd.dir/CMakeCCompilerABI.c.obj]
-        ignore line: [C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_7bdcd.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"]
+        ignore line: [Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_13e30/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_13e30.dir\\build.make CMakeFiles/cmTC_13e30.dir/build]
+        ignore line: [mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-19vifg']
+        ignore line: [Building C object CMakeFiles/cmTC_13e30.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_13e30.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe]
         ignore line: [Target: x86_64-w64-mingw32]
@@ -169,8 +169,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib]
         ignore line: [gcc version 13.1.0 (x86_64-posix-seh-rev1  Built by MinGW-Builds project) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_7bdcd.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_7bdcd.dir\\']
-        ignore line: [ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/cc1.exe -quiet -v -iprefix C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_7bdcd.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=core2 -march=nocona -version -o C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccYCgvsk.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_13e30.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_13e30.dir\\']
+        ignore line: [ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/cc1.exe -quiet -v -iprefix C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_13e30.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=core2 -march=nocona -version -o C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccYyMYvZ.s]
         ignore line: [GNU C17 (x86_64-posix-seh-rev1  Built by MinGW-Builds project) version 13.1.0 (x86_64-w64-mingw32)]
         ignore line: [	compiled by GNU C version 13.1.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.25-GMP]
         ignore line: []
@@ -187,8 +187,8 @@ events:
         ignore line: [ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 01a95d743b0846cbb61de93d2dfa1fb7]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_7bdcd.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_7bdcd.dir\\']
-        ignore line: [ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_7bdcd.dir\\CMakeCCompilerABI.c.obj C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccYCgvsk.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_13e30.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_13e30.dir\\']
+        ignore line: [ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_13e30.dir\\CMakeCCompilerABI.c.obj C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccYyMYvZ.s]
         ignore line: [GNU assembler version 2.39 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.39]
         ignore line: [COMPILER_PATH=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/]
         ignore line: [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/]
@@ -199,12 +199,12 @@ events:
         ignore line: [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib/]
         ignore line: [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_7bdcd.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_7bdcd.dir\\CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_7bdcd.exe]
-        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_7bdcd.dir\\link.txt --verbose=1]
-        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_7bdcd.dir/objects.a]
-        ignore line: [C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_7bdcd.dir/objects.a @CMakeFiles\\cmTC_7bdcd.dir\\objects1.rsp]
-        ignore line: [C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe  -v -Wl --whole-archive CMakeFiles\\cmTC_7bdcd.dir/objects.a -Wl --no-whole-archive -o cmTC_7bdcd.exe -Wl --out-implib libcmTC_7bdcd.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_13e30.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_13e30.dir\\CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_13e30.exe]
+        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_13e30.dir\\link.txt --verbose=1]
+        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_13e30.dir/objects.a]
+        ignore line: [C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_13e30.dir/objects.a @CMakeFiles\\cmTC_13e30.dir\\objects1.rsp]
+        ignore line: [C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe  -v -Wl --whole-archive CMakeFiles\\cmTC_13e30.dir/objects.a -Wl --no-whole-archive -o cmTC_13e30.exe -Wl --out-implib libcmTC_13e30.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe]
         ignore line: [COLLECT_LTO_WRAPPER=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe]
@@ -222,13 +222,13 @@ events:
         ignore line: [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib/]
         ignore line: [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7bdcd.exe' '-mtune=core2' '-march=nocona' '-dumpdir' 'cmTC_7bdcd.']
-        link line: [ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/collect2.exe -plugin C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/liblto_plugin.dll -plugin-opt=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccatDgKt.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/buildroot/x86_64-1310-posix-seh-ucrt-rt_v11-rev1/mingw64 -m i386pep -Bdynamic -o cmTC_7bdcd.exe C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0 -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../.. --whole-archive CMakeFiles\\cmTC_7bdcd.dir/objects.a --no-whole-archive --out-implib libcmTC_7bdcd.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_13e30.exe' '-mtune=core2' '-march=nocona' '-dumpdir' 'cmTC_13e30.']
+        link line: [ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/collect2.exe -plugin C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/liblto_plugin.dll -plugin-opt=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\cczvVJf5.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/buildroot/x86_64-1310-posix-seh-ucrt-rt_v11-rev1/mingw64 -m i386pep -Bdynamic -o cmTC_13e30.exe C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0 -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../.. --whole-archive CMakeFiles\\cmTC_13e30.dir/objects.a --no-whole-archive --out-implib libcmTC_13e30.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o]
           arg [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/collect2.exe] ==> ignore
           arg [-plugin] ==> ignore
           arg [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/liblto_plugin.dll] ==> ignore
           arg [-plugin-opt=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe] ==> ignore
-          arg [-plugin-opt=-fresolution=C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccatDgKt.res] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\cczvVJf5.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_eh] ==> ignore
@@ -254,7 +254,7 @@ events:
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_7bdcd.exe] ==> ignore
+          arg [cmTC_13e30.exe] ==> ignore
           arg [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
           arg [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o] ==> obj [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o]
           arg [-LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0] ==> dir [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0]
@@ -264,10 +264,10 @@ events:
           arg [-LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib] ==> dir [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib]
           arg [-LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../..] ==> dir [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../..]
           arg [--whole-archive] ==> ignore
-          arg [CMakeFiles\\cmTC_7bdcd.dir/objects.a] ==> ignore
+          arg [CMakeFiles\\cmTC_13e30.dir/objects.a] ==> ignore
           arg [--no-whole-archive] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_7bdcd.dll.a] ==> ignore
+          arg [libcmTC_13e30.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -321,20 +321,20 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-rgro54"
-      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-rgro54"
+      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-9mreuv"
+      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-9mreuv"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
     buildResult:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-rgro54
+        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-9mreuv
         
-        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_394fb/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_394fb.dir\\build.make CMakeFiles/cmTC_394fb.dir/build
-        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-rgro54'
-        Building CXX object CMakeFiles/cmTC_394fb.dir/CMakeCXXCompilerABI.cpp.obj
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe   -v -o CMakeFiles\\cmTC_394fb.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
+        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_81237/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_81237.dir\\build.make CMakeFiles/cmTC_81237.dir/build
+        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-9mreuv'
+        Building CXX object CMakeFiles/cmTC_81237.dir/CMakeCXXCompilerABI.cpp.obj
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe   -v -o CMakeFiles\\cmTC_81237.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
         Using built-in specs.
         COLLECT_GCC=C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe
         Target: x86_64-w64-mingw32
@@ -342,8 +342,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib
         gcc version 13.1.0 (x86_64-posix-seh-rev1, Built by MinGW-Builds project) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_394fb.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_394fb.dir\\'
-         C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/cc1plus.exe -quiet -v -iprefix C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\\cmTC_394fb.dir\\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=core2 -march=nocona -version -o C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\cc8V1QFQ.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_81237.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_81237.dir\\'
+         C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/cc1plus.exe -quiet -v -iprefix C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\\cmTC_81237.dir\\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=core2 -march=nocona -version -o C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\cc0Gjfmr.s
         GNU C++17 (x86_64-posix-seh-rev1, Built by MinGW-Builds project) version 13.1.0 (x86_64-w64-mingw32)
         	compiled by GNU C version 13.1.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.25-GMP
         
@@ -366,17 +366,17 @@ events:
          C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include
         End of search list.
         Compiler executable checksum: 28a1691e735bc8d93a8192a647dda70c
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_394fb.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_394fb.dir\\'
-         C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_394fb.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\cc8V1QFQ.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_81237.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_81237.dir\\'
+         C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_81237.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\cc0Gjfmr.s
         GNU assembler version 2.39 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.39
         COMPILER_PATH=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_394fb.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_394fb.dir\\CMakeCXXCompilerABI.cpp.'
-        Linking CXX executable cmTC_394fb.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_394fb.dir\\link.txt --verbose=1
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_394fb.dir/objects.a
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_394fb.dir/objects.a @CMakeFiles\\cmTC_394fb.dir\\objects1.rsp
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  -v -Wl,--whole-archive CMakeFiles\\cmTC_394fb.dir/objects.a -Wl,--no-whole-archive -o cmTC_394fb.exe -Wl,--out-implib,libcmTC_394fb.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_81237.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_81237.dir\\CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_81237.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_81237.dir\\link.txt --verbose=1
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_81237.dir/objects.a
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_81237.dir/objects.a @CMakeFiles\\cmTC_81237.dir\\objects1.rsp
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  -v -Wl,--whole-archive CMakeFiles\\cmTC_81237.dir/objects.a -Wl,--no-whole-archive -o cmTC_81237.exe -Wl,--out-implib,libcmTC_81237.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
         Using built-in specs.
         COLLECT_GCC=C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe
         COLLECT_LTO_WRAPPER=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe
@@ -387,10 +387,10 @@ events:
         gcc version 13.1.0 (x86_64-posix-seh-rev1, Built by MinGW-Builds project) 
         COMPILER_PATH=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/;C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_394fb.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'cmTC_394fb.'
-         C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/collect2.exe -plugin C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/liblto_plugin.dll -plugin-opt=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccSFhRg3.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/buildroot/x86_64-1310-posix-seh-ucrt-rt_v11-rev1/mingw64 -m i386pep -Bdynamic -o cmTC_394fb.exe C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0 -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../.. --whole-archive CMakeFiles\\cmTC_394fb.dir/objects.a --no-whole-archive --out-implib libcmTC_394fb.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_394fb.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'cmTC_394fb.'
-        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-rgro54'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_81237.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'cmTC_81237.'
+         C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/collect2.exe -plugin C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/liblto_plugin.dll -plugin-opt=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccQLc5rF.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/buildroot/x86_64-1310-posix-seh-ucrt-rt_v11-rev1/mingw64 -m i386pep -Bdynamic -o cmTC_81237.exe C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0 -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../.. --whole-archive CMakeFiles\\cmTC_81237.dir/objects.a --no-whole-archive --out-implib libcmTC_81237.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_81237.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'cmTC_81237.'
+        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-9mreuv'
         
       exitCode: 0
   -
@@ -428,12 +428,12 @@ events:
     message: |
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld\\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-rgro54]
+        ignore line: [Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-9mreuv]
         ignore line: []
-        ignore line: [Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_394fb/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_394fb.dir\\build.make CMakeFiles/cmTC_394fb.dir/build]
-        ignore line: [mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-rgro54']
-        ignore line: [Building CXX object CMakeFiles/cmTC_394fb.dir/CMakeCXXCompilerABI.cpp.obj]
-        ignore line: [C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe   -v -o CMakeFiles\\cmTC_394fb.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"]
+        ignore line: [Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_81237/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_81237.dir\\build.make CMakeFiles/cmTC_81237.dir/build]
+        ignore line: [mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-9mreuv']
+        ignore line: [Building CXX object CMakeFiles/cmTC_81237.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe   -v -o CMakeFiles\\cmTC_81237.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe]
         ignore line: [Target: x86_64-w64-mingw32]
@@ -441,8 +441,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib]
         ignore line: [gcc version 13.1.0 (x86_64-posix-seh-rev1  Built by MinGW-Builds project) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_394fb.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_394fb.dir\\']
-        ignore line: [ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/cc1plus.exe -quiet -v -iprefix C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\\cmTC_394fb.dir\\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=core2 -march=nocona -version -o C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\cc8V1QFQ.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_81237.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_81237.dir\\']
+        ignore line: [ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/cc1plus.exe -quiet -v -iprefix C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\\cmTC_81237.dir\\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=core2 -march=nocona -version -o C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\cc0Gjfmr.s]
         ignore line: [GNU C++17 (x86_64-posix-seh-rev1  Built by MinGW-Builds project) version 13.1.0 (x86_64-w64-mingw32)]
         ignore line: [	compiled by GNU C version 13.1.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.25-GMP]
         ignore line: []
@@ -465,8 +465,8 @@ events:
         ignore line: [ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 28a1691e735bc8d93a8192a647dda70c]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_394fb.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_394fb.dir\\']
-        ignore line: [ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_394fb.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\cc8V1QFQ.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_81237.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_81237.dir\\']
+        ignore line: [ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_81237.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\cc0Gjfmr.s]
         ignore line: [GNU assembler version 2.39 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.39]
         ignore line: [COMPILER_PATH=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/]
         ignore line: [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/]
@@ -477,12 +477,12 @@ events:
         ignore line: [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib/]
         ignore line: [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_394fb.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_394fb.dir\\CMakeCXXCompilerABI.cpp.']
-        ignore line: [Linking CXX executable cmTC_394fb.exe]
-        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_394fb.dir\\link.txt --verbose=1]
-        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_394fb.dir/objects.a]
-        ignore line: [C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_394fb.dir/objects.a @CMakeFiles\\cmTC_394fb.dir\\objects1.rsp]
-        ignore line: [C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  -v -Wl --whole-archive CMakeFiles\\cmTC_394fb.dir/objects.a -Wl --no-whole-archive -o cmTC_394fb.exe -Wl --out-implib libcmTC_394fb.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_81237.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_81237.dir\\CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_81237.exe]
+        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_81237.dir\\link.txt --verbose=1]
+        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_81237.dir/objects.a]
+        ignore line: [C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_81237.dir/objects.a @CMakeFiles\\cmTC_81237.dir\\objects1.rsp]
+        ignore line: [C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  -v -Wl --whole-archive CMakeFiles\\cmTC_81237.dir/objects.a -Wl --no-whole-archive -o cmTC_81237.exe -Wl --out-implib libcmTC_81237.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe]
         ignore line: [COLLECT_LTO_WRAPPER=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe]
@@ -500,13 +500,13 @@ events:
         ignore line: [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib/]
         ignore line: [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_394fb.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'cmTC_394fb.']
-        link line: [ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/collect2.exe -plugin C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/liblto_plugin.dll -plugin-opt=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccSFhRg3.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/buildroot/x86_64-1310-posix-seh-ucrt-rt_v11-rev1/mingw64 -m i386pep -Bdynamic -o cmTC_394fb.exe C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0 -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../.. --whole-archive CMakeFiles\\cmTC_394fb.dir/objects.a --no-whole-archive --out-implib libcmTC_394fb.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_81237.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'cmTC_81237.']
+        link line: [ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/collect2.exe -plugin C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/liblto_plugin.dll -plugin-opt=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccQLc5rF.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/buildroot/x86_64-1310-posix-seh-ucrt-rt_v11-rev1/mingw64 -m i386pep -Bdynamic -o cmTC_81237.exe C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0 -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib -LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../.. --whole-archive CMakeFiles\\cmTC_81237.dir/objects.a --no-whole-archive --out-implib libcmTC_81237.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o]
           arg [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/collect2.exe] ==> ignore
           arg [-plugin] ==> ignore
           arg [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/liblto_plugin.dll] ==> ignore
           arg [-plugin-opt=C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe] ==> ignore
-          arg [-plugin-opt=-fresolution=C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccSFhRg3.res] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\ZhenKou\\AppData\\Local\\Temp\\ccQLc5rF.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
@@ -532,7 +532,7 @@ events:
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_394fb.exe] ==> ignore
+          arg [cmTC_81237.exe] ==> ignore
           arg [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
           arg [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o] ==> obj [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o]
           arg [-LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0] ==> dir [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0]
@@ -542,10 +542,10 @@ events:
           arg [-LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib] ==> dir [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib]
           arg [-LC:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../..] ==> dir [C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../..]
           arg [--whole-archive] ==> ignore
-          arg [CMakeFiles\\cmTC_394fb.dir/objects.a] ==> ignore
+          arg [CMakeFiles\\cmTC_81237.dir/objects.a] ==> ignore
           arg [--no-whole-archive] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_394fb.dll.a] ==> ignore
+          arg [libcmTC_81237.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -600,8 +600,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-0r43cq"
-      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-0r43cq"
+      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-6xgtb7"
+      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-6xgtb7"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -611,18 +611,18 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-0r43cq
+        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-6xgtb7
         
-        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_b1209/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_b1209.dir\\build.make CMakeFiles/cmTC_b1209.dir/build
-        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-0r43cq'
-        Building C object CMakeFiles/cmTC_b1209.dir/src.c.obj
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles\\cmTC_b1209.dir\\src.c.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0r43cq\\src.c
-        Linking C executable cmTC_b1209.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_b1209.dir\\link.txt --verbose=1
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_b1209.dir/objects.a
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_b1209.dir/objects.a @CMakeFiles\\cmTC_b1209.dir\\objects1.rsp
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe -Wl,--whole-archive CMakeFiles\\cmTC_b1209.dir/objects.a -Wl,--no-whole-archive -o cmTC_b1209.exe -Wl,--out-implib,libcmTC_b1209.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_b1209.dir\\linkLibs.rsp
-        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-0r43cq'
+        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_4b02d/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_4b02d.dir\\build.make CMakeFiles/cmTC_4b02d.dir/build
+        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-6xgtb7'
+        Building C object CMakeFiles/cmTC_4b02d.dir/src.c.obj
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles\\cmTC_4b02d.dir\\src.c.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\build\\CMakeFiles\\CMakeScratch\\TryCompile-6xgtb7\\src.c
+        Linking C executable cmTC_4b02d.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_4b02d.dir\\link.txt --verbose=1
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_4b02d.dir/objects.a
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_4b02d.dir/objects.a @CMakeFiles\\cmTC_4b02d.dir\\objects1.rsp
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe -Wl,--whole-archive CMakeFiles\\cmTC_4b02d.dir/objects.a -Wl,--no-whole-archive -o cmTC_4b02d.exe -Wl,--out-implib,libcmTC_4b02d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_4b02d.dir\\linkLibs.rsp
+        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-6xgtb7'
         
       exitCode: 0
   -
@@ -633,8 +633,8 @@ events:
     checks:
       - "Looking for dinput.h"
     directories:
-      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-du86cd"
-      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-du86cd"
+      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-9i6p1j"
+      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-9i6p1j"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -644,18 +644,18 @@ events:
       variable: "DINPUT_H_FOUND"
       cached: true
       stdout: |
-        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-du86cd
+        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-9i6p1j
         
-        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_43c78/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_43c78.dir\\build.make CMakeFiles/cmTC_43c78.dir/build
-        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-du86cd'
-        Building C object CMakeFiles/cmTC_43c78.dir/CheckIncludeFile.c.obj
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe    -o CMakeFiles\\cmTC_43c78.dir\\CheckIncludeFile.c.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\build\\CMakeFiles\\CMakeScratch\\TryCompile-du86cd\\CheckIncludeFile.c
-        Linking C executable cmTC_43c78.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_43c78.dir\\link.txt --verbose=1
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_43c78.dir/objects.a
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_43c78.dir/objects.a @CMakeFiles\\cmTC_43c78.dir\\objects1.rsp
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe -Wl,--whole-archive CMakeFiles\\cmTC_43c78.dir/objects.a -Wl,--no-whole-archive -o cmTC_43c78.exe -Wl,--out-implib,libcmTC_43c78.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_43c78.dir\\linkLibs.rsp
-        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-du86cd'
+        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_068c5/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_068c5.dir\\build.make CMakeFiles/cmTC_068c5.dir/build
+        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-9i6p1j'
+        Building C object CMakeFiles/cmTC_068c5.dir/CheckIncludeFile.c.obj
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe    -o CMakeFiles\\cmTC_068c5.dir\\CheckIncludeFile.c.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\build\\CMakeFiles\\CMakeScratch\\TryCompile-9i6p1j\\CheckIncludeFile.c
+        Linking C executable cmTC_068c5.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_068c5.dir\\link.txt --verbose=1
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_068c5.dir/objects.a
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_068c5.dir/objects.a @CMakeFiles\\cmTC_068c5.dir\\objects1.rsp
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe -Wl,--whole-archive CMakeFiles\\cmTC_068c5.dir/objects.a -Wl,--no-whole-archive -o cmTC_068c5.exe -Wl,--out-implib,libcmTC_068c5.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_068c5.dir\\linkLibs.rsp
+        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-9i6p1j'
         
       exitCode: 0
   -
@@ -666,8 +666,8 @@ events:
     checks:
       - "Looking for xinput.h"
     directories:
-      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-gdbym6"
-      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-gdbym6"
+      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-ub7dds"
+      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-ub7dds"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -677,18 +677,18 @@ events:
       variable: "XINPUT_H_FOUND"
       cached: true
       stdout: |
-        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-gdbym6
+        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-ub7dds
         
-        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_7189f/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_7189f.dir\\build.make CMakeFiles/cmTC_7189f.dir/build
-        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-gdbym6'
-        Building C object CMakeFiles/cmTC_7189f.dir/CheckIncludeFile.c.obj
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe    -o CMakeFiles\\cmTC_7189f.dir\\CheckIncludeFile.c.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gdbym6\\CheckIncludeFile.c
-        Linking C executable cmTC_7189f.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_7189f.dir\\link.txt --verbose=1
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_7189f.dir/objects.a
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_7189f.dir/objects.a @CMakeFiles\\cmTC_7189f.dir\\objects1.rsp
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe -Wl,--whole-archive CMakeFiles\\cmTC_7189f.dir/objects.a -Wl,--no-whole-archive -o cmTC_7189f.exe -Wl,--out-implib,libcmTC_7189f.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_7189f.dir\\linkLibs.rsp
-        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-gdbym6'
+        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_6a6b5/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_6a6b5.dir\\build.make CMakeFiles/cmTC_6a6b5.dir/build
+        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-ub7dds'
+        Building C object CMakeFiles/cmTC_6a6b5.dir/CheckIncludeFile.c.obj
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe    -o CMakeFiles\\cmTC_6a6b5.dir\\CheckIncludeFile.c.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ub7dds\\CheckIncludeFile.c
+        Linking C executable cmTC_6a6b5.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_6a6b5.dir\\link.txt --verbose=1
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_6a6b5.dir/objects.a
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_6a6b5.dir/objects.a @CMakeFiles\\cmTC_6a6b5.dir\\objects1.rsp
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe -Wl,--whole-archive CMakeFiles\\cmTC_6a6b5.dir/objects.a -Wl,--no-whole-archive -o cmTC_6a6b5.exe -Wl,--out-implib,libcmTC_6a6b5.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_6a6b5.dir\\linkLibs.rsp
+        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-ub7dds'
         
       exitCode: 0
   -
@@ -701,8 +701,8 @@ events:
     checks:
       - "Performing Test _GLFW_HAS_DEP"
     directories:
-      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-iq896v"
-      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-iq896v"
+      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-rq5hky"
+      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-rq5hky"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -712,18 +712,18 @@ events:
       variable: "_GLFW_HAS_DEP"
       cached: true
       stdout: |
-        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-iq896v
+        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-rq5hky
         
-        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_12d7b/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_12d7b.dir\\build.make CMakeFiles/cmTC_12d7b.dir/build
-        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-iq896v'
-        Building C object CMakeFiles/cmTC_12d7b.dir/src.c.obj
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe -D_GLFW_HAS_DEP  -Wl,--nxcompat -o CMakeFiles\\cmTC_12d7b.dir\\src.c.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\build\\CMakeFiles\\CMakeScratch\\TryCompile-iq896v\\src.c
-        Linking C executable cmTC_12d7b.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_12d7b.dir\\link.txt --verbose=1
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_12d7b.dir/objects.a
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_12d7b.dir/objects.a @CMakeFiles\\cmTC_12d7b.dir\\objects1.rsp
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe  -Wl,--nxcompat -Wl,--whole-archive CMakeFiles\\cmTC_12d7b.dir/objects.a -Wl,--no-whole-archive -o cmTC_12d7b.exe -Wl,--out-implib,libcmTC_12d7b.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_12d7b.dir\\linkLibs.rsp
-        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-iq896v'
+        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_40111/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_40111.dir\\build.make CMakeFiles/cmTC_40111.dir/build
+        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-rq5hky'
+        Building C object CMakeFiles/cmTC_40111.dir/src.c.obj
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe -D_GLFW_HAS_DEP  -Wl,--nxcompat -o CMakeFiles\\cmTC_40111.dir\\src.c.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rq5hky\\src.c
+        Linking C executable cmTC_40111.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_40111.dir\\link.txt --verbose=1
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_40111.dir/objects.a
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_40111.dir/objects.a @CMakeFiles\\cmTC_40111.dir\\objects1.rsp
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe  -Wl,--nxcompat -Wl,--whole-archive CMakeFiles\\cmTC_40111.dir/objects.a -Wl,--no-whole-archive -o cmTC_40111.exe -Wl,--out-implib,libcmTC_40111.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_40111.dir\\linkLibs.rsp
+        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-rq5hky'
         
       exitCode: 0
   -
@@ -736,8 +736,8 @@ events:
     checks:
       - "Performing Test _GLFW_HAS_ASLR"
     directories:
-      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-deccy0"
-      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-deccy0"
+      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-vh4q2n"
+      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-vh4q2n"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -747,18 +747,18 @@ events:
       variable: "_GLFW_HAS_ASLR"
       cached: true
       stdout: |
-        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-deccy0
+        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-vh4q2n
         
-        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_d07d0/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_d07d0.dir\\build.make CMakeFiles/cmTC_d07d0.dir/build
-        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-deccy0'
-        Building C object CMakeFiles/cmTC_d07d0.dir/src.c.obj
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe -D_GLFW_HAS_ASLR  -Wl,--dynamicbase -o CMakeFiles\\cmTC_d07d0.dir\\src.c.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\build\\CMakeFiles\\CMakeScratch\\TryCompile-deccy0\\src.c
-        Linking C executable cmTC_d07d0.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_d07d0.dir\\link.txt --verbose=1
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_d07d0.dir/objects.a
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_d07d0.dir/objects.a @CMakeFiles\\cmTC_d07d0.dir\\objects1.rsp
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe  -Wl,--dynamicbase -Wl,--whole-archive CMakeFiles\\cmTC_d07d0.dir/objects.a -Wl,--no-whole-archive -o cmTC_d07d0.exe -Wl,--out-implib,libcmTC_d07d0.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_d07d0.dir\\linkLibs.rsp
-        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-deccy0'
+        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_a73fc/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_a73fc.dir\\build.make CMakeFiles/cmTC_a73fc.dir/build
+        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-vh4q2n'
+        Building C object CMakeFiles/cmTC_a73fc.dir/src.c.obj
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe -D_GLFW_HAS_ASLR  -Wl,--dynamicbase -o CMakeFiles\\cmTC_a73fc.dir\\src.c.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vh4q2n\\src.c
+        Linking C executable cmTC_a73fc.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_a73fc.dir\\link.txt --verbose=1
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_a73fc.dir/objects.a
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_a73fc.dir/objects.a @CMakeFiles\\cmTC_a73fc.dir\\objects1.rsp
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe  -Wl,--dynamicbase -Wl,--whole-archive CMakeFiles\\cmTC_a73fc.dir/objects.a -Wl,--no-whole-archive -o cmTC_a73fc.exe -Wl,--out-implib,libcmTC_a73fc.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_a73fc.dir\\linkLibs.rsp
+        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-vh4q2n'
         
       exitCode: 0
   -
@@ -771,8 +771,8 @@ events:
     checks:
       - "Performing Test _GLFW_HAS_64ASLR"
     directories:
-      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-ok6g4c"
-      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-ok6g4c"
+      source: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-c68fc7"
+      binary: "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-c68fc7"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -782,18 +782,18 @@ events:
       variable: "_GLFW_HAS_64ASLR"
       cached: true
       stdout: |
-        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-ok6g4c
+        Change Dir: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-c68fc7
         
-        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_784f9/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_784f9.dir\\build.make CMakeFiles/cmTC_784f9.dir/build
-        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-ok6g4c'
-        Building C object CMakeFiles/cmTC_784f9.dir/src.c.obj
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe -D_GLFW_HAS_64ASLR  -Wl,--high-entropy-va -o CMakeFiles\\cmTC_784f9.dir\\src.c.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ok6g4c\\src.c
-        Linking C executable cmTC_784f9.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_784f9.dir\\link.txt --verbose=1
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_784f9.dir/objects.a
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_784f9.dir/objects.a @CMakeFiles\\cmTC_784f9.dir\\objects1.rsp
-        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe  -Wl,--high-entropy-va -Wl,--whole-archive CMakeFiles\\cmTC_784f9.dir/objects.a -Wl,--no-whole-archive -o cmTC_784f9.exe -Wl,--out-implib,libcmTC_784f9.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_784f9.dir\\linkLibs.rsp
-        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-ok6g4c'
+        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe -f Makefile cmTC_99386/fast && C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_99386.dir\\build.make CMakeFiles/cmTC_99386.dir/build
+        mingw32-make.exe[1]: Entering directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-c68fc7'
+        Building C object CMakeFiles/cmTC_99386.dir/src.c.obj
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe -D_GLFW_HAS_64ASLR  -Wl,--high-entropy-va -o CMakeFiles\\cmTC_99386.dir\\src.c.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\build\\CMakeFiles\\CMakeScratch\\TryCompile-c68fc7\\src.c
+        Linking C executable cmTC_99386.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_99386.dir\\link.txt --verbose=1
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_99386.dir/objects.a
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\ar.exe qc CMakeFiles\\cmTC_99386.dir/objects.a @CMakeFiles\\cmTC_99386.dir\\objects1.rsp
+        C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\gcc.exe  -Wl,--high-entropy-va -Wl,--whole-archive CMakeFiles\\cmTC_99386.dir/objects.a -Wl,--no-whole-archive -o cmTC_99386.exe -Wl,--out-implib,libcmTC_99386.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_99386.dir\\linkLibs.rsp
+        mingw32-make.exe[1]: Leaving directory 'C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/CMakeFiles/CMakeScratch/TryCompile-c68fc7'
         
       exitCode: 0
 ...

@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/VulkanRenderer.dir/entry_point.obj.d"
   "CMakeFiles/VulkanRenderer.dir/vulkan_app.obj"
   "CMakeFiles/VulkanRenderer.dir/vulkan_app.obj.d"
+  "CMakeFiles/VulkanRenderer.dir/vulkan_fn.obj"
+  "CMakeFiles/VulkanRenderer.dir/vulkan_fn.obj.d"
   "libVulkanRenderer.dll.a"
 )
 

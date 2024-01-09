@@ -526,5 +526,11 @@
   "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp -g -o CMakeFiles\\VulkanRenderer.dir\\vulkan_app.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\src\\vulkan_app.cpp",
   "file": "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/src/vulkan_app.cpp",
   "output": "src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj"
+},
+{
+  "directory": "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/src",
+  "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp -g -o CMakeFiles\\VulkanRenderer.dir\\vulkan_fn.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\vulkan_learn\\src\\vulkan_fn.cpp",
+  "file": "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/src/vulkan_fn.cpp",
+  "output": "src/CMakeFiles/VulkanRenderer.dir/vulkan_fn.obj"
 }
 ]

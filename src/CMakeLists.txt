@@ -1,7 +1,9 @@
 project(VulkanRenderer LANGUAGES CXX)
 set(SOURCES 
     entry_point.cpp
-    vulkan_app.cpp)
+    vulkan_app.cpp
+    vulkan_fn.cpp
+    )
 add_executable(VulkanRenderer ${SOURCES})
 target_include_directories(VulkanRenderer PRIVATE
     ${GLFW_INCLUDE}

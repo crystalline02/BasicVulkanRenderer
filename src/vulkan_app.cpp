@@ -3,6 +3,8 @@
 #include <stdexcept>
 #include <iostream>
 
+#include "vulkan_fn.h"
+
 void VulkanApp::run()
 {
     init_window();
@@ -23,8 +25,10 @@ void VulkanApp::init_window()
 void VulkanApp::init_vulkan()
 {
     create_instance();
+    if(load_vkInstanceFunctions(m_vkInstance) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to load vulkan instance functions.");
     if(m_enableValidationLayer)
-        create_messager_callback();
+        create_debug_messenger();
 }
 
 void VulkanApp::create_instance()
@@ -44,15 +48,22 @@ void VulkanApp::create_instance()
     createInfo.pApplicationInfo = &appInfo;  // createInfo use applicationInfo as a part of its struct members
 
     // Add&check validation layers
+    VkDebugUtilsMessengerCreateInfoEXT messengerCreateInfo = {};
     if(m_enableValidationLayer)
     {
         if(!checkValidationLayersSurpported(m_validationLayerNames))
             throw std::runtime_error("VK ERROR: Unsurpported vulkan instance validation layer.");
         createInfo.enabledLayerCount = (uint32_t)m_validationLayerNames.size();
         createInfo.ppEnabledLayerNames = m_validationLayerNames.data();
+        // Populate messengerCreateInfo
+        populateMessengerCreateInfo(messengerCreateInfo);
+        createInfo.pNext = (VkDebugUtilsMessengerCreateInfoEXT*)&messengerCreateInfo;
     }
     else
+    {
         createInfo.enabledLayerCount = 0;
+        createInfo.pNext = nullptr;
+    }
 
     // Add&check extensions
     m_enabledExtensionNames = getRequiredExtentions();
@@ -66,23 +77,29 @@ void VulkanApp::create_instance()
         throw std::runtime_error("VK ERROR: Failed to create VkInstance.");
 }
 
-void VulkanApp::create_messager_callback()
+void VulkanApp::create_debug_messenger()
 {
-    if(!m_enableValidationLayer) return;  // Release
-    VkDebugUtilsMessengerCreateInfoEXT createInfo = {};
-    createInfo.sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT;
-    createInfo.messageSeverity = VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT | 
-        VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT |
-        VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT |
+    if(!m_enableValidationLayer) return;
+    VkDebugUtilsMessengerCreateInfoEXT messengerCreateInfo = {};
+    populateMessengerCreateInfo(messengerCreateInfo);
+    if(vkCreateDebugUtilsMessengerEXT(m_vkInstance, &messengerCreateInfo, nullptr, &m_vkMessenger) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to create vkDebugUtilsMessengerCreateInfoEXT.");
+}
+
+void VulkanApp::populateMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT& messengerCreateInfo)
+{
+    if(!m_enableValidationLayer) return;
+    messengerCreateInfo.sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT;
+    messengerCreateInfo.messageSeverity = VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT | 
+        VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT | 
+        VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT | 
         VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT;
-    createInfo.messageType = VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT | 
-        VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT | 
+    messengerCreateInfo.messageType = VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT | 
+        VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT |
         VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT;
-    createInfo.pfnUserCallback = VulkanApp::debugMessageCallback;
-    createInfo.pUserData = nullptr;
-    if(VulkanApp::createDebugUtilsMessengerEXT(m_vkInstance, &createInfo, nullptr, &m_debugMessenger) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR: Failed to create VkDebugUtilMessenger");
-}   
+    messengerCreateInfo.pfnUserCallback = VulkanApp::debugMessageCallback;
+    messengerCreateInfo.pUserData = nullptr;
+}
 
 void VulkanApp::main_loop()
 {
@@ -95,7 +112,7 @@ void VulkanApp::main_loop()
 void VulkanApp::clean_up()
 {
     if(m_enableValidationLayer)
-        destoryDebugUtilsMessengerEXT(m_vkInstance, m_debugMessenger, nullptr);
+        vkDestroyDebugUtilsMessengerEXT(m_vkInstance, m_vkMessenger, nullptr);
     vkDestroyInstance(m_vkInstance, nullptr);
     glfwDestroyWindow(m_window);
     glfwTerminate();
@@ -161,12 +178,12 @@ VKAPI_ATTR VkBool32 VKAPI_CALL VulkanApp::debugMessageCallback(VkDebugUtilsMessa
     const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
     void* pUserData)
 {
+    if(messageSeverity < VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT) return VK_FALSE;
     std::cerr << "Validation error: " << pCallbackData->pMessage << std::endl;
+
     std::cerr << "SEVERITY:";
     switch(messageSeverity)
     {
-        case VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT: std::cerr << "VERBOSE\n"; break;
-        case VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT:    std::cerr << "INFO\n"; break;
         case VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT: std::cerr << "WARNNING\n"; break;
         case VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT:   std::cerr << "ERROR\n"; break;
     }
@@ -180,27 +197,4 @@ VKAPI_ATTR VkBool32 VKAPI_CALL VulkanApp::debugMessageCallback(VkDebugUtilsMessa
         std::cerr << "PERFORMANCE ";
     std::cerr << std::endl;
     return VK_FALSE;
-}
-
-VkResult VulkanApp::createDebugUtilsMessengerEXT(VkInstance instance,
-        VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo,
-        const VkAllocationCallbacks* pAllocator, 
-        VkDebugUtilsMessengerEXT* pMessenger)
-{
-    PFN_vkCreateDebugUtilsMessengerEXT func_ptr = (PFN_vkCreateDebugUtilsMessengerEXT)vkGetInstanceProcAddr(instance,
-        "vkCreateDebugUtilsMessengerEXT");
-    if(!func_ptr)
-        return VK_ERROR_EXTENSION_NOT_PRESENT;
-    else
-        return func_ptr(instance, pCreateInfo, pAllocator, pMessenger);
-}
-
-void VulkanApp::destoryDebugUtilsMessengerEXT(VkInstance instance,
-    VkDebugUtilsMessengerEXT messenger,
-    const VkAllocationCallbacks* pAllocator)
-{
-    PFN_vkDestroyDebugUtilsMessengerEXT func_ptr = (PFN_vkDestroyDebugUtilsMessengerEXT)vkGetInstanceProcAddr(instance,
-        "vkDestroyDebugUtilsMessengerEXT");
-    if(func_ptr)
-        return func_ptr(instance, messenger, pAllocator);
 }

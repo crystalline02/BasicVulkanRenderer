@@ -204,6 +204,21 @@ vulkan_app.s:
 	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_app.s
 .PHONY : vulkan_app.s
 
+# target to build an object file
+vulkan_fn.obj:
+	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_fn.obj
+.PHONY : vulkan_fn.obj
+
+# target to preprocess a source file
+vulkan_fn.i:
+	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_fn.i
+.PHONY : vulkan_fn.i
+
+# target to generate assembly for a file
+vulkan_fn.s:
+	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_fn.s
+.PHONY : vulkan_fn.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -223,6 +238,9 @@ help:
 	@echo ... vulkan_app.obj
 	@echo ... vulkan_app.i
 	@echo ... vulkan_app.s
+	@echo ... vulkan_fn.obj
+	@echo ... vulkan_fn.i
+	@echo ... vulkan_fn.s
 .PHONY : help
 
 
