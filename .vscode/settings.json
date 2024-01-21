@@ -66,6 +66,12 @@
         "xutility": "cpp",
         "chrono": "cpp",
         "ratio": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "charconv": "cpp",
+        "format": "cpp",
+        "fstream": "cpp",
+        "iomanip": "cpp",
+        "span": "cpp",
+        "variant": "cpp"
     }
 }

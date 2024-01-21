@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <set>
+#include <string>
 #include <optional> 
 
 class VulkanApp
@@ -54,6 +55,13 @@ private:
     void pickPhysicalDevice();
     void createLogicalDevices();
     void createSwapChain();
+    void createImageViews();
+    void createRenderPass();
+    void createGraphicPipeline();
+    void createFrameBuffers();
+    void createCommandPool();
+    void createSyncObjects();
+    void allocateCommandBuffers();
     void main_loop();
     void clean_up();
 
@@ -69,6 +77,10 @@ private:
     VkPresentModeKHR chooseSwapChainPresentMode(std::vector<VkPresentModeKHR> avaliablePresentModes);
     VkExtent2D chooseSwapchainExtent(VkSurfaceCapabilitiesKHR surfaceCapabilities);
     std::vector<const char*> getRequiredExtentions() const;
+    std::vector<char> readShaderFile(const std::string filePath) const;
+    VkShaderModule createShaderModule(std::vector<char> shaderBytes) const;
+    VkPipelineLayout createPipelineLayout() const;
+    void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
 
     // Callback funtions
     static VKAPI_ATTR VkBool32 VKAPI_CALL debugMessageCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
@@ -81,7 +93,7 @@ private:
         m_windowHeight = 1080;
     GLFWwindow* m_window;
 
-    // vkInstance and it's subordinate
+    // vkInstance and it's subordinates
     VkInstance m_vkInstance;
     VkDebugUtilsMessengerEXT m_vkMessenger;
     std::vector<const char*> m_instanceExtensionNames;
@@ -93,10 +105,26 @@ private:
 #endif
     VkSurfaceKHR m_vkSurface;
     VkPhysicalDevice m_vkPhysicalDevice;
+
+    // VkDevice and its surboradinates
     VkDevice m_vkDevice;
     std::vector<const char*> m_deviceExtensionNames = {VK_KHR_SWAPCHAIN_EXTENSION_NAME};
     VkQueue m_vkDeviceGraphicQueue;  // Queue supports graphic operations
     VkQueue m_vkDevicePresentQueue;  // Queue supports presenting images to a vulkan surface
     VkSwapchainKHR m_vkSwapChain;
+    std::vector<VkImage> m_swapChainImages;
+    std::vector<VkImageView> m_swapChainImageViews;
+    std::vector<VkFramebuffer> m_swapChainFrameBuffers;
+    VkFormat m_swapChainImageFormat;
+    VkPresentModeKHR m_presentMode;
+    VkExtent2D m_swapChainImageExtent;
+    VkRenderPass m_vkRenderPass;
+    VkPipelineLayout m_vkPipelineLayout;
+    VkPipeline m_vkPipeline;
+    VkCommandPool m_vkCommandPool;
+    VkCommandBuffer m_vkCommandBuffer;
+    VkSemaphore m_acquireImageSemaphore;
+    VkSemaphore m_drawSemaphore;
+    VkFence m_inFlightFence;
 };
 
