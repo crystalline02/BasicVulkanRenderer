@@ -63,6 +63,7 @@ private:
     void createSyncObjects();
     void allocateCommandBuffers();
     void main_loop();
+    void drawFrame();
     void clean_up();
 
     // Some other helper functions
@@ -109,8 +110,8 @@ private:
     // VkDevice and its surboradinates
     VkDevice m_vkDevice;
     std::vector<const char*> m_deviceExtensionNames = {VK_KHR_SWAPCHAIN_EXTENSION_NAME};
-    VkQueue m_vkDeviceGraphicQueue;  // Queue supports graphic operations
-    VkQueue m_vkDevicePresentQueue;  // Queue supports presenting images to a vulkan surface
+    VkQueue m_vkGraphicQueue;  // Queue supports graphic operations
+    VkQueue m_vkPresentQueue;  // Queue supports presenting images to a vulkan surface
     VkSwapchainKHR m_vkSwapChain;
     std::vector<VkImage> m_swapChainImages;
     std::vector<VkImageView> m_swapChainImageViews;
@@ -121,8 +122,8 @@ private:
     VkRenderPass m_vkRenderPass;
     VkPipelineLayout m_vkPipelineLayout;
     VkPipeline m_vkPipeline;
-    VkCommandPool m_vkCommandPool;
-    VkCommandBuffer m_vkCommandBuffer;
+    VkCommandPool m_graphicCommandPool;
+    VkCommandBuffer m_drawCommandBuffer;
     VkSemaphore m_acquireImageSemaphore;
     VkSemaphore m_drawSemaphore;
     VkFence m_inFlightFence;
