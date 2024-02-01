@@ -65,7 +65,7 @@ private:
     void main_loop();
     void drawFrame();
     void clean_up();
-
+    
     // Some other helper functions
     void populateMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT& messengerCreateInfo) const;
     uint64_t ratePhysicalDevice(const VkPhysicalDevice& physicalDevice) const;
@@ -82,6 +82,8 @@ private:
     VkShaderModule createShaderModule(std::vector<char> shaderBytes) const;
     VkPipelineLayout createPipelineLayout() const;
     void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
+    void cleanUpSwapChain();
+    void recreateSwapChain();
 
     // Callback funtions
     static VKAPI_ATTR VkBool32 VKAPI_CALL debugMessageCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
@@ -93,6 +95,8 @@ private:
     uint32_t m_windowWidth = 1920, 
         m_windowHeight = 1080;
     GLFWwindow* m_window;
+    uint32_t m_maxInflightFrames = 2;
+    uint32_t m_currentFrame = 0;
 
     // vkInstance and it's subordinates
     VkInstance m_vkInstance;
@@ -123,9 +127,9 @@ private:
     VkPipelineLayout m_vkPipelineLayout;
     VkPipeline m_vkPipeline;
     VkCommandPool m_graphicCommandPool;
-    VkCommandBuffer m_drawCommandBuffer;
-    VkSemaphore m_acquireImageSemaphore;
-    VkSemaphore m_drawSemaphore;
-    VkFence m_inFlightFence;
+    std::vector<VkCommandBuffer> m_drawCommandBuffers;
+    std::vector<VkSemaphore> m_acquireImageSemaphores;
+    std::vector<VkSemaphore> m_drawSemaphores;
+    std::vector<VkFence> m_inFlightFences;
 };
 
