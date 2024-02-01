@@ -90,6 +90,7 @@ private:
         VkDebugUtilsMessageTypeFlagsEXT messageType,
         const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
         void* pUserData);
+    static void framebufferResizeCallback(GLFWwindow* window, int width, int height);
 
     // Private class members
     uint32_t m_windowWidth = 1920, 
@@ -97,6 +98,7 @@ private:
     GLFWwindow* m_window;
     uint32_t m_maxInflightFrames = 2;
     uint32_t m_currentFrame = 0;
+    bool m_framebufferResized = false;
 
     // vkInstance and it's subordinates
     VkInstance m_vkInstance;

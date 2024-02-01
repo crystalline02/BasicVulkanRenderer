@@ -21,9 +21,11 @@ void VulkanApp::init_window()
 {
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
     m_window = glfwCreateWindow(m_windowWidth, m_windowHeight, "Vulkan Renderer", nullptr, nullptr);
+    glfwSetFramebufferSizeCallback(m_window, framebufferResizeCallback);
+    glfwSetWindowUserPointer(m_window, this);
 }
 
 void VulkanApp::init_vulkan()
@@ -496,12 +498,31 @@ void VulkanApp::drawFrame()
     // while the GPU is still using the command buffer in current frame.
     vkWaitForFences(m_vkDevice, 1, &m_inFlightFences[m_currentFrame], VK_TRUE, UINT64_MAX);
 
-    // Reset fence
-    vkResetFences(m_vkDevice, 1, &m_inFlightFences[m_currentFrame]);
-
-    // Acquire a image for swapchain
+    // Acquire an image for swapchain
     uint32_t imageIndex;
-    vkAcquireNextImageKHR(m_vkDevice, m_vkSwapChain, UINT64_MAX, m_acquireImageSemaphores[m_currentFrame], VK_NULL_HANDLE, &imageIndex);
+    VkResult acquireImageResult = vkAcquireNextImageKHR(m_vkDevice, m_vkSwapChain, UINT64_MAX, m_acquireImageSemaphores[m_currentFrame], VK_NULL_HANDLE, &imageIndex);
+    if(acquireImageResult == VK_ERROR_OUT_OF_DATE_KHR ||
+        acquireImageResult == VK_SUBOPTIMAL_KHR)
+    {
+        /* 
+        It's important to know that if vkAcquireNextImageKHR doesn't return VK_SUCCESS,
+        the semaphore specified won't be signaled
+        */
+        recreateSwapChain();
+        /*
+        Since the image acquired from the swapchain is not compatible with the window surface, do not present 
+        the image, just return drawFrame function.
+
+        drawFrame function returns with m_inFlightFences[m_currentFrame] signaled, avoiding deadlock from 
+        vkWaitForFences.
+        */
+        return;  
+    }
+    else if(acquireImageResult != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to acquire an image for the swap chain.");
+    
+    // Reset fence
+    vkResetFences(m_vkDevice, 1, &m_inFlightFences[m_currentFrame]);  // Reset fence to unsignaled
 
     // Reset commandbuffer
     vkResetCommandBuffer(m_drawCommandBuffers[m_currentFrame], 0);
@@ -533,7 +554,15 @@ void VulkanApp::drawFrame()
     presentInfo.pSwapchains = &m_vkSwapChain;
     presentInfo.pImageIndices = &imageIndex;
     presentInfo.pResults = VK_NULL_HANDLE;
-    vkQueuePresentKHR(m_vkPresentQueue, &presentInfo);
+    VkResult queuePresentResult = vkQueuePresentKHR(m_vkPresentQueue, &presentInfo);
+    if(queuePresentResult == VK_ERROR_OUT_OF_DATE_KHR || 
+        queuePresentResult == VK_SUBOPTIMAL_KHR || m_framebufferResized)
+    {
+        m_framebufferResized = false;
+        recreateSwapChain();
+    }
+    else if(queuePresentResult != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to present an image to screen.");
 
     m_currentFrame = (m_currentFrame + 1) % m_maxInflightFrames;
 }
@@ -600,6 +629,14 @@ void VulkanApp::cleanUpSwapChain()
 
 void VulkanApp::recreateSwapChain()
 {
+    int width, height;
+    glfwGetFramebufferSize(m_window, &width, &height);
+    while(width == 0 || height == 0)
+    {
+        glfwWaitEvents();
+        glfwGetFramebufferSize(m_window, &width, &height);
+    }
+
     vkDeviceWaitIdle(m_vkDevice);
     cleanUpSwapChain();
     createSwapChain();
@@ -922,4 +959,10 @@ VKAPI_ATTR VkBool32 VKAPI_CALL VulkanApp::debugMessageCallback(VkDebugUtilsMessa
         std::cerr << "PERFORMANCE ";
     std::cerr << std::endl;
     return VK_FALSE;
+}
+
+void VulkanApp::framebufferResizeCallback(GLFWwindow *window, int width, int height)
+{
+    VulkanApp* app = reinterpret_cast<VulkanApp*>(glfwGetWindowUserPointer(window));
+    app->m_framebufferResized = true;
 }
