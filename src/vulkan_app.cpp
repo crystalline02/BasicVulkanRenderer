@@ -8,6 +8,7 @@
 #include <algorithm>
 
 #include "vulkan_fn.h"
+#include "mesh.h"
 
 void VulkanApp::run()
 {

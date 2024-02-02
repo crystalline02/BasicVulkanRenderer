@@ -1,3 +1,5 @@
+# pragma once
+
 #include <vulkan/vulkan.h>
 
 extern PFN_vkCreateDebugUtilsMessengerEXT vulkan_createDebugUtilsMessengerEXT;
