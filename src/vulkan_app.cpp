@@ -44,8 +44,9 @@ void VulkanApp::init_vulkan()
     createRenderPass();
     createFrameBuffers();
     createGraphicPipeline();
-    createCommandPool();
+    createGraphicCommandPool();
     allocateCommandBuffers();
+    createVertexBuffer();
     createSyncObjects();
 }
 
@@ -320,12 +321,27 @@ void VulkanApp::createGraphicPipeline()
     VkPipelineShaderStageCreateInfo shaderStageCreateInfos[2] = {vertexShaderStageCreateInfo, fragmentShaderStageCreateInfo};
 
     // Create info for vertex input state
+    VkVertexInputBindingDescription bindingDescription = {};
+    bindingDescription.binding = 0;
+    bindingDescription.stride = sizeof(float) * 5;
+    bindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
+
+    VkVertexInputAttributeDescription attributeDescriptions[2];
+    attributeDescriptions[0].binding = 0;
+    attributeDescriptions[0].format = VK_FORMAT_R32G32_SFLOAT;  // vec2
+    attributeDescriptions[0].location = 0;
+    attributeDescriptions[0].offset = 0;
+    attributeDescriptions[1].binding = 0;
+    attributeDescriptions[1].format = VK_FORMAT_R32G32B32_SFLOAT;  // vec3
+    attributeDescriptions[1].location = 1;
+    attributeDescriptions[1].offset = 2 * sizeof(float);
+
     VkPipelineVertexInputStateCreateInfo vertexInputCreateInfo = {};
     vertexInputCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
-    vertexInputCreateInfo.vertexBindingDescriptionCount = 0;
-    vertexInputCreateInfo.pVertexBindingDescriptions = nullptr;
-    vertexInputCreateInfo.vertexAttributeDescriptionCount = 0;
-    vertexInputCreateInfo.pVertexAttributeDescriptions = nullptr;
+    vertexInputCreateInfo.vertexBindingDescriptionCount = 1;
+    vertexInputCreateInfo.pVertexBindingDescriptions = &bindingDescription;
+    vertexInputCreateInfo.vertexAttributeDescriptionCount = 2;
+    vertexInputCreateInfo.pVertexAttributeDescriptions = attributeDescriptions;
 
     // Create info for input assembly state
     VkPipelineInputAssemblyStateCreateInfo inputAssemblyStateCreateInfo = {};
@@ -446,6 +462,29 @@ void VulkanApp::createFrameBuffers()
     }
 }
 
+void VulkanApp::createVertexBuffer()
+{
+    VkDeviceSize veretexBufferSize = m_vertices.size() * sizeof(m_vertices[0]);
+
+    VkBuffer stagingBuffer;
+    VkDeviceMemory stagingBufferMemory;
+    createBuffer(veretexBufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 
+        VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,
+        stagingBuffer, stagingBufferMemory);
+    
+    void* data;
+    vkMapMemory(m_vkDevice, stagingBufferMemory, 0, veretexBufferSize, 0, &data);
+    memcpy(data, m_vertices.data(), veretexBufferSize);
+    vkUnmapMemory(m_vkDevice, stagingBufferMemory);
+
+    createBuffer(veretexBufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT,
+        VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, m_vkVertexBuffer, m_vkVertexBufferMemory);
+    copyBuffer(stagingBuffer, m_vkVertexBuffer, veretexBufferSize);
+
+    vkDestroyBuffer(m_vkDevice, stagingBuffer, VK_NULL_HANDLE);
+    vkFreeMemory(m_vkDevice, stagingBufferMemory, VK_NULL_HANDLE);
+}
+
 void VulkanApp::createSyncObjects()
 {
     m_acquireImageSemaphores.resize(m_maxInflightFrames);
@@ -467,7 +506,7 @@ void VulkanApp::createSyncObjects()
     }
 }
 
-void VulkanApp::createCommandPool()
+void VulkanApp::createGraphicCommandPool()
 {
     RequiredQueueFamilyIndices requriedQueueFamilyIndices = queryRequiredQueueFamilies(m_vkPhysicalDevice, m_vkSurface);
     VkCommandPoolCreateInfo commandPoolCreateInfo = {};
@@ -477,6 +516,69 @@ void VulkanApp::createCommandPool()
 
     if(vkCreateCommandPool(m_vkDevice, &commandPoolCreateInfo, VK_NULL_HANDLE, &m_graphicCommandPool) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create VkCommandPool.");
+}
+
+void VulkanApp::createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags requiredProperties, 
+    VkBuffer& buffer, VkDeviceMemory& memory)
+{
+    VkBufferCreateInfo bufferCreateInfo = {};
+    bufferCreateInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
+    bufferCreateInfo.size = size;
+    bufferCreateInfo.usage = usage;
+    bufferCreateInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
+    if(vkCreateBuffer(m_vkDevice, &bufferCreateInfo, VK_NULL_HANDLE, &buffer) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to create buffer.");
+    
+    VkMemoryRequirements bufferMemoryRequirements = {};
+    vkGetBufferMemoryRequirements(m_vkDevice, buffer, &bufferMemoryRequirements);
+
+    VkMemoryAllocateInfo memoryAllocateInfo = {};
+    memoryAllocateInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
+    memoryAllocateInfo.allocationSize = bufferMemoryRequirements.size;
+    memoryAllocateInfo.memoryTypeIndex = findMemoryTypeIndex(bufferMemoryRequirements.memoryTypeBits, requiredProperties);
+    if(vkAllocateMemory(m_vkDevice, &memoryAllocateInfo, VK_NULL_HANDLE, &memory) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to allocate memory.");
+    
+    // Bind memory for that buffer
+    vkBindBufferMemory(m_vkDevice, buffer, memory, 0);
+}
+
+void VulkanApp::copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size) const
+{
+    // Allocate command buffer for copying staging buffer to vertex buffer
+    VkCommandBuffer transferCommandBuffer;
+    VkCommandBufferAllocateInfo allocateInfo = {};
+    allocateInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
+    allocateInfo.commandPool = m_graphicCommandPool;  // command pool created for graphic queue also supports memory transfer operation
+    allocateInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
+    allocateInfo.commandBufferCount = 1;
+    vkAllocateCommandBuffers(m_vkDevice, &allocateInfo, &transferCommandBuffer);
+
+    // Record this command buffer(Transfer memory)
+    VkCommandBufferBeginInfo commandBufferBeginInfo = {};
+    commandBufferBeginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
+    commandBufferBeginInfo.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
+    if(vkBeginCommandBuffer(transferCommandBuffer, &commandBufferBeginInfo) != VK_SUCCESS)
+        throw std::runtime_error("VK ERORR: Failed to begin recording VkCommandBuffer.");
+
+    VkBufferCopy bufferCopy = {};
+    bufferCopy.srcOffset = 0;
+    bufferCopy.dstOffset = 0;
+    bufferCopy.size = size;
+    vkCmdCopyBuffer(transferCommandBuffer, srcBuffer, dstBuffer, 1, &bufferCopy);
+
+    if(vkEndCommandBuffer(transferCommandBuffer) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to end recoding VkCommandBuffer");
+    
+    // Submit the recorded command buffer
+    VkSubmitInfo submitInfo = {};
+    submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
+    submitInfo.commandBufferCount = 1;
+    submitInfo.pCommandBuffers = &transferCommandBuffer;
+    vkQueueSubmit(m_vkGraphicQueue, 1, &submitInfo, VK_NULL_HANDLE);
+    vkQueueWaitIdle(m_vkGraphicQueue);  // Wait until copying completed
+
+    vkFreeCommandBuffers(m_vkDevice, m_graphicCommandPool, 1, &transferCommandBuffer);
 }
 
 void VulkanApp::allocateCommandBuffers()
@@ -529,7 +631,7 @@ void VulkanApp::drawFrame()
     vkResetCommandBuffer(m_drawCommandBuffers[m_currentFrame], 0);
 
     // Record commandbuffer
-    recordCommandBuffer(m_drawCommandBuffers[m_currentFrame], imageIndex);
+    recordDrawCommandBuffer(m_drawCommandBuffers[m_currentFrame], imageIndex);
 
     // Submit commandbuffer
     VkSubmitInfo submitInfo = {};
@@ -568,7 +670,7 @@ void VulkanApp::drawFrame()
     m_currentFrame = (m_currentFrame + 1) % m_maxInflightFrames;
 }
 
-void VulkanApp::recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex)
+void VulkanApp::recordDrawCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex)
 {
     // First, begin recording commandbuffer
     VkCommandBufferBeginInfo commandBufferBeginInfo = {};
@@ -578,7 +680,7 @@ void VulkanApp::recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imag
 
     if(vkBeginCommandBuffer(commandBuffer, &commandBufferBeginInfo) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to begin recording the VkCommandBuffer.");
-    
+
     // Record `begin renderpass` command
     VkRenderPassBeginInfo renderpassBeginInfo = {};
     renderpassBeginInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
@@ -594,6 +696,10 @@ void VulkanApp::recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imag
     // Record `bind to pipeline` commands, then the command buffer will use the renderpass specified in that pipeline
     vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, m_vkPipeline);
     
+    // Record `bind vertex buffer` commands
+    VkDeviceSize offsets = 0;
+    vkCmdBindVertexBuffers(commandBuffer, 0, 1, &m_vkVertexBuffer, &offsets);
+
     // Record `set dynamic state` command(In our case, viewport state and scissor state).
     VkViewport viewPort = {};
     viewPort.x = 0.f;
@@ -643,6 +749,20 @@ void VulkanApp::recreateSwapChain()
     createSwapChain();
     createImageViews();
     createFrameBuffers();
+}
+
+uint32_t VulkanApp::findMemoryTypeIndex(uint32_t requiredMemoryTypeBit, 
+    VkMemoryPropertyFlags requirdMemoryPropertyFlags) const
+{
+    VkPhysicalDeviceMemoryProperties supportedMemoryProperties;
+    vkGetPhysicalDeviceMemoryProperties(m_vkPhysicalDevice, &supportedMemoryProperties);
+    for(uint32_t i = 0; i < supportedMemoryProperties.memoryTypeCount; ++i)
+    {
+        if((requiredMemoryTypeBit & (1 << i)) && 
+            ((supportedMemoryProperties.memoryTypes[i].propertyFlags & requirdMemoryPropertyFlags) == requirdMemoryPropertyFlags))
+            return i;
+    }
+    throw std::runtime_error("VK ERROR: Failed to find suitable memory type.");
 }
 
 void VulkanApp::populateMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT& messengerCreateInfo) const
@@ -710,6 +830,8 @@ void VulkanApp::clean_up()
         vkDestroySemaphore(m_vkDevice, m_acquireImageSemaphores[i], VK_NULL_HANDLE);
         vkDestroySemaphore(m_vkDevice, m_drawSemaphores[i], VK_NULL_HANDLE);
     }
+    vkDestroyBuffer(m_vkDevice, m_vkVertexBuffer, VK_NULL_HANDLE);
+    vkFreeMemory(m_vkDevice, m_vkVertexBufferMemory, VK_NULL_HANDLE);
     vkDestroyCommandPool(m_vkDevice, m_graphicCommandPool, VK_NULL_HANDLE);
     vkDestroyPipeline(m_vkDevice, m_vkPipeline, VK_NULL_HANDLE);
     vkDestroyRenderPass(m_vkDevice, m_vkRenderPass, VK_NULL_HANDLE);
@@ -802,20 +924,21 @@ VulkanApp::RequiredQueueFamilyIndices VulkanApp::queryRequiredQueueFamilies(cons
 {
     RequiredQueueFamilyIndices requiredQueueFamilyIndices;
 
-    uint32_t vk_deviceQueueFamilyCount;
-    vkGetPhysicalDeviceQueueFamilyProperties(device, &vk_deviceQueueFamilyCount, nullptr);
-    std::vector<VkQueueFamilyProperties> vk_deviceQueueFamilyProperties(vk_deviceQueueFamilyCount);
-    vkGetPhysicalDeviceQueueFamilyProperties(device, &vk_deviceQueueFamilyCount, vk_deviceQueueFamilyProperties.data());
-    for(uint32_t i = 0; i < vk_deviceQueueFamilyProperties.size(); ++i)
+    uint32_t deviceQueueFamilyCount;
+    vkGetPhysicalDeviceQueueFamilyProperties(device, &deviceQueueFamilyCount, nullptr);
+    std::vector<VkQueueFamilyProperties> deviceQueueFamilyProperties(deviceQueueFamilyCount);
+    vkGetPhysicalDeviceQueueFamilyProperties(device, &deviceQueueFamilyCount, deviceQueueFamilyProperties.data());
+    for(uint32_t i = 0; i < deviceQueueFamilyProperties.size(); ++i)
     {   
         // Is this queue family supported by current physical device supports presenting to surface?
-        VkBool32 b_supported = VK_FALSE;
-        vkGetPhysicalDeviceSurfaceSupportKHR(device, i, surface, &b_supported);
-        if(b_supported)
+        VkBool32 surfaceSupported = VK_FALSE;
+        vkGetPhysicalDeviceSurfaceSupportKHR(device, i, surface, &surfaceSupported);
+        if(surfaceSupported)
             requiredQueueFamilyIndices.presentFamily = i;
         
-        // Is this queue famil supported by current physical device suppots graphic operation?
-        if(vk_deviceQueueFamilyProperties[i].queueFlags & VK_QUEUE_GRAPHICS_BIT)
+        // Is this queue family supported by current physical device supports graphic operation?
+        // A mention: If a queue family supports graphic operation or compute operation, it implicitly supports transfer operation
+        if(deviceQueueFamilyProperties[i].queueFlags & VK_QUEUE_GRAPHICS_BIT)
             requiredQueueFamilyIndices.graphicFamily = i;
         
         // If current physical already provides the queue families we need.If it's enough, we end the loop.

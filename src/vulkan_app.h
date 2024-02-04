@@ -59,7 +59,8 @@ private:
     void createRenderPass();
     void createGraphicPipeline();
     void createFrameBuffers();
-    void createCommandPool();
+    void createGraphicCommandPool();
+    void createVertexBuffer();
     void createSyncObjects();
     void allocateCommandBuffers();
     void main_loop();
@@ -81,9 +82,13 @@ private:
     std::vector<char> readShaderFile(const std::string filePath) const;
     VkShaderModule createShaderModule(std::vector<char> shaderBytes) const;
     VkPipelineLayout createPipelineLayout() const;
-    void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
+    void recordDrawCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
     void cleanUpSwapChain();
     void recreateSwapChain();
+    uint32_t findMemoryTypeIndex(uint32_t requiredMemoryTypeBit, VkMemoryPropertyFlags requirdMemoryPropertyFlags) const;
+    void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags requiredProperties, 
+        VkBuffer& buffer, VkDeviceMemory& memory);
+    void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size) const;
 
     // Callback funtions
     static VKAPI_ATTR VkBool32 VKAPI_CALL debugMessageCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
@@ -99,6 +104,15 @@ private:
     uint32_t m_maxInflightFrames = 2;
     uint32_t m_currentFrame = 0;
     bool m_framebufferResized = false;
+
+    std::vector<float> m_vertices = {
+        -0.5f, 0.5f, 1.f, 0.f, 0.f,
+        0.f, -0.5f, 0.f, 1.f, 0.f,
+        0.5f, 0.5f, 0.f, 0.f, 1.f
+    };
+
+    VkBuffer m_vkVertexBuffer;
+    VkDeviceMemory m_vkVertexBufferMemory;
 
     // vkInstance and it's subordinates
     VkInstance m_vkInstance;
