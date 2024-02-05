@@ -47,6 +47,7 @@ void VulkanApp::init_vulkan()
     createGraphicCommandPool();
     allocateCommandBuffers();
     createVertexBuffer();
+    createIndexBuffer();
     createSyncObjects();
 }
 
@@ -370,7 +371,7 @@ void VulkanApp::createGraphicPipeline()
     rasterizationStateCreateInfo.rasterizerDiscardEnable = VK_FALSE;
     rasterizationStateCreateInfo.polygonMode = VK_POLYGON_MODE_FILL;
     rasterizationStateCreateInfo.cullMode = VK_CULL_MODE_BACK_BIT;
-    rasterizationStateCreateInfo.frontFace = VK_FRONT_FACE_CLOCKWISE;
+    rasterizationStateCreateInfo.frontFace = VK_FRONT_FACE_COUNTER_CLOCKWISE;
     rasterizationStateCreateInfo.depthBiasEnable = VK_FALSE;
     rasterizationStateCreateInfo.depthBiasConstantFactor = 0.f;  // optional as depthBiasEnable is set to false
     rasterizationStateCreateInfo.depthBiasClamp = 0.f;  // optional
@@ -478,9 +479,33 @@ void VulkanApp::createVertexBuffer()
     vkUnmapMemory(m_vkDevice, stagingBufferMemory);
 
     createBuffer(veretexBufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT,
-        VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, m_vkVertexBuffer, m_vkVertexBufferMemory);
-    copyBuffer(stagingBuffer, m_vkVertexBuffer, veretexBufferSize);
+        VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, m_vertexBuffer, m_vertexBufferMemory);
+    copyBuffer(stagingBuffer, m_vertexBuffer, veretexBufferSize);
 
+    vkDestroyBuffer(m_vkDevice, stagingBuffer, VK_NULL_HANDLE);
+    vkFreeMemory(m_vkDevice, stagingBufferMemory, VK_NULL_HANDLE);
+}
+
+void VulkanApp::createIndexBuffer()
+{
+    VkDeviceSize indexBufferSize = m_indices.size() * sizeof(m_indices[0]);
+
+    VkBuffer stagingBuffer;
+    VkDeviceMemory stagingBufferMemory;
+    createBuffer(indexBufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 
+        VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,
+        stagingBuffer, stagingBufferMemory);
+
+    void* data;
+    vkMapMemory(m_vkDevice, stagingBufferMemory, 0, indexBufferSize, 0, &data);
+    memcpy(data, m_indices.data(), indexBufferSize);
+    vkUnmapMemory(m_vkDevice, stagingBufferMemory);
+
+    createBuffer(indexBufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_INDEX_BUFFER_BIT,
+        VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, m_indexBuffer, m_indexBufferMemory);
+    
+    copyBuffer(stagingBuffer, m_indexBuffer, indexBufferSize);
+    
     vkDestroyBuffer(m_vkDevice, stagingBuffer, VK_NULL_HANDLE);
     vkFreeMemory(m_vkDevice, stagingBufferMemory, VK_NULL_HANDLE);
 }
@@ -696,9 +721,10 @@ void VulkanApp::recordDrawCommandBuffer(VkCommandBuffer commandBuffer, uint32_t 
     // Record `bind to pipeline` commands, then the command buffer will use the renderpass specified in that pipeline
     vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, m_vkPipeline);
     
-    // Record `bind vertex buffer` commands
+    // Record `bind vertex/index buffer` commands
     VkDeviceSize offsets = 0;
-    vkCmdBindVertexBuffers(commandBuffer, 0, 1, &m_vkVertexBuffer, &offsets);
+    vkCmdBindVertexBuffers(commandBuffer, 0, 1, &m_vertexBuffer, &offsets);
+    vkCmdBindIndexBuffer(commandBuffer, m_indexBuffer, 0, VK_INDEX_TYPE_UINT16);
 
     // Record `set dynamic state` command(In our case, viewport state and scissor state).
     VkViewport viewPort = {};
@@ -715,7 +741,7 @@ void VulkanApp::recordDrawCommandBuffer(VkCommandBuffer commandBuffer, uint32_t 
     vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
 
     // Record `draw` command
-    vkCmdDraw(commandBuffer, 3, 1, 0, 0);
+    vkCmdDrawIndexed(commandBuffer, m_indices.size(), 1, 0, 0, 0);
     
     // Record `end renderpass` command
     vkCmdEndRenderPass(commandBuffer);
@@ -830,8 +856,10 @@ void VulkanApp::clean_up()
         vkDestroySemaphore(m_vkDevice, m_acquireImageSemaphores[i], VK_NULL_HANDLE);
         vkDestroySemaphore(m_vkDevice, m_drawSemaphores[i], VK_NULL_HANDLE);
     }
-    vkDestroyBuffer(m_vkDevice, m_vkVertexBuffer, VK_NULL_HANDLE);
-    vkFreeMemory(m_vkDevice, m_vkVertexBufferMemory, VK_NULL_HANDLE);
+    vkDestroyBuffer(m_vkDevice, m_indexBuffer, VK_NULL_HANDLE);
+    vkFreeMemory(m_vkDevice, m_indexBufferMemory, VK_NULL_HANDLE);
+    vkDestroyBuffer(m_vkDevice, m_vertexBuffer, VK_NULL_HANDLE);
+    vkFreeMemory(m_vkDevice, m_vertexBufferMemory, VK_NULL_HANDLE);
     vkDestroyCommandPool(m_vkDevice, m_graphicCommandPool, VK_NULL_HANDLE);
     vkDestroyPipeline(m_vkDevice, m_vkPipeline, VK_NULL_HANDLE);
     vkDestroyRenderPass(m_vkDevice, m_vkRenderPass, VK_NULL_HANDLE);

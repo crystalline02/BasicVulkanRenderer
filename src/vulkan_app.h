@@ -61,6 +61,7 @@ private:
     void createFrameBuffers();
     void createGraphicCommandPool();
     void createVertexBuffer();
+    void createIndexBuffer();
     void createSyncObjects();
     void allocateCommandBuffers();
     void main_loop();
@@ -106,13 +107,20 @@ private:
     bool m_framebufferResized = false;
 
     std::vector<float> m_vertices = {
-        -0.5f, 0.5f, 1.f, 0.f, 0.f,
-        0.f, -0.5f, 0.f, 1.f, 0.f,
-        0.5f, 0.5f, 0.f, 0.f, 1.f
+        -0.5f, 0.5f, 1.f, 0.f, 0.f,  // top left
+        0.5f, 0.5f, 0.f, 1.f, 0.f,  // top right
+        0.5f, -0.5f, 0.f, 0.f, 1.f,  // bottom right
+        -0.5f, -0.5f, 1.f, 1.f, 1.f  // bottom left
+    };
+    std::vector<uint16_t> m_indices = {
+        0, 1, 2, 2, 3, 0
     };
 
-    VkBuffer m_vkVertexBuffer;
-    VkDeviceMemory m_vkVertexBufferMemory;
+    // Buffers and memories
+    VkBuffer m_vertexBuffer;
+    VkBuffer m_indexBuffer;
+    VkDeviceMemory m_vertexBufferMemory;
+    VkDeviceMemory m_indexBufferMemory;
 
     // vkInstance and it's subordinates
     VkInstance m_vkInstance;
