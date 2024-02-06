@@ -1,6 +1,12 @@
 #pragma once
+
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
+
+#define GLM_FORCE_DEPTH_ZERO_TO_ONE
+#define GLM_FORCE_LEFT_HANDED
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include <vector>
 #include <set>
@@ -46,9 +52,9 @@ private:
         }
     };
 
-    // Main processing functions
-    void init_window();
-    void init_vulkan();
+    // Main vulkan application processing function
+    void initWindow();
+    void initVulkan();
     void createInstance();
     void createDebugMessenger();
     void createWindowSurface();
@@ -57,16 +63,20 @@ private:
     void createSwapChain();
     void createImageViews();
     void createRenderPass();
+    void createDescriptorSetLayout();
     void createGraphicPipeline();
     void createFrameBuffers();
     void createGraphicCommandPool();
     void createVertexBuffer();
     void createIndexBuffer();
+    void createUniformBuffers();
+    void createDescriptorPool();
+    void createDescriptorSets();
     void createSyncObjects();
     void allocateCommandBuffers();
-    void main_loop();
+    void mainLoop();
     void drawFrame();
-    void clean_up();
+    void cleanUp();
     
     // Some other helper functions
     void populateMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT& messengerCreateInfo) const;
@@ -90,6 +100,7 @@ private:
     void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags requiredProperties, 
         VkBuffer& buffer, VkDeviceMemory& memory);
     void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size) const;
+    void updateUniformBuffers(uint32_t frameIndex);
 
     // Callback funtions
     static VKAPI_ATTR VkBool32 VKAPI_CALL debugMessageCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
@@ -116,11 +127,21 @@ private:
         0, 1, 2, 2, 3, 0
     };
 
+    struct UBOMatrices
+    {
+        glm::mat4 model;
+        glm::mat4 view;
+        glm::mat4 projection;
+    };
+
     // Buffers and memories
     VkBuffer m_vertexBuffer;
     VkBuffer m_indexBuffer;
     VkDeviceMemory m_vertexBufferMemory;
     VkDeviceMemory m_indexBufferMemory;
+    std::vector<VkBuffer> m_uniformBuffers;
+    std::vector<VkDeviceMemory> m_uniformBufferMemories;
+    std::vector<void*> m_uniformBuffersMapped;
 
     // vkInstance and it's subordinates
     VkInstance m_vkInstance;
@@ -148,6 +169,8 @@ private:
     VkPresentModeKHR m_presentMode;
     VkExtent2D m_swapChainImageExtent;
     VkRenderPass m_vkRenderPass;
+    VkDescriptorSetLayout m_vkDescriptorSetLayout;
+    VkDescriptorPool m_vkDescriptorPool;
     VkPipelineLayout m_vkPipelineLayout;
     VkPipeline m_vkPipeline;
     VkCommandPool m_graphicCommandPool;

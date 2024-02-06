@@ -12,13 +12,13 @@
 
 void VulkanApp::run()
 {
-    init_window();
-    init_vulkan();
-    main_loop();
-    clean_up();
+    initWindow();
+    initVulkan();
+    mainLoop();
+    cleanUp();
 }
 
-void VulkanApp::init_window()
+void VulkanApp::initWindow()
 {
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
@@ -29,7 +29,7 @@ void VulkanApp::init_window()
     glfwSetWindowUserPointer(m_window, this);
 }
 
-void VulkanApp::init_vulkan()
+void VulkanApp::initVulkan()
 {
     createInstance();
     if(load_vkInstanceFunctions(m_vkInstance) != VK_SUCCESS)
@@ -43,12 +43,16 @@ void VulkanApp::init_vulkan()
     createImageViews();
     createRenderPass();
     createFrameBuffers();
+    createDescriptorSetLayout();
     createGraphicPipeline();
     createGraphicCommandPool();
     allocateCommandBuffers();
+    createSyncObjects();
     createVertexBuffer();
     createIndexBuffer();
-    createSyncObjects();
+    createUniformBuffers();
+    createDescriptorPool();
+    createDescriptorSets();
 }
 
 void VulkanApp::createInstance()
@@ -296,6 +300,25 @@ void VulkanApp::createRenderPass()
         throw std::runtime_error("VK ERROR: Failed to create VkRenderPass");
 }
 
+void VulkanApp::createDescriptorSetLayout()
+{
+    // Specify bindings
+    // Specify Matrices binding
+    VkDescriptorSetLayoutBinding matricesLayoutBinding;
+    matricesLayoutBinding.binding = 0;
+    matricesLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+    matricesLayoutBinding.descriptorCount = 1;
+    matricesLayoutBinding.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
+    matricesLayoutBinding.pImmutableSamplers = VK_NULL_HANDLE;
+
+    VkDescriptorSetLayoutCreateInfo descriptorSetLayoutCreateInfo = {};
+    descriptorSetLayoutCreateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
+    descriptorSetLayoutCreateInfo.bindingCount = 1;
+    descriptorSetLayoutCreateInfo.pBindings = &matricesLayoutBinding;
+    if(vkCreateDescriptorSetLayout(m_vkDevice, &descriptorSetLayoutCreateInfo, VK_NULL_HANDLE, &m_vkDescriptorSetLayout) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to create VkDescriptorSetLayout.");
+}
+
 void VulkanApp::createGraphicPipeline()
 {
     // Create info for Shader stage
@@ -510,6 +533,43 @@ void VulkanApp::createIndexBuffer()
     vkFreeMemory(m_vkDevice, stagingBufferMemory, VK_NULL_HANDLE);
 }
 
+void VulkanApp::createUniformBuffers()
+{
+    VkDeviceSize uniformBufferSize = sizeof(UBOMatrices);
+
+    m_uniformBuffers.resize(m_maxInflightFrames);
+    m_uniformBufferMemories.resize(m_maxInflightFrames);
+    m_uniformBuffersMapped.resize(m_maxInflightFrames);
+
+    for(uint32_t i = 0; i < m_maxInflightFrames; ++i)
+    {
+        createBuffer(uniformBufferSize, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
+            VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,
+            m_uniformBuffers[i], m_uniformBufferMemories[i]);
+        vkMapMemory(m_vkDevice, m_uniformBufferMemories[i], 0, uniformBufferSize, 0, &m_uniformBuffersMapped[i]);
+    }
+}
+
+void VulkanApp::createDescriptorSets()
+{
+    
+}
+
+void VulkanApp::createDescriptorPool()
+{
+    VkDescriptorPoolSize descriptorPoolSize;
+    descriptorPoolSize.type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+    descriptorPoolSize.descriptorCount = m_maxInflightFrames;
+
+    VkDescriptorPoolCreateInfo descriptorPoolCreateInfo = {};
+    descriptorPoolCreateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
+    descriptorPoolCreateInfo.maxSets = m_maxInflightFrames;
+    descriptorPoolCreateInfo.poolSizeCount = 1;
+    descriptorPoolCreateInfo.pPoolSizes = &descriptorPoolSize;
+    if(vkCreateDescriptorPool(m_vkDevice, &descriptorPoolCreateInfo, VK_NULL_HANDLE, &m_vkDescriptorPool) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to create VkDescriptorPool.");
+}
+
 void VulkanApp::createSyncObjects()
 {
     m_acquireImageSemaphores.resize(m_maxInflightFrames);
@@ -657,6 +717,9 @@ void VulkanApp::drawFrame()
 
     // Record commandbuffer
     recordDrawCommandBuffer(m_drawCommandBuffers[m_currentFrame], imageIndex);
+
+    // Update uniform buffers
+    updateUniformBuffers(m_currentFrame);
 
     // Submit commandbuffer
     VkSubmitInfo submitInfo = {};
@@ -838,7 +901,7 @@ uint64_t VulkanApp::ratePhysicalDevice(const VkPhysicalDevice& physicalDevice) c
     return rate;
 }
 
-void VulkanApp::main_loop()
+void VulkanApp::mainLoop()
 {
     while(!glfwWindowShouldClose(m_window))
     {
@@ -848,13 +911,31 @@ void VulkanApp::main_loop()
     vkDeviceWaitIdle(m_vkDevice);
 }
 
-void VulkanApp::clean_up()
+void VulkanApp::updateUniformBuffers(uint32_t frameIndex)
+{
+    float currentTime = (float)glfwGetTime();
+   
+    UBOMatrices uboMatrices;
+    uboMatrices.model = glm::rotate(glm::mat4(1.f), glm::radians(90.f) * currentTime, glm::vec3(0.f, 0.f, 1.f));
+    uboMatrices.view = glm::lookAt(glm::vec3(2.f, 2.f, 2.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f));
+    uboMatrices.projection = glm::perspective(glm::radians(45.f), 
+        float(m_swapChainImageExtent.width) / m_swapChainImageExtent.height,
+        0.1f, 10.f
+    );
+    
+    memcpy(m_uniformBuffersMapped[frameIndex], &uboMatrices, sizeof(UBOMatrices));
+}
+
+void VulkanApp::cleanUp()
 {
     for(uint32_t i = 0; i < m_maxInflightFrames; ++i)
     {
         vkDestroyFence(m_vkDevice, m_inFlightFences[i], VK_NULL_HANDLE);
         vkDestroySemaphore(m_vkDevice, m_acquireImageSemaphores[i], VK_NULL_HANDLE);
         vkDestroySemaphore(m_vkDevice, m_drawSemaphores[i], VK_NULL_HANDLE);
+
+        vkDestroyBuffer(m_vkDevice, m_uniformBuffers[i], VK_NULL_HANDLE);
+        vkFreeMemory(m_vkDevice, m_uniformBufferMemories[i], VK_NULL_HANDLE);
     }
     vkDestroyBuffer(m_vkDevice, m_indexBuffer, VK_NULL_HANDLE);
     vkFreeMemory(m_vkDevice, m_indexBufferMemory, VK_NULL_HANDLE);
@@ -863,6 +944,7 @@ void VulkanApp::clean_up()
     vkDestroyCommandPool(m_vkDevice, m_graphicCommandPool, VK_NULL_HANDLE);
     vkDestroyPipeline(m_vkDevice, m_vkPipeline, VK_NULL_HANDLE);
     vkDestroyRenderPass(m_vkDevice, m_vkRenderPass, VK_NULL_HANDLE);
+    vkDestroyDescriptorSetLayout(m_vkDevice, m_vkDescriptorSetLayout, VK_NULL_HANDLE);
     vkDestroyPipelineLayout(m_vkDevice, m_vkPipelineLayout, VK_NULL_HANDLE);
     cleanUpSwapChain();
     vkDestroyDevice(m_vkDevice, VK_NULL_HANDLE);
@@ -1079,8 +1161,8 @@ VkPipelineLayout VulkanApp::createPipelineLayout() const
     VkPipelineLayout pipelineLayout;
     VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = {};
     pipelineLayoutCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
-    pipelineLayoutCreateInfo.setLayoutCount = 0;
-    pipelineLayoutCreateInfo.pSetLayouts = nullptr;
+    pipelineLayoutCreateInfo.setLayoutCount = 1;
+    pipelineLayoutCreateInfo.pSetLayouts = &m_vkDescriptorSetLayout;
     pipelineLayoutCreateInfo.pushConstantRangeCount = 0;
     pipelineLayoutCreateInfo.pPushConstantRanges = nullptr;
     if(vkCreatePipelineLayout(m_vkDevice, &pipelineLayoutCreateInfo, nullptr, &pipelineLayout) != VK_SUCCESS)
