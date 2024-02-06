@@ -171,6 +171,7 @@ private:
     VkRenderPass m_vkRenderPass;
     VkDescriptorSetLayout m_vkDescriptorSetLayout;
     VkDescriptorPool m_vkDescriptorPool;
+    std::vector<VkDescriptorSet> m_descriptorSets; 
     VkPipelineLayout m_vkPipelineLayout;
     VkPipeline m_vkPipeline;
     VkCommandPool m_graphicCommandPool;

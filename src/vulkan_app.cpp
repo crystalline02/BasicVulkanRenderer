@@ -24,7 +24,7 @@ void VulkanApp::initWindow()
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
-    m_window = glfwCreateWindow(m_windowWidth, m_windowHeight, "Vulkan Renderer", nullptr, nullptr);
+    m_window = glfwCreateWindow(m_windowWidth, m_windowHeight, "Vulkan Renderer", VK_NULL_HANDLE, VK_NULL_HANDLE);
     glfwSetFramebufferSizeCallback(m_window, framebufferResizeCallback);
     glfwSetWindowUserPointer(m_window, this);
 }
@@ -86,7 +86,7 @@ void VulkanApp::createInstance()
     else
     {
         instanceCreateInfo.enabledLayerCount = 0;
-        instanceCreateInfo.pNext = nullptr;
+        instanceCreateInfo.pNext = VK_NULL_HANDLE;
     }
 
     // Add&check extensions
@@ -97,7 +97,7 @@ void VulkanApp::createInstance()
     instanceCreateInfo.ppEnabledExtensionNames = m_instanceExtensionNames.data();
 
     // finally create intance
-    if(vkCreateInstance(&instanceCreateInfo, nullptr, &m_vkInstance) != VK_SUCCESS)
+    if(vkCreateInstance(&instanceCreateInfo, VK_NULL_HANDLE, &m_vkInstance) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create VkInstance.");
 }
 
@@ -106,13 +106,13 @@ void VulkanApp::createDebugMessenger()
     if(!m_enableValidationLayer) return;
     VkDebugUtilsMessengerCreateInfoEXT messengerCreateInfo = {};
     populateMessengerCreateInfo(messengerCreateInfo);
-    if(vkCreateDebugUtilsMessengerEXT(m_vkInstance, &messengerCreateInfo, nullptr, &m_vkMessenger) != VK_SUCCESS)
+    if(vkCreateDebugUtilsMessengerEXT(m_vkInstance, &messengerCreateInfo, VK_NULL_HANDLE, &m_vkMessenger) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create vkDebugUtilsMessengerEXT.");
 }
 
 void VulkanApp::createWindowSurface()
 {
-    if(glfwCreateWindowSurface(m_vkInstance, m_window, nullptr, &m_vkSurface) != VK_SUCCESS)
+    if(glfwCreateWindowSurface(m_vkInstance, m_window, VK_NULL_HANDLE, &m_vkSurface) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create VkSurfaceKHR");
 }
 
@@ -120,7 +120,7 @@ void VulkanApp::pickPhysicalDevice()
 {
     // Get all physical devices
     uint32_t vk_physicalDeviceCount;
-    vkEnumeratePhysicalDevices(m_vkInstance, &vk_physicalDeviceCount, nullptr);
+    vkEnumeratePhysicalDevices(m_vkInstance, &vk_physicalDeviceCount, VK_NULL_HANDLE);
     if(vk_physicalDeviceCount == 0) 
         throw std::runtime_error("VK ERROR: Failed to find any GPUs with vulkan support.");
     std::vector<VkPhysicalDevice> vk_physicalDevices(vk_physicalDeviceCount);
@@ -178,7 +178,7 @@ void VulkanApp::createLogicalDevices()
     else
         deviceCreateInfo.enabledExtensionCount = 0;
 
-    if(vkCreateDevice(m_vkPhysicalDevice, &deviceCreateInfo, nullptr, &m_vkDevice) != VK_SUCCESS)
+    if(vkCreateDevice(m_vkPhysicalDevice, &deviceCreateInfo, VK_NULL_HANDLE, &m_vkDevice) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create VkDevice.");
     vkGetDeviceQueue(m_vkDevice, queueFamilyIndices.graphicFamily.value(), 0, &m_vkGraphicQueue);
     vkGetDeviceQueue(m_vkDevice, queueFamilyIndices.presentFamily.value(), 0, &m_vkPresentQueue);
@@ -216,19 +216,19 @@ void VulkanApp::createSwapChain()
     {
         swapChainCreateInfo.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
         swapChainCreateInfo.queueFamilyIndexCount = 0;
-        swapChainCreateInfo.pQueueFamilyIndices = nullptr;
+        swapChainCreateInfo.pQueueFamilyIndices = VK_NULL_HANDLE;
     }
     swapChainCreateInfo.preTransform = swapChainSurpportedDetails.surfaceCapabilities.currentTransform;  // VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR
     swapChainCreateInfo.compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
     swapChainCreateInfo.presentMode = m_presentMode;
     swapChainCreateInfo.clipped = VK_TRUE;
-    swapChainCreateInfo.oldSwapchain = nullptr;
+    swapChainCreateInfo.oldSwapchain = VK_NULL_HANDLE;
 
-    if(vkCreateSwapchainKHR(m_vkDevice, &swapChainCreateInfo, nullptr, &m_vkSwapChain) != VK_SUCCESS)
+    if(vkCreateSwapchainKHR(m_vkDevice, &swapChainCreateInfo, VK_NULL_HANDLE, &m_vkSwapChain) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create VkSwapChainKHR.");
     
     uint32_t swapChainImageCount;
-    vkGetSwapchainImagesKHR(m_vkDevice, m_vkSwapChain, &swapChainImageCount, nullptr);
+    vkGetSwapchainImagesKHR(m_vkDevice, m_vkSwapChain, &swapChainImageCount, VK_NULL_HANDLE);
     m_swapChainImages.resize(swapChainImageCount);
     vkGetSwapchainImagesKHR(m_vkDevice, m_vkSwapChain, &swapChainImageCount, m_swapChainImages.data());
 }
@@ -252,7 +252,7 @@ void VulkanApp::createImageViews()
         imageViewCreateInfo.subresourceRange.levelCount = 1;
         imageViewCreateInfo.subresourceRange.baseArrayLayer = 0;
         imageViewCreateInfo.subresourceRange.layerCount = 1;
-        if(vkCreateImageView(m_vkDevice, &imageViewCreateInfo, nullptr, &m_swapChainImageViews[i]) != VK_SUCCESS)
+        if(vkCreateImageView(m_vkDevice, &imageViewCreateInfo, VK_NULL_HANDLE, &m_swapChainImageViews[i]) != VK_SUCCESS)
             throw std::runtime_error("VK ERROR: Failed to create VkImageView for swap chain");
     }
 }
@@ -296,7 +296,7 @@ void VulkanApp::createRenderPass()
     renderPassCreateInfo.dependencyCount = 1;
     renderPassCreateInfo.pDependencies = &subpassDependency;
 
-    if(vkCreateRenderPass(m_vkDevice, &renderPassCreateInfo, nullptr, &m_vkRenderPass) != VK_SUCCESS)
+    if(vkCreateRenderPass(m_vkDevice, &renderPassCreateInfo, VK_NULL_HANDLE, &m_vkRenderPass) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create VkRenderPass");
 }
 
@@ -333,14 +333,14 @@ void VulkanApp::createGraphicPipeline()
     vertexShaderStageCreateInfo.stage = VK_SHADER_STAGE_VERTEX_BIT;
     vertexShaderStageCreateInfo.module = vertexShaderModule;
     vertexShaderStageCreateInfo.pName = "main";  // Entry point
-    vertexShaderStageCreateInfo.pSpecializationInfo = nullptr;  // This member is useful in some cases
+    vertexShaderStageCreateInfo.pSpecializationInfo = VK_NULL_HANDLE;  // This member is useful in some cases
 
     VkPipelineShaderStageCreateInfo fragmentShaderStageCreateInfo = {};
     fragmentShaderStageCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
     fragmentShaderStageCreateInfo.stage = VK_SHADER_STAGE_FRAGMENT_BIT;
     fragmentShaderStageCreateInfo.module = fragmentShaderModule;
     fragmentShaderStageCreateInfo.pName = "main";
-    fragmentShaderStageCreateInfo.pSpecializationInfo = nullptr;
+    fragmentShaderStageCreateInfo.pSpecializationInfo = VK_NULL_HANDLE;
 
     VkPipelineShaderStageCreateInfo shaderStageCreateInfos[2] = {vertexShaderStageCreateInfo, fragmentShaderStageCreateInfo};
 
@@ -407,7 +407,7 @@ void VulkanApp::createGraphicPipeline()
     multisampleStateCreateInfo.rasterizationSamples = VK_SAMPLE_COUNT_1_BIT;  // 1 sample means multisample disabled
     multisampleStateCreateInfo.sampleShadingEnable = VK_FALSE;  // as we only specify one sample, no need to enable sampleShading
     multisampleStateCreateInfo.minSampleShading = 1.f;  // optional
-    multisampleStateCreateInfo.pSampleMask = nullptr; // nullptr means do not mask any sample
+    multisampleStateCreateInfo.pSampleMask = VK_NULL_HANDLE; // VK_NULL_HANDLE means do not mask any sample
     multisampleStateCreateInfo.alphaToCoverageEnable = VK_FALSE;  // optional
     multisampleStateCreateInfo.alphaToOneEnable = VK_FALSE;  // optional
 
@@ -552,7 +552,37 @@ void VulkanApp::createUniformBuffers()
 
 void VulkanApp::createDescriptorSets()
 {
+    m_descriptorSets.resize(m_maxInflightFrames);
+    VkDescriptorSetLayout descriptorSetLayout[] = {VkDescriptorSetLayout(m_vkDescriptorSetLayout), 
+        VkDescriptorSetLayout(m_vkDescriptorSetLayout)};
+
+    VkDescriptorSetAllocateInfo descriptorSetAllocateInfo = {};
+    descriptorSetAllocateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
+    descriptorSetAllocateInfo.descriptorPool = m_vkDescriptorPool;
+    descriptorSetAllocateInfo.descriptorSetCount = m_maxInflightFrames;
+    descriptorSetAllocateInfo.pSetLayouts = descriptorSetLayout;
+    if(vkAllocateDescriptorSets(m_vkDevice, &descriptorSetAllocateInfo, m_descriptorSets.data()) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to allocate VkDescriptorSet.");
     
+    for(uint32_t i = 0; i < m_maxInflightFrames; ++i)
+    {
+        VkDescriptorBufferInfo descriptorBufferInfo = {};
+        descriptorBufferInfo.buffer = m_uniformBuffers[i];
+        descriptorBufferInfo.offset = 0;
+        descriptorBufferInfo.range = sizeof(UBOMatrices);
+
+        VkWriteDescriptorSet writeDescriptorSet = {};
+        writeDescriptorSet.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
+        writeDescriptorSet.dstSet = m_descriptorSets[i];
+        writeDescriptorSet.dstBinding = 0;
+        writeDescriptorSet.dstArrayElement = 0;
+        writeDescriptorSet.descriptorCount = 1;
+        writeDescriptorSet.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+        writeDescriptorSet.pImageInfo = VK_NULL_HANDLE;
+        writeDescriptorSet.pBufferInfo = &descriptorBufferInfo;
+        writeDescriptorSet.pTexelBufferView = VK_NULL_HANDLE;
+        vkUpdateDescriptorSets(m_vkDevice, 1, &writeDescriptorSet, 0, VK_NULL_HANDLE);
+    }
 }
 
 void VulkanApp::createDescriptorPool()
@@ -866,7 +896,7 @@ void VulkanApp::populateMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT& 
         VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT |
         VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT;
     messengerCreateInfo.pfnUserCallback = VulkanApp::debugMessageCallback;
-    messengerCreateInfo.pUserData = nullptr;
+    messengerCreateInfo.pUserData = VK_NULL_HANDLE;
 }
 
 uint64_t VulkanApp::ratePhysicalDevice(const VkPhysicalDevice& physicalDevice) const
@@ -959,9 +989,9 @@ void VulkanApp::cleanUp()
 bool VulkanApp::checkInstanceExtensionsSupported(std::vector<const char*> extensionNames) const
 {
     uint32_t vk_avaliableExtensionCount;
-    vkEnumerateInstanceExtensionProperties(nullptr, &vk_avaliableExtensionCount, nullptr);
+    vkEnumerateInstanceExtensionProperties(VK_NULL_HANDLE, &vk_avaliableExtensionCount, VK_NULL_HANDLE);
     std::vector<VkExtensionProperties> vk_avalibaleExtensions(vk_avaliableExtensionCount);
-    vkEnumerateInstanceExtensionProperties(nullptr, &vk_avaliableExtensionCount, &vk_avalibaleExtensions[0]);
+    vkEnumerateInstanceExtensionProperties(VK_NULL_HANDLE, &vk_avaliableExtensionCount, &vk_avalibaleExtensions[0]);
     for(const char*& extensionName : extensionNames)
     {
         bool extensionFound = false;
@@ -981,7 +1011,7 @@ bool VulkanApp::checkInstanceExtensionsSupported(std::vector<const char*> extens
 bool VulkanApp::checkInstanceValidationLayersSupported(std::vector<const char*> validationLayerNames) const
 {
     uint32_t vk_avalibleValidationLayerCount;
-    vkEnumerateInstanceLayerProperties(&vk_avalibleValidationLayerCount, nullptr);
+    vkEnumerateInstanceLayerProperties(&vk_avalibleValidationLayerCount, VK_NULL_HANDLE);
     std::vector<VkLayerProperties> vk_avaliableValidationLayers(vk_avalibleValidationLayerCount);
     vkEnumerateInstanceLayerProperties(&vk_avalibleValidationLayerCount, vk_avaliableValidationLayers.data());
 
@@ -1010,9 +1040,9 @@ bool VulkanApp::checkDeviceExtensionSupported(std::vector<const char*> extension
     these extenstions.
     */
     uint32_t deviceExtensionCount;
-    vkEnumerateDeviceExtensionProperties(physicalDevice, nullptr, &deviceExtensionCount, nullptr);
+    vkEnumerateDeviceExtensionProperties(physicalDevice, VK_NULL_HANDLE, &deviceExtensionCount, VK_NULL_HANDLE);
     std::vector<VkExtensionProperties> deviceExtensionProperties(deviceExtensionCount);
-    vkEnumerateDeviceExtensionProperties(physicalDevice, nullptr, &deviceExtensionCount, deviceExtensionProperties.data());
+    vkEnumerateDeviceExtensionProperties(physicalDevice, VK_NULL_HANDLE, &deviceExtensionCount, deviceExtensionProperties.data());
 
     for(const char*& extensionName: extensionNames)
     {
@@ -1035,7 +1065,7 @@ VulkanApp::RequiredQueueFamilyIndices VulkanApp::queryRequiredQueueFamilies(cons
     RequiredQueueFamilyIndices requiredQueueFamilyIndices;
 
     uint32_t deviceQueueFamilyCount;
-    vkGetPhysicalDeviceQueueFamilyProperties(device, &deviceQueueFamilyCount, nullptr);
+    vkGetPhysicalDeviceQueueFamilyProperties(device, &deviceQueueFamilyCount, VK_NULL_HANDLE);
     std::vector<VkQueueFamilyProperties> deviceQueueFamilyProperties(deviceQueueFamilyCount);
     vkGetPhysicalDeviceQueueFamilyProperties(device, &deviceQueueFamilyCount, deviceQueueFamilyProperties.data());
     for(uint32_t i = 0; i < deviceQueueFamilyProperties.size(); ++i)
@@ -1062,12 +1092,12 @@ VulkanApp::SwapChainSupportDetails VulkanApp::querySwapChainSupportedDetails(con
     SwapChainSupportDetails swapChainSupportedDetail = {};
     vkGetPhysicalDeviceSurfaceCapabilitiesKHR(device, surface, &swapChainSupportedDetail.surfaceCapabilities);
     uint32_t surfaceFormatCount;
-    vkGetPhysicalDeviceSurfaceFormatsKHR(device, surface, &surfaceFormatCount, nullptr);
+    vkGetPhysicalDeviceSurfaceFormatsKHR(device, surface, &surfaceFormatCount, VK_NULL_HANDLE);
     swapChainSupportedDetail.surfaceFormats.resize(surfaceFormatCount);
     vkGetPhysicalDeviceSurfaceFormatsKHR(device, surface, &surfaceFormatCount, swapChainSupportedDetail.surfaceFormats.data());
 
     uint32_t presentModeCount;
-    vkGetPhysicalDeviceSurfacePresentModesKHR(device, surface, &presentModeCount, nullptr);
+    vkGetPhysicalDeviceSurfacePresentModesKHR(device, surface, &presentModeCount, VK_NULL_HANDLE);
     swapChainSupportedDetail.presentModes.resize(presentModeCount);
     vkGetPhysicalDeviceSurfacePresentModesKHR(device, surface, &presentModeCount,  swapChainSupportedDetail.presentModes.data());
     return swapChainSupportedDetail;
@@ -1151,7 +1181,7 @@ VkShaderModule VulkanApp::createShaderModule(std::vector<char> shaderBytes) cons
     shaderModuleCreateInfo.pCode = reinterpret_cast<const uint32_t*>(shaderBytes.data());
     
     VkShaderModule shaderModule;
-    if(vkCreateShaderModule(m_vkDevice, &shaderModuleCreateInfo, nullptr, &shaderModule) != VK_SUCCESS)
+    if(vkCreateShaderModule(m_vkDevice, &shaderModuleCreateInfo, VK_NULL_HANDLE, &shaderModule) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create VkShaderModule.");
     return shaderModule;
 }
@@ -1164,8 +1194,8 @@ VkPipelineLayout VulkanApp::createPipelineLayout() const
     pipelineLayoutCreateInfo.setLayoutCount = 1;
     pipelineLayoutCreateInfo.pSetLayouts = &m_vkDescriptorSetLayout;
     pipelineLayoutCreateInfo.pushConstantRangeCount = 0;
-    pipelineLayoutCreateInfo.pPushConstantRanges = nullptr;
-    if(vkCreatePipelineLayout(m_vkDevice, &pipelineLayoutCreateInfo, nullptr, &pipelineLayout) != VK_SUCCESS)
+    pipelineLayoutCreateInfo.pPushConstantRanges = VK_NULL_HANDLE;
+    if(vkCreatePipelineLayout(m_vkDevice, &pipelineLayoutCreateInfo, VK_NULL_HANDLE, &pipelineLayout) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create VkPipelineLayout.");
     return pipelineLayout;
 }
