@@ -71,7 +71,7 @@ private:
     void createIndexBuffer();
     void createUniformBuffers();
     void createDescriptorPool();
-    void createDescriptorSets();
+    void allocateDescriptorSets();
     void createSyncObjects();
     void allocateCommandBuffers();
     void mainLoop();

@@ -52,7 +52,7 @@ void VulkanApp::initVulkan()
     createIndexBuffer();
     createUniformBuffers();
     createDescriptorPool();
-    createDescriptorSets();
+    allocateDescriptorSets();
 }
 
 void VulkanApp::createInstance()
@@ -394,7 +394,7 @@ void VulkanApp::createGraphicPipeline()
     rasterizationStateCreateInfo.rasterizerDiscardEnable = VK_FALSE;
     rasterizationStateCreateInfo.polygonMode = VK_POLYGON_MODE_FILL;
     rasterizationStateCreateInfo.cullMode = VK_CULL_MODE_BACK_BIT;
-    rasterizationStateCreateInfo.frontFace = VK_FRONT_FACE_COUNTER_CLOCKWISE;
+    rasterizationStateCreateInfo.frontFace = VK_FRONT_FACE_CLOCKWISE;
     rasterizationStateCreateInfo.depthBiasEnable = VK_FALSE;
     rasterizationStateCreateInfo.depthBiasConstantFactor = 0.f;  // optional as depthBiasEnable is set to false
     rasterizationStateCreateInfo.depthBiasClamp = 0.f;  // optional
@@ -550,7 +550,7 @@ void VulkanApp::createUniformBuffers()
     }
 }
 
-void VulkanApp::createDescriptorSets()
+void VulkanApp::allocateDescriptorSets()
 {
     m_descriptorSets.resize(m_maxInflightFrames);
     VkDescriptorSetLayout descriptorSetLayout[] = {VkDescriptorSetLayout(m_vkDescriptorSetLayout), 
@@ -811,13 +811,17 @@ void VulkanApp::recordDrawCommandBuffer(VkCommandBuffer commandBuffer, uint32_t 
     renderpassBeginInfo.pClearValues = &clearColor;
     vkCmdBeginRenderPass(commandBuffer, &renderpassBeginInfo, VK_SUBPASS_CONTENTS_INLINE);
 
-    // Record `bind to pipeline` commands, then the command buffer will use the renderpass specified in that pipeline
+    // Record `bind to pipeline` command, then the command buffer will use the renderpass specified in that pipeline
     vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, m_vkPipeline);
     
-    // Record `bind vertex/index buffer` commands
+    // Record `bind vertex&index buffer` command
     VkDeviceSize offsets = 0;
     vkCmdBindVertexBuffers(commandBuffer, 0, 1, &m_vertexBuffer, &offsets);
     vkCmdBindIndexBuffer(commandBuffer, m_indexBuffer, 0, VK_INDEX_TYPE_UINT16);
+
+    // Record `bind descriptor set` commmand
+    vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, m_vkPipelineLayout, 0, 1, 
+        &m_descriptorSets[m_currentFrame], 0, VK_NULL_HANDLE);
 
     // Record `set dynamic state` command(In our case, viewport state and scissor state).
     VkViewport viewPort = {};
@@ -958,6 +962,7 @@ void VulkanApp::updateUniformBuffers(uint32_t frameIndex)
 
 void VulkanApp::cleanUp()
 {
+    vkDestroyDescriptorPool(m_vkDevice, m_vkDescriptorPool, VK_NULL_HANDLE);
     for(uint32_t i = 0; i < m_maxInflightFrames; ++i)
     {
         vkDestroyFence(m_vkDevice, m_inFlightFences[i], VK_NULL_HANDLE);
