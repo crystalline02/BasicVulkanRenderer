@@ -129,9 +129,9 @@ private:
 
     struct UBOMatrices
     {
-        glm::mat4 model;
-        glm::mat4 view;
-        glm::mat4 projection;
+        alignas(16) glm::mat4 model;  // alignment:16B, size:64B
+        alignas(16) glm::mat4 view;  // alignment:16B, size:64B
+        alignas(16) glm::mat4 projection;  // alignment:16B, size:64B
     };
 
     // Buffers and memories

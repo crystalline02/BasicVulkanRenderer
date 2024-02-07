@@ -567,7 +567,7 @@ void VulkanApp::allocateDescriptorSets()
     for(uint32_t i = 0; i < m_maxInflightFrames; ++i)
     {
         VkDescriptorBufferInfo descriptorBufferInfo = {};
-        descriptorBufferInfo.buffer = m_uniformBuffers[i];
+        descriptorBufferInfo.buffer = m_uniformBuffers[i];  // 此处指明了一个descriptor set对应到哪一个buffer
         descriptorBufferInfo.offset = 0;
         descriptorBufferInfo.range = sizeof(UBOMatrices);
 
