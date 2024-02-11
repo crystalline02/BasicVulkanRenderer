@@ -1,5 +1,6 @@
 set(GLFW_INCLUDE ${CMAKE_SOURCE_DIR}/3rdParty/glfw/include)
 set(GLM_INCLUDE ${CMAKE_SOURCE_DIR}/3rdParty/glm)
+set(STBIMAGE_INCLUDE ${CMAKE_SOURCE_DIR}/3rdParty/stb_image)
 set(VULKAN_DIR $ENV{VULKAN_SDK})
 string(REPLACE "\\" "/" VULKAN_DIR ${VULKAN_DIR})
 set(VULKAN_INCLUDE ${VULKAN_DIR}/include)

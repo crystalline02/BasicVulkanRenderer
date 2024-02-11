@@ -9,6 +9,7 @@ target_include_directories(VulkanRenderer PRIVATE
     ${GLFW_INCLUDE}
     ${VULKAN_INCLUDE}
     ${GLM_INCLUDE}
+    ${STBIMAGE_INCLUDE}
     )
 target_link_libraries(VulkanRenderer PRIVATE
     glfw

@@ -1,1 +1,1 @@
--IC:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty/glfw/include -ID:/VulkanSDK/1.3.268.0/include -IC:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty/glm
+-IC:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty/glfw/include -ID:/VulkanSDK/1.3.268.0/include -IC:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty/glm -IC:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty/stb_image
