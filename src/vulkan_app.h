@@ -69,7 +69,8 @@ private:
     void createGraphicCommandPool();
     void createTextureImage();
     void createTextureImageView();
-    void createTextureSampler();
+    void createTextureImageSampler();
+    void createDepthResources();
     void createVertexBuffer();
     void createIndexBuffer();
     void createUniformBuffers();
@@ -109,9 +110,12 @@ private:
         VkMemoryPropertyFlags requiredMemoryProperty, VkImage& image, VkDeviceMemory& imageMemory);
     void copyBuffer2Buffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size) const;
     void copyBuffer2Image(VkBuffer srcBuffer, VkImage dstImage, uint32_t width, uint32_t height) const;
-    void updateUniformBuffers(uint32_t frameIndex);
-    void transitionImageLayout(VkImageLayout oldLayout, VkImageLayout newLayout, VkImage image);
-    void createImageView(VkImageView& imageView, VkImage image, VkFormat format);
+    void updateUniformBuffers(uint32_t frameIndex) const;
+    void transitionImageLayout(VkImageLayout oldLayout, VkImageLayout newLayout, VkImage image) const;
+    void createImageView(VkImageView& imageView, VkImage image, VkFormat format, VkImageAspectFlags aspect) const;
+    VkFormat findSupportedFormat(std::vector<VkFormat> formatCandidates, 
+        VkImageTiling tiling, 
+        VkFormatFeatureFlags desiredFeatures) const;
 
     // Callback funtions
     static VKAPI_ATTR VkBool32 VKAPI_CALL debugMessageCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
@@ -129,10 +133,10 @@ private:
     bool m_framebufferResized = false;
 
     std::vector<float> m_vertices = {
-        -0.5f, 0.5f, 1.f, 0.f, 0.f,  // top left
-        0.5f, 0.5f, 0.f, 1.f, 0.f,  // top right
-        0.5f, -0.5f, 0.f, 0.f, 1.f,  // bottom right
-        -0.5f, -0.5f, 1.f, 1.f, 1.f  // bottom left
+        -0.5f, 0.5f, 1.f, 0.f, 0.f, 0.f, 1.f,  // top left
+        0.5f, 0.5f, 0.f, 1.f, 0.f, 1.f, 1.f,  // top right
+        0.5f, -0.5f, 0.f, 0.f, 1.f, 1.f, 0.f,  // bottom right
+        -0.5f, -0.5f, 1.f, 1.f, 1.f, 0.f, 0.f  // bottom left
     };
     std::vector<uint16_t> m_indices = {
         0, 1, 2, 2, 3, 0
@@ -159,6 +163,10 @@ private:
     VkImageView m_textureImageView;
     VkDeviceMemory m_textureImageMemory;
     VkSampler m_textureSampler;
+    
+    VkImage m_depthImage;
+    VkImageView m_depthImageView;
+    VkDeviceMemory m_depthImageMemory;
 
     // vkInstance and it's subordinates
     VkInstance m_vkInstance;
@@ -194,6 +202,7 @@ private:
     VkPipelineLayout m_vkPipelineLayout;
     VkPipeline m_vkPipeline;
     VkCommandPool m_graphicCommandPool;
+    
     std::vector<VkCommandBuffer> m_drawCommandBuffers;
     std::vector<VkSemaphore> m_acquireImageSemaphores;
     std::vector<VkSemaphore> m_drawSemaphores;
