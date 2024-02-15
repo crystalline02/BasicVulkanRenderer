@@ -1,0 +1,10 @@
+# pragma once
+
+#include <vulkan/vulkan.h>
+
+extern PFN_vkCreateDebugUtilsMessengerEXT vulkan_createDebugUtilsMessengerEXT;
+#define vkCreateDebugUtilsMessengerEXT vulkan_createDebugUtilsMessengerEXT
+extern PFN_vkDestroyDebugUtilsMessengerEXT vulkan_destroyDebugUtilsMessengerEXT;
+#define vkDestroyDebugUtilsMessengerEXT vulkan_destroyDebugUtilsMessengerEXT
+
+VkResult load_vkInstanceFunctions(const VkInstance& instance);
