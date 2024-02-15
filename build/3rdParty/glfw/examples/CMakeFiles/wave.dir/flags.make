@@ -11,7 +11,7 @@ C_FLAGS = -g -std=gnu99
 
 RC_DEFINES = 
 
-RC_INCLUDES = -I C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\deps -I C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\include
+RC_INCLUDES = -I C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\deps -I C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\include
 
 RC_FLAGS = 
 

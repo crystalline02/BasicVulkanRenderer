@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\ZhenKou\OneDrive\project\vulkan_learn
+CMAKE_SOURCE_DIR = C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build
+CMAKE_BINARY_DIR = C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build
 
 # Include any dependencies generated for this target.
 include 3rdParty/glfw/tests/CMakeFiles/tearing.dir/depend.make
@@ -70,33 +70,33 @@ include 3rdParty/glfw/tests/CMakeFiles/tearing.dir/flags.make
 
 3rdParty/glfw/tests/CMakeFiles/tearing.dir/tearing.c.obj: 3rdParty/glfw/tests/CMakeFiles/tearing.dir/flags.make
 3rdParty/glfw/tests/CMakeFiles/tearing.dir/tearing.c.obj: 3rdParty/glfw/tests/CMakeFiles/tearing.dir/includes_C.rsp
-3rdParty/glfw/tests/CMakeFiles/tearing.dir/tearing.c.obj: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty/glfw/tests/tearing.c
+3rdParty/glfw/tests/CMakeFiles/tearing.dir/tearing.c.obj: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glfw/tests/tearing.c
 3rdParty/glfw/tests/CMakeFiles/tearing.dir/tearing.c.obj: 3rdParty/glfw/tests/CMakeFiles/tearing.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object 3rdParty/glfw/tests/CMakeFiles/tearing.dir/tearing.c.obj"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT 3rdParty/glfw/tests/CMakeFiles/tearing.dir/tearing.c.obj -MF CMakeFiles\tearing.dir\tearing.c.obj.d -o CMakeFiles\tearing.dir\tearing.c.obj -c C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\tests\tearing.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object 3rdParty/glfw/tests/CMakeFiles/tearing.dir/tearing.c.obj"
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT 3rdParty/glfw/tests/CMakeFiles/tearing.dir/tearing.c.obj -MF CMakeFiles\tearing.dir\tearing.c.obj.d -o CMakeFiles\tearing.dir\tearing.c.obj -c C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\tests\tearing.c
 
 3rdParty/glfw/tests/CMakeFiles/tearing.dir/tearing.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/tearing.dir/tearing.c.i"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\tests\tearing.c > CMakeFiles\tearing.dir\tearing.c.i
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\tests\tearing.c > CMakeFiles\tearing.dir\tearing.c.i
 
 3rdParty/glfw/tests/CMakeFiles/tearing.dir/tearing.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/tearing.dir/tearing.c.s"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\tests\tearing.c -o CMakeFiles\tearing.dir\tearing.c.s
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\tests\tearing.c -o CMakeFiles\tearing.dir\tearing.c.s
 
 3rdParty/glfw/tests/CMakeFiles/tearing.dir/__/deps/glad_gl.c.obj: 3rdParty/glfw/tests/CMakeFiles/tearing.dir/flags.make
 3rdParty/glfw/tests/CMakeFiles/tearing.dir/__/deps/glad_gl.c.obj: 3rdParty/glfw/tests/CMakeFiles/tearing.dir/includes_C.rsp
-3rdParty/glfw/tests/CMakeFiles/tearing.dir/__/deps/glad_gl.c.obj: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty/glfw/deps/glad_gl.c
+3rdParty/glfw/tests/CMakeFiles/tearing.dir/__/deps/glad_gl.c.obj: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glfw/deps/glad_gl.c
 3rdParty/glfw/tests/CMakeFiles/tearing.dir/__/deps/glad_gl.c.obj: 3rdParty/glfw/tests/CMakeFiles/tearing.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object 3rdParty/glfw/tests/CMakeFiles/tearing.dir/__/deps/glad_gl.c.obj"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT 3rdParty/glfw/tests/CMakeFiles/tearing.dir/__/deps/glad_gl.c.obj -MF CMakeFiles\tearing.dir\__\deps\glad_gl.c.obj.d -o CMakeFiles\tearing.dir\__\deps\glad_gl.c.obj -c C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\deps\glad_gl.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object 3rdParty/glfw/tests/CMakeFiles/tearing.dir/__/deps/glad_gl.c.obj"
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT 3rdParty/glfw/tests/CMakeFiles/tearing.dir/__/deps/glad_gl.c.obj -MF CMakeFiles\tearing.dir\__\deps\glad_gl.c.obj.d -o CMakeFiles\tearing.dir\__\deps\glad_gl.c.obj -c C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\deps\glad_gl.c
 
 3rdParty/glfw/tests/CMakeFiles/tearing.dir/__/deps/glad_gl.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/tearing.dir/__/deps/glad_gl.c.i"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\deps\glad_gl.c > CMakeFiles\tearing.dir\__\deps\glad_gl.c.i
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\deps\glad_gl.c > CMakeFiles\tearing.dir\__\deps\glad_gl.c.i
 
 3rdParty/glfw/tests/CMakeFiles/tearing.dir/__/deps/glad_gl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/tearing.dir/__/deps/glad_gl.c.s"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\deps\glad_gl.c -o CMakeFiles\tearing.dir\__\deps\glad_gl.c.s
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\deps\glad_gl.c -o CMakeFiles\tearing.dir\__\deps\glad_gl.c.s
 
 # Object files for target tearing
 tearing_OBJECTS = \
@@ -109,22 +109,22 @@ tearing_EXTERNAL_OBJECTS =
 3rdParty/glfw/tests/tearing.exe: 3rdParty/glfw/tests/CMakeFiles/tearing.dir/tearing.c.obj
 3rdParty/glfw/tests/tearing.exe: 3rdParty/glfw/tests/CMakeFiles/tearing.dir/__/deps/glad_gl.c.obj
 3rdParty/glfw/tests/tearing.exe: 3rdParty/glfw/tests/CMakeFiles/tearing.dir/build.make
-3rdParty/glfw/tests/tearing.exe: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/lib/libglfw3.a
+3rdParty/glfw/tests/tearing.exe: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/lib/libglfw3.a
 3rdParty/glfw/tests/tearing.exe: 3rdParty/glfw/tests/CMakeFiles/tearing.dir/linkLibs.rsp
 3rdParty/glfw/tests/tearing.exe: 3rdParty/glfw/tests/CMakeFiles/tearing.dir/objects1.rsp
 3rdParty/glfw/tests/tearing.exe: 3rdParty/glfw/tests/CMakeFiles/tearing.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable tearing.exe"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\tearing.dir\link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable tearing.exe"
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\tearing.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 3rdParty/glfw/tests/CMakeFiles/tearing.dir/build: 3rdParty/glfw/tests/tearing.exe
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/tearing.dir/build
 
 3rdParty/glfw/tests/CMakeFiles/tearing.dir/clean:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && $(CMAKE_COMMAND) -P CMakeFiles\tearing.dir\cmake_clean.cmake
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && $(CMAKE_COMMAND) -P CMakeFiles\tearing.dir\cmake_clean.cmake
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/tearing.dir/clean
 
 3rdParty/glfw/tests/CMakeFiles/tearing.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\ZhenKou\OneDrive\project\vulkan_learn C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\tests C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests\CMakeFiles\tearing.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\tests C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests\CMakeFiles\tearing.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/tearing.dir/depend
 

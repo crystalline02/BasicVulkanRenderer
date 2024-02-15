@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty/glfw/tests
+# Install script for directory: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glfw/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\ZhenKou\OneDrive\project\vulkan_learn
+CMAKE_SOURCE_DIR = C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build
+CMAKE_BINARY_DIR = C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build
 
 # Include any dependencies generated for this target.
 include 3rdParty/glfw/examples/CMakeFiles/sharing.dir/depend.make
@@ -70,38 +70,38 @@ include 3rdParty/glfw/examples/CMakeFiles/sharing.dir/flags.make
 
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/sharing.c.obj: 3rdParty/glfw/examples/CMakeFiles/sharing.dir/flags.make
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/sharing.c.obj: 3rdParty/glfw/examples/CMakeFiles/sharing.dir/includes_C.rsp
-3rdParty/glfw/examples/CMakeFiles/sharing.dir/sharing.c.obj: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty/glfw/examples/sharing.c
+3rdParty/glfw/examples/CMakeFiles/sharing.dir/sharing.c.obj: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glfw/examples/sharing.c
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/sharing.c.obj: 3rdParty/glfw/examples/CMakeFiles/sharing.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object 3rdParty/glfw/examples/CMakeFiles/sharing.dir/sharing.c.obj"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\examples && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT 3rdParty/glfw/examples/CMakeFiles/sharing.dir/sharing.c.obj -MF CMakeFiles\sharing.dir\sharing.c.obj.d -o CMakeFiles\sharing.dir\sharing.c.obj -c C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\examples\sharing.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object 3rdParty/glfw/examples/CMakeFiles/sharing.dir/sharing.c.obj"
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\examples && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT 3rdParty/glfw/examples/CMakeFiles/sharing.dir/sharing.c.obj -MF CMakeFiles\sharing.dir\sharing.c.obj.d -o CMakeFiles\sharing.dir\sharing.c.obj -c C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\examples\sharing.c
 
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/sharing.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sharing.dir/sharing.c.i"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\examples && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\examples\sharing.c > CMakeFiles\sharing.dir\sharing.c.i
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\examples && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\examples\sharing.c > CMakeFiles\sharing.dir\sharing.c.i
 
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/sharing.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sharing.dir/sharing.c.s"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\examples && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\examples\sharing.c -o CMakeFiles\sharing.dir\sharing.c.s
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\examples && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\examples\sharing.c -o CMakeFiles\sharing.dir\sharing.c.s
 
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/glfw.rc.obj: 3rdParty/glfw/examples/CMakeFiles/sharing.dir/flags.make
-3rdParty/glfw/examples/CMakeFiles/sharing.dir/glfw.rc.obj: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty/glfw/examples/glfw.rc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building RC object 3rdParty/glfw/examples/CMakeFiles/sharing.dir/glfw.rc.obj"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\examples && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\windres.exe -O coff $(RC_DEFINES) $(RC_INCLUDES) $(RC_FLAGS) C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\examples\glfw.rc CMakeFiles\sharing.dir\glfw.rc.obj
+3rdParty/glfw/examples/CMakeFiles/sharing.dir/glfw.rc.obj: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glfw/examples/glfw.rc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building RC object 3rdParty/glfw/examples/CMakeFiles/sharing.dir/glfw.rc.obj"
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\examples && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\windres.exe -O coff $(RC_DEFINES) $(RC_INCLUDES) $(RC_FLAGS) C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\examples\glfw.rc CMakeFiles\sharing.dir\glfw.rc.obj
 
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/__/deps/glad_gl.c.obj: 3rdParty/glfw/examples/CMakeFiles/sharing.dir/flags.make
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/__/deps/glad_gl.c.obj: 3rdParty/glfw/examples/CMakeFiles/sharing.dir/includes_C.rsp
-3rdParty/glfw/examples/CMakeFiles/sharing.dir/__/deps/glad_gl.c.obj: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty/glfw/deps/glad_gl.c
+3rdParty/glfw/examples/CMakeFiles/sharing.dir/__/deps/glad_gl.c.obj: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glfw/deps/glad_gl.c
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/__/deps/glad_gl.c.obj: 3rdParty/glfw/examples/CMakeFiles/sharing.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object 3rdParty/glfw/examples/CMakeFiles/sharing.dir/__/deps/glad_gl.c.obj"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\examples && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT 3rdParty/glfw/examples/CMakeFiles/sharing.dir/__/deps/glad_gl.c.obj -MF CMakeFiles\sharing.dir\__\deps\glad_gl.c.obj.d -o CMakeFiles\sharing.dir\__\deps\glad_gl.c.obj -c C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\deps\glad_gl.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object 3rdParty/glfw/examples/CMakeFiles/sharing.dir/__/deps/glad_gl.c.obj"
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\examples && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT 3rdParty/glfw/examples/CMakeFiles/sharing.dir/__/deps/glad_gl.c.obj -MF CMakeFiles\sharing.dir\__\deps\glad_gl.c.obj.d -o CMakeFiles\sharing.dir\__\deps\glad_gl.c.obj -c C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\deps\glad_gl.c
 
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/__/deps/glad_gl.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sharing.dir/__/deps/glad_gl.c.i"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\examples && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\deps\glad_gl.c > CMakeFiles\sharing.dir\__\deps\glad_gl.c.i
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\examples && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\deps\glad_gl.c > CMakeFiles\sharing.dir\__\deps\glad_gl.c.i
 
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/__/deps/glad_gl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sharing.dir/__/deps/glad_gl.c.s"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\examples && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\deps\glad_gl.c -o CMakeFiles\sharing.dir\__\deps\glad_gl.c.s
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\examples && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\deps\glad_gl.c -o CMakeFiles\sharing.dir\__\deps\glad_gl.c.s
 
 # Object files for target sharing
 sharing_OBJECTS = \
@@ -116,22 +116,22 @@ sharing_EXTERNAL_OBJECTS =
 3rdParty/glfw/examples/sharing.exe: 3rdParty/glfw/examples/CMakeFiles/sharing.dir/glfw.rc.obj
 3rdParty/glfw/examples/sharing.exe: 3rdParty/glfw/examples/CMakeFiles/sharing.dir/__/deps/glad_gl.c.obj
 3rdParty/glfw/examples/sharing.exe: 3rdParty/glfw/examples/CMakeFiles/sharing.dir/build.make
-3rdParty/glfw/examples/sharing.exe: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/lib/libglfw3.a
+3rdParty/glfw/examples/sharing.exe: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/lib/libglfw3.a
 3rdParty/glfw/examples/sharing.exe: 3rdParty/glfw/examples/CMakeFiles/sharing.dir/linkLibs.rsp
 3rdParty/glfw/examples/sharing.exe: 3rdParty/glfw/examples/CMakeFiles/sharing.dir/objects1.rsp
 3rdParty/glfw/examples/sharing.exe: 3rdParty/glfw/examples/CMakeFiles/sharing.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable sharing.exe"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\examples && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\sharing.dir\link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable sharing.exe"
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\examples && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\sharing.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/build: 3rdParty/glfw/examples/sharing.exe
 .PHONY : 3rdParty/glfw/examples/CMakeFiles/sharing.dir/build
 
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/clean:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\examples && $(CMAKE_COMMAND) -P CMakeFiles\sharing.dir\cmake_clean.cmake
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\examples && $(CMAKE_COMMAND) -P CMakeFiles\sharing.dir\cmake_clean.cmake
 .PHONY : 3rdParty/glfw/examples/CMakeFiles/sharing.dir/clean
 
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\ZhenKou\OneDrive\project\vulkan_learn C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\examples C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\examples C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\examples\CMakeFiles\sharing.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\examples C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\examples C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\examples\CMakeFiles\sharing.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : 3rdParty/glfw/examples/CMakeFiles/sharing.dir/depend
 

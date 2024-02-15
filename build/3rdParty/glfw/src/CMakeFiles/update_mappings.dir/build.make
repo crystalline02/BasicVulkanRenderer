@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\ZhenKou\OneDrive\project\vulkan_learn
+CMAKE_SOURCE_DIR = C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build
+CMAKE_BINARY_DIR = C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build
 
 # Utility rule file for update_mappings.
 
@@ -66,8 +66,8 @@ include 3rdParty/glfw/src/CMakeFiles/update_mappings.dir/compiler_depend.make
 include 3rdParty/glfw/src/CMakeFiles/update_mappings.dir/progress.make
 
 3rdParty/glfw/src/CMakeFiles/update_mappings:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Updating gamepad mappings from upstream repository"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\src && "C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty/glfw/CMake/GenerateMappings.cmake mappings.h.in mappings.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Updating gamepad mappings from upstream repository"
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\src && "C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glfw/CMake/GenerateMappings.cmake mappings.h.in mappings.h
 
 update_mappings: 3rdParty/glfw/src/CMakeFiles/update_mappings
 update_mappings: 3rdParty/glfw/src/CMakeFiles/update_mappings.dir/build.make
@@ -78,10 +78,10 @@ update_mappings: 3rdParty/glfw/src/CMakeFiles/update_mappings.dir/build.make
 .PHONY : 3rdParty/glfw/src/CMakeFiles/update_mappings.dir/build
 
 3rdParty/glfw/src/CMakeFiles/update_mappings.dir/clean:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\src && $(CMAKE_COMMAND) -P CMakeFiles\update_mappings.dir\cmake_clean.cmake
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\src && $(CMAKE_COMMAND) -P CMakeFiles\update_mappings.dir\cmake_clean.cmake
 .PHONY : 3rdParty/glfw/src/CMakeFiles/update_mappings.dir/clean
 
 3rdParty/glfw/src/CMakeFiles/update_mappings.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\ZhenKou\OneDrive\project\vulkan_learn C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\src C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\src C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\src\CMakeFiles\update_mappings.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\src C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\src C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\src\CMakeFiles\update_mappings.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : 3rdParty/glfw/src/CMakeFiles/update_mappings.dir/depend
 

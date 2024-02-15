@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/ZhenKou/OneDrive/project/vulkan_learn
+# Install script for directory: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/3rdParty/cmake_install.cmake")
-  include("C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/src/cmake_install.cmake")
+  include("C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/build/3rdParty/cmake_install.cmake")
+  include("C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/build/src/cmake_install.cmake")
 
 endif()
 
@@ -52,5 +52,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

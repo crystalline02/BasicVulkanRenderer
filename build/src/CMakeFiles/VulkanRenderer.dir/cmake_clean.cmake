@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/VulkanRenderer.exe"
-  "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/VulkanRenderer.exe.manifest"
-  "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/bin/VulkanRenderer.pdb"
+  "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/bin/VulkanRenderer.exe"
+  "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/bin/VulkanRenderer.exe.manifest"
+  "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/bin/VulkanRenderer.pdb"
   "CMakeFiles/VulkanRenderer.dir/entry_point.obj"
   "CMakeFiles/VulkanRenderer.dir/entry_point.obj.d"
   "CMakeFiles/VulkanRenderer.dir/model.obj"

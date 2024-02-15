@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\ZhenKou\OneDrive\project\vulkan_learn
+CMAKE_SOURCE_DIR = C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build
+CMAKE_BINARY_DIR = C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build
 
 # Include any dependencies generated for this target.
 include 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/depend.make
@@ -70,48 +70,48 @@ include 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/flags.make
 
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/clipboard.c.obj: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/flags.make
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/clipboard.c.obj: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/includes_C.rsp
-3rdParty/glfw/tests/CMakeFiles/clipboard.dir/clipboard.c.obj: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty/glfw/tests/clipboard.c
+3rdParty/glfw/tests/CMakeFiles/clipboard.dir/clipboard.c.obj: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glfw/tests/clipboard.c
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/clipboard.c.obj: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/clipboard.c.obj"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/clipboard.c.obj -MF CMakeFiles\clipboard.dir\clipboard.c.obj.d -o CMakeFiles\clipboard.dir\clipboard.c.obj -c C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\tests\clipboard.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/clipboard.c.obj"
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/clipboard.c.obj -MF CMakeFiles\clipboard.dir\clipboard.c.obj.d -o CMakeFiles\clipboard.dir\clipboard.c.obj -c C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\tests\clipboard.c
 
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/clipboard.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/clipboard.dir/clipboard.c.i"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\tests\clipboard.c > CMakeFiles\clipboard.dir\clipboard.c.i
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\tests\clipboard.c > CMakeFiles\clipboard.dir\clipboard.c.i
 
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/clipboard.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/clipboard.dir/clipboard.c.s"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\tests\clipboard.c -o CMakeFiles\clipboard.dir\clipboard.c.s
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\tests\clipboard.c -o CMakeFiles\clipboard.dir\clipboard.c.s
 
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/getopt.c.obj: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/flags.make
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/getopt.c.obj: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/includes_C.rsp
-3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/getopt.c.obj: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty/glfw/deps/getopt.c
+3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/getopt.c.obj: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glfw/deps/getopt.c
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/getopt.c.obj: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/getopt.c.obj"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/getopt.c.obj -MF CMakeFiles\clipboard.dir\__\deps\getopt.c.obj.d -o CMakeFiles\clipboard.dir\__\deps\getopt.c.obj -c C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\deps\getopt.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/getopt.c.obj"
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/getopt.c.obj -MF CMakeFiles\clipboard.dir\__\deps\getopt.c.obj.d -o CMakeFiles\clipboard.dir\__\deps\getopt.c.obj -c C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\deps\getopt.c
 
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/getopt.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/clipboard.dir/__/deps/getopt.c.i"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\deps\getopt.c > CMakeFiles\clipboard.dir\__\deps\getopt.c.i
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\deps\getopt.c > CMakeFiles\clipboard.dir\__\deps\getopt.c.i
 
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/getopt.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/clipboard.dir/__/deps/getopt.c.s"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\deps\getopt.c -o CMakeFiles\clipboard.dir\__\deps\getopt.c.s
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\deps\getopt.c -o CMakeFiles\clipboard.dir\__\deps\getopt.c.s
 
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.obj: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/flags.make
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.obj: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/includes_C.rsp
-3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.obj: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty/glfw/deps/glad_gl.c
+3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.obj: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glfw/deps/glad_gl.c
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.obj: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.obj"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.obj -MF CMakeFiles\clipboard.dir\__\deps\glad_gl.c.obj.d -o CMakeFiles\clipboard.dir\__\deps\glad_gl.c.obj -c C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\deps\glad_gl.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.obj"
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.obj -MF CMakeFiles\clipboard.dir\__\deps\glad_gl.c.obj.d -o CMakeFiles\clipboard.dir\__\deps\glad_gl.c.obj -c C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\deps\glad_gl.c
 
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/clipboard.dir/__/deps/glad_gl.c.i"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\deps\glad_gl.c > CMakeFiles\clipboard.dir\__\deps\glad_gl.c.i
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\deps\glad_gl.c > CMakeFiles\clipboard.dir\__\deps\glad_gl.c.i
 
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/clipboard.dir/__/deps/glad_gl.c.s"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\deps\glad_gl.c -o CMakeFiles\clipboard.dir\__\deps\glad_gl.c.s
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\deps\glad_gl.c -o CMakeFiles\clipboard.dir\__\deps\glad_gl.c.s
 
 # Object files for target clipboard
 clipboard_OBJECTS = \
@@ -126,22 +126,22 @@ clipboard_EXTERNAL_OBJECTS =
 3rdParty/glfw/tests/clipboard.exe: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/getopt.c.obj
 3rdParty/glfw/tests/clipboard.exe: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.obj
 3rdParty/glfw/tests/clipboard.exe: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/build.make
-3rdParty/glfw/tests/clipboard.exe: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/lib/libglfw3.a
+3rdParty/glfw/tests/clipboard.exe: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/lib/libglfw3.a
 3rdParty/glfw/tests/clipboard.exe: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/linkLibs.rsp
 3rdParty/glfw/tests/clipboard.exe: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/objects1.rsp
 3rdParty/glfw/tests/clipboard.exe: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable clipboard.exe"
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\clipboard.dir\link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable clipboard.exe"
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\clipboard.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/build: 3rdParty/glfw/tests/clipboard.exe
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/build
 
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/clean:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests && $(CMAKE_COMMAND) -P CMakeFiles\clipboard.dir\cmake_clean.cmake
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests && $(CMAKE_COMMAND) -P CMakeFiles\clipboard.dir\cmake_clean.cmake
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/clean
 
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\ZhenKou\OneDrive\project\vulkan_learn C:\Users\ZhenKou\OneDrive\project\vulkan_learn\3rdParty\glfw\tests C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\3rdParty\glfw\tests\CMakeFiles\clipboard.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\3rdParty\glfw\tests C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\3rdParty\glfw\tests\CMakeFiles\clipboard.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/depend
 

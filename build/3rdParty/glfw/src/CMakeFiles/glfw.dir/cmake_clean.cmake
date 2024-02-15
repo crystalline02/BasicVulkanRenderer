@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/lib/libglfw3.a"
-  "C:/Users/ZhenKou/OneDrive/project/vulkan_learn/lib/libglfw3.pdb"
+  "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/lib/libglfw3.a"
+  "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/lib/libglfw3.pdb"
   "CMakeFiles/glfw.dir/context.c.obj"
   "CMakeFiles/glfw.dir/context.c.obj.d"
   "CMakeFiles/glfw.dir/egl_context.c.obj"

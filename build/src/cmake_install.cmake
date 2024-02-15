@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/src
+# Install script for directory: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

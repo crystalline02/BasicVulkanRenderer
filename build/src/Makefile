@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\ZhenKou\OneDrive\project\vulkan_learn
+CMAKE_SOURCE_DIR = C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build
+CMAKE_BINARY_DIR = C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -131,14 +131,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\src\\CMakeFiles\progress.marks
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build\CMakeFiles 0
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\src\\CMakeFiles\progress.marks
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/clean
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -147,22 +147,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/preinstall
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/preinstall
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/VulkanRenderer.dir/rule:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/CMakeFiles/VulkanRenderer.dir/rule
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/CMakeFiles/VulkanRenderer.dir/rule
 .PHONY : src/CMakeFiles/VulkanRenderer.dir/rule
 
 # Convenience name for target.
@@ -171,82 +171,82 @@ VulkanRenderer: src/CMakeFiles/VulkanRenderer.dir/rule
 
 # fast build rule for target.
 VulkanRenderer/fast:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/build
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/build
 .PHONY : VulkanRenderer/fast
 
 # target to build an object file
 entry_point.obj:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/entry_point.obj
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/entry_point.obj
 .PHONY : entry_point.obj
 
 # target to preprocess a source file
 entry_point.i:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/entry_point.i
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/entry_point.i
 .PHONY : entry_point.i
 
 # target to generate assembly for a file
 entry_point.s:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/entry_point.s
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/entry_point.s
 .PHONY : entry_point.s
 
 # target to build an object file
 model.obj:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/model.obj
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/model.obj
 .PHONY : model.obj
 
 # target to preprocess a source file
 model.i:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/model.i
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/model.i
 .PHONY : model.i
 
 # target to generate assembly for a file
 model.s:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/model.s
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/model.s
 .PHONY : model.s
 
 # target to build an object file
 resources.obj:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/resources.obj
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/resources.obj
 .PHONY : resources.obj
 
 # target to preprocess a source file
 resources.i:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/resources.i
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/resources.i
 .PHONY : resources.i
 
 # target to generate assembly for a file
 resources.s:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/resources.s
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/resources.s
 .PHONY : resources.s
 
 # target to build an object file
 vulkan_app.obj:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj
 .PHONY : vulkan_app.obj
 
 # target to preprocess a source file
 vulkan_app.i:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_app.i
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_app.i
 .PHONY : vulkan_app.i
 
 # target to generate assembly for a file
 vulkan_app.s:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_app.s
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_app.s
 .PHONY : vulkan_app.s
 
 # target to build an object file
 vulkan_fn.obj:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_fn.obj
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_fn.obj
 .PHONY : vulkan_fn.obj
 
 # target to preprocess a source file
 vulkan_fn.i:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_fn.i
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_fn.i
 .PHONY : vulkan_fn.i
 
 # target to generate assembly for a file
 vulkan_fn.s:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_fn.s
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/vulkan_fn.s
 .PHONY : vulkan_fn.s
 
 # Help Target
@@ -288,6 +288,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /d C:\Users\ZhenKou\OneDrive\project\vulkan_learn\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

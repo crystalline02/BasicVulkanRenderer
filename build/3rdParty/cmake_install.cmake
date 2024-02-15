@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/ZhenKou/OneDrive/project/vulkan_learn/3rdParty
+# Install script for directory: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/ZhenKou/OneDrive/project/vulkan_learn/build/3rdParty/glfw/cmake_install.cmake")
+  include("C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/build/3rdParty/glfw/cmake_install.cmake")
 
 endif()
 

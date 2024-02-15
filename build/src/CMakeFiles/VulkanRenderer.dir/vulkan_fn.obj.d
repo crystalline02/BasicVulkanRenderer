@@ -1,6 +1,6 @@
 src/CMakeFiles/VulkanRenderer.dir/vulkan_fn.obj: \
- C:\Users\ZhenKou\OneDrive\project\vulkan_learn\src\vulkan_fn.cpp \
- C:\Users\ZhenKou\OneDrive\project\vulkan_learn\src\vulkan_fn.h \
+ C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\src\vulkan_fn.cpp \
+ C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\src\vulkan_fn.h \
  D:/VulkanSDK/1.3.268.0/include/vulkan/vulkan.h \
  D:/VulkanSDK/1.3.268.0/include/vulkan/vk_platform.h \
  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stddef.h \
