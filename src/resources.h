@@ -14,13 +14,10 @@
 #include <set>
 #include <map>
 
-#include "./model/texture.h"
-#include "./model/mesh.h"
-#include "./model/mesh.h"
-
 // Forward declaration
-struct Vertex;
 class Model;
+struct Vertex;
+struct Texture;
 
 class Resources
 {
@@ -109,6 +106,7 @@ public:
     void endSingleTimeCommandBuffer(VkCommandBuffer commandBuffer) const;
     void createVertexBuffer(std::vector<Vertex>& vertices, VkBuffer& vertexBuffer, VkDeviceMemory& vertexBufferMemory) const;
     void createIndexBuffer(std::vector<uint32_t>& indices, VkBuffer& indexBuffer, VkDeviceMemory& indexBufferMemory) const;
+    void cleanUpTexture(const Texture& texture) const;
     void generateMipmaps(VkImage image, VkFormat format, uint32_t width, uint32_t height, uint32_t mipLevels) const;
 private:
     // Callback funtions
@@ -119,6 +117,7 @@ private:
     static void framebufferResizeCallback(GLFWwindow* window, int width, int height);
 
     // private helper functions
+    VkSampleCountFlagBits getMSAASampleCount() const;
     bool checkInstanceValidationLayersSupported(std::vector<const char*> validationLayerNames) const;
     void populateMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT& messengerCreateInfo) const;
     std::vector<const char*> getRequiredExtentions() const;
@@ -214,4 +213,6 @@ private:
     VkDeviceMemory m_depthStencilImageMemory;
     VkFormat m_depthStencilImageFormat;
 
+    // MSAA sample count
+    VkSampleCountFlagBits m_MSAASampleCount;
 };

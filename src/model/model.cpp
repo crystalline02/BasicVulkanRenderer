@@ -36,10 +36,7 @@ void Model::cleanUp(VkDevice device)
     vkDestroyBuffer(device, m_vertexBuffer, VK_NULL_HANDLE);
     vkFreeMemory(device, m_vertexBufferMemory, VK_NULL_HANDLE);
 
-    vkDestroySampler(device, m_texture.sampler, VK_NULL_HANDLE);
-    vkDestroyImageView(device, m_texture.imageView, VK_NULL_HANDLE);
-    vkDestroyImage(device, m_texture.image, VK_NULL_HANDLE);
-    vkFreeMemory(device, m_texture.imageMemory, VK_NULL_HANDLE);
+    m_appResources->cleanUpTexture(m_texture);
 }
 
 void Model::loadModel(const char* filename)

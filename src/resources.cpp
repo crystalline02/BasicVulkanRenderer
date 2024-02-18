@@ -10,6 +10,7 @@
 
 #include "vulkan_fn.h"
 #include "./model/model.h"
+#include "./model/texture.h"
 #include "./model/mesh.h"
 
 Resources::Resources()
@@ -189,16 +190,19 @@ void Resources::pickPhysicalDevice()
     {
         m_vkPhysicalDevice = score_devices.rbegin()->second;  // This line picks a VkPhysicalDevice
         
+        vkGetPhysicalDeviceFeatures(m_vkPhysicalDevice, &m_vkPhysicalDeviceFeature);
+        vkGetPhysicalDeviceProperties(m_vkPhysicalDevice, &m_vkPhysicalDeviceProperties);
+
         // Log selected GPU
-        VkPhysicalDeviceProperties deviceProperties;
-        vkGetPhysicalDeviceProperties(m_vkPhysicalDevice, &deviceProperties);
-        std::cout << "VK INFO: " << deviceProperties.deviceName << " is selected as a vulkan physical device.Score: " 
+        std::cout << "VK INFO: " << m_vkPhysicalDeviceProperties.deviceName << " is selected as a vulkan physical device.Score: " 
             << score_devices.rbegin()->first <<  ".\n";
+        
+        // Select MASS sample count
+        m_MSAASampleCount = getMSAASampleCount();
     }
     else throw std::runtime_error("VK ERROR: No suitable physical device for current application.");
 
-    vkGetPhysicalDeviceFeatures(m_vkPhysicalDevice, &m_vkPhysicalDeviceFeature);
-    vkGetPhysicalDeviceProperties(m_vkPhysicalDevice, &m_vkPhysicalDeviceProperties);
+    
 }
 
 void Resources::createLogicalDevices()
@@ -1625,4 +1629,26 @@ Resources* Resources::get()
     if(!instance)
         instance = new Resources();
     return instance;
+}
+
+void Resources::cleanUpTexture(const Texture& texture) const
+{
+    vkDestroySampler(m_vkDevice, texture.sampler, VK_NULL_HANDLE);
+    vkDestroyImageView(m_vkDevice, texture.imageView, VK_NULL_HANDLE);
+    vkDestroyImage(m_vkDevice, texture.image, VK_NULL_HANDLE);
+    vkFreeMemory(m_vkDevice, texture.imageMemory, VK_NULL_HANDLE);
+}
+
+VkSampleCountFlagBits Resources::getMSAASampleCount() const
+{
+    VkSampleCountFlags sampleCountFlags = m_vkPhysicalDeviceProperties.limits.framebufferColorSampleCounts 
+        & m_vkPhysicalDeviceProperties.limits.framebufferDepthSampleCounts;
+    for(VkSampleCountFlagBits sampleCountFlagBit : std::vector<VkSampleCountFlagBits>({VK_SAMPLE_COUNT_64_BIT, 
+        VK_SAMPLE_COUNT_32_BIT, VK_SAMPLE_COUNT_16_BIT, VK_SAMPLE_COUNT_8_BIT, VK_SAMPLE_COUNT_4_BIT, VK_SAMPLE_COUNT_2_BIT,
+        VK_SAMPLE_COUNT_1_BIT}))
+    {
+        if(sampleCountFlags & sampleCountFlagBit)
+            return sampleCountFlagBit;
+    }
+    throw std::runtime_error("VK ERROR: Failed to get a valid MSAA sample count");
 }
