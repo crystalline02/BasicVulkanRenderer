@@ -12,7 +12,7 @@ class Resources;
 class Model
 {
 public:
-    Model(const char* filename, Resources* appResources);
+    Model(const char* filename);
 
     void cmdBindBuffers(VkCommandBuffer commandBuffer) const;
     void cmdDrawIndexed(VkCommandBuffer commandBuffer) const;

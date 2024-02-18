@@ -25,6 +25,9 @@ class Model;
 class Resources
 {
 private:
+    // band constructor
+    Resources();
+
     // Internal class
     struct RequiredQueueFamilyIndices
     {
@@ -87,6 +90,7 @@ public:
 
     // public interface
     bool isValidationLayerEnbaled() const{ return m_enableValidationLayer; }
+    static Resources* get();
     bool m_complete = false;
 
     // public helper functions
@@ -137,6 +141,9 @@ private:
     void cleanUpSwapChain();
     void recreateSwapChain();
 private:
+    // instance
+    static Resources* instance;
+
     // Model
     Model* m_model;
 

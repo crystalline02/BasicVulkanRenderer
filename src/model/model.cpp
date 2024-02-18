@@ -10,8 +10,10 @@
 #include "mesh.h"
 #include "../resources.h"
 
-Model::Model(const char* filename, Resources* appResources): m_appResources(appResources)
+Model::Model(const char* filename)
 {
+    m_appResources = Resources::get();
+    
     loadModel(filename);
 }
 

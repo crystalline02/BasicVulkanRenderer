@@ -11,7 +11,7 @@
 
 void VulkanApp::run()
 {
-    m_appResources = new Resources();
+    m_appResources = Resources::get();
     
     m_appResources->initWindow();
     initVulkan();

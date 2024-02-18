@@ -12,6 +12,11 @@
 #include "./model/model.h"
 #include "./model/mesh.h"
 
+Resources::Resources()
+{
+
+}
+
 void Resources::initWindow()
 {
     glfwInit();
@@ -1432,7 +1437,7 @@ void Resources::cleanUp()
 
 void Resources::loadModel()
 {
-    m_model = new Model("./model/viking_room.obj", this);
+    m_model = new Model("./model/viking_room.obj");
 }
 
 void Resources::createTexture(const char* filename, Texture& texture) const
@@ -1611,4 +1616,13 @@ void Resources::generateMipmaps(VkImage image, VkFormat format, uint32_t width, 
         1, &imageMemoryBarrier);
     
     endSingleTimeCommandBuffer(genMipCommandBuffer);
+}
+
+Resources* Resources::instance = VK_NULL_HANDLE;
+
+Resources* Resources::get()
+{
+    if(!instance)
+        instance = new Resources();
+    return instance;
 }
