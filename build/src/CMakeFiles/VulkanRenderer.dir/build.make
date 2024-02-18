@@ -113,26 +113,11 @@ src/CMakeFiles/VulkanRenderer.dir/vulkan_fn.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanRenderer.dir/vulkan_fn.s"
 	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\src && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\src\vulkan_fn.cpp -o CMakeFiles\VulkanRenderer.dir\vulkan_fn.s
 
-src/CMakeFiles/VulkanRenderer.dir/model.obj: src/CMakeFiles/VulkanRenderer.dir/flags.make
-src/CMakeFiles/VulkanRenderer.dir/model.obj: src/CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp
-src/CMakeFiles/VulkanRenderer.dir/model.obj: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model.cpp
-src/CMakeFiles/VulkanRenderer.dir/model.obj: src/CMakeFiles/VulkanRenderer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/VulkanRenderer.dir/model.obj"
-	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\src && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/VulkanRenderer.dir/model.obj -MF CMakeFiles\VulkanRenderer.dir\model.obj.d -o CMakeFiles\VulkanRenderer.dir\model.obj -c C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\src\model.cpp
-
-src/CMakeFiles/VulkanRenderer.dir/model.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanRenderer.dir/model.i"
-	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\src && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\src\model.cpp > CMakeFiles\VulkanRenderer.dir\model.i
-
-src/CMakeFiles/VulkanRenderer.dir/model.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanRenderer.dir/model.s"
-	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\src && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\src\model.cpp -o CMakeFiles\VulkanRenderer.dir\model.s
-
 src/CMakeFiles/VulkanRenderer.dir/resources.obj: src/CMakeFiles/VulkanRenderer.dir/flags.make
 src/CMakeFiles/VulkanRenderer.dir/resources.obj: src/CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp
 src/CMakeFiles/VulkanRenderer.dir/resources.obj: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/resources.cpp
 src/CMakeFiles/VulkanRenderer.dir/resources.obj: src/CMakeFiles/VulkanRenderer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/VulkanRenderer.dir/resources.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/VulkanRenderer.dir/resources.obj"
 	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\src && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/VulkanRenderer.dir/resources.obj -MF CMakeFiles\VulkanRenderer.dir\resources.obj.d -o CMakeFiles\VulkanRenderer.dir\resources.obj -c C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\src\resources.cpp
 
 src/CMakeFiles/VulkanRenderer.dir/resources.i: cmake_force
@@ -143,13 +128,28 @@ src/CMakeFiles/VulkanRenderer.dir/resources.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanRenderer.dir/resources.s"
 	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\src && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\src\resources.cpp -o CMakeFiles\VulkanRenderer.dir\resources.s
 
+src/CMakeFiles/VulkanRenderer.dir/model/model.obj: src/CMakeFiles/VulkanRenderer.dir/flags.make
+src/CMakeFiles/VulkanRenderer.dir/model/model.obj: src/CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp
+src/CMakeFiles/VulkanRenderer.dir/model/model.obj: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model/model.cpp
+src/CMakeFiles/VulkanRenderer.dir/model/model.obj: src/CMakeFiles/VulkanRenderer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/VulkanRenderer.dir/model/model.obj"
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\src && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/VulkanRenderer.dir/model/model.obj -MF CMakeFiles\VulkanRenderer.dir\model\model.obj.d -o CMakeFiles\VulkanRenderer.dir\model\model.obj -c C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\src\model\model.cpp
+
+src/CMakeFiles/VulkanRenderer.dir/model/model.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanRenderer.dir/model/model.i"
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\src && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\src\model\model.cpp > CMakeFiles\VulkanRenderer.dir\model\model.i
+
+src/CMakeFiles/VulkanRenderer.dir/model/model.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanRenderer.dir/model/model.s"
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\src && C:\library_cpp\MinGW\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\src\model\model.cpp -o CMakeFiles\VulkanRenderer.dir\model\model.s
+
 # Object files for target VulkanRenderer
 VulkanRenderer_OBJECTS = \
 "CMakeFiles/VulkanRenderer.dir/entry_point.obj" \
 "CMakeFiles/VulkanRenderer.dir/vulkan_app.obj" \
 "CMakeFiles/VulkanRenderer.dir/vulkan_fn.obj" \
-"CMakeFiles/VulkanRenderer.dir/model.obj" \
-"CMakeFiles/VulkanRenderer.dir/resources.obj"
+"CMakeFiles/VulkanRenderer.dir/resources.obj" \
+"CMakeFiles/VulkanRenderer.dir/model/model.obj"
 
 # External object files for target VulkanRenderer
 VulkanRenderer_EXTERNAL_OBJECTS =
@@ -157,8 +157,8 @@ VulkanRenderer_EXTERNAL_OBJECTS =
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/bin/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/entry_point.obj
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/bin/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/bin/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/vulkan_fn.obj
-C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/bin/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/model.obj
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/bin/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/resources.obj
+C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/bin/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/model/model.obj
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/bin/VulkanRenderer.exe: src/CMakeFiles/VulkanRenderer.dir/build.make
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/bin/VulkanRenderer.exe: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/lib/libglfw3.a
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/bin/VulkanRenderer.exe: D:/VulkanSDK/1.3.268.0/Lib/vulkan-1.lib

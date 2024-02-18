@@ -173,8 +173,31 @@ src/CMakeFiles/VulkanRenderer.dir/entry_point.obj: C:/Users/ZhenKou/OneDrive/pro
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/istream \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/istream.tcc
 
-src/CMakeFiles/VulkanRenderer.dir/model.obj: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model.cpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model.h \
+src/CMakeFiles/VulkanRenderer.dir/model/model.obj: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model/model.cpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model/model.h \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model/texture.h \
+  D:/VulkanSDK/1.3.268.0/Include/vulkan/vulkan.h \
+  D:/VulkanSDK/1.3.268.0/Include/vulkan/vk_platform.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stddef.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/stddef.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/crtdefs.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/corecrt.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/_mingw.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/_mingw_mac.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/vadefs.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdint.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/stdint.h \
+  D:/VulkanSDK/1.3.268.0/Include/vulkan/vulkan_core.h \
+  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h264std.h \
+  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codecs_common.h \
+  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h264std_decode.h \
+  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h264std.h \
+  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h265std.h \
+  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h265std_decode.h \
+  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h265std.h \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model/mesh.h \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/glm.hpp \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/_fixes.hpp \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cmath \
@@ -186,13 +209,6 @@ src/CMakeFiles/VulkanRenderer.dir/model.obj: C:/Users/ZhenKou/OneDrive/project/M
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cpp_type_traits.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/type_traits.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/math.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/crtdefs.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/corecrt.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/_mingw.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/_mingw_mac.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/_mingw_secapi.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/vadefs.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_abs.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/stdlib.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
@@ -247,12 +263,8 @@ src/CMakeFiles/VulkanRenderer.dir/model.obj: C:/Users/ZhenKou/OneDrive/project/M
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/assert.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstdlib \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstddef \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stddef.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/stddef.h \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/simd/platform.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstdint \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdint.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/stdint.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/climits \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cfloat \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/float.h \
@@ -483,16 +495,6 @@ src/CMakeFiles/VulkanRenderer.dir/model.obj: C:/Users/ZhenKou/OneDrive/project/M
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/dual_quaternion.hpp \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/dual_quaternion.inl \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/hash.inl \
-  D:/VulkanSDK/1.3.268.0/Include/vulkan/vulkan.h \
-  D:/VulkanSDK/1.3.268.0/Include/vulkan/vk_platform.h \
-  D:/VulkanSDK/1.3.268.0/Include/vulkan/vulkan_core.h \
-  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h264std.h \
-  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codecs_common.h \
-  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h264std_decode.h \
-  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h264std.h \
-  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h265std.h \
-  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h265std_decode.h \
-  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h265std.h \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/tinyobjloader/tiny_obj_loader.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/map \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_tree.h \
@@ -905,6 +907,59 @@ src/CMakeFiles/VulkanRenderer.dir/resources.obj: C:/Users/ZhenKou/OneDrive/proje
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/map \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_map.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_multimap.h \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model/texture.h \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model/mesh.h \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/hash.hpp \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/functional \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_function.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/unordered_map \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/unordered_map.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hashtable.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hashtable_policy.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/array \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_algo.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/algorithmfwd.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_heap.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/uniform_int_dist.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_tempbuf.h \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/vec1.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_bool1.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_bool1_precision.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_float1.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_float1_precision.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_double1.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_double1_precision.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_int1.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_int1_sized.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_uint1.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_uint1_sized.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/quaternion.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_relational.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_relational.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/type_float.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_common.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_geometric.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_geometric.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_common.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_float.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/type_quat.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_relational.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_relational.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/type_quat.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_float_precision.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_double.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_double_precision.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_trigonometric.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_trigonometric.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_transform.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_transform.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/quaternion.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/epsilon.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/setup.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/epsilon.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/dual_quaternion.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/dual_quaternion.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/hash.inl \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/stb_image/stb_image.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdarg.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/stdarg.h \
@@ -955,11 +1010,6 @@ src/CMakeFiles/VulkanRenderer.dir/resources.obj: C:/Users/ZhenKou/OneDrive/proje
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/istream \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/istream.tcc \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/algorithm \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_algo.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/algorithmfwd.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_heap.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/uniform_int_dist.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_tempbuf.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ranges_algo.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ranges_algobase.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_algorithm_defs.h \
@@ -970,53 +1020,7 @@ src/CMakeFiles/VulkanRenderer.dir/resources.obj: C:/Users/ZhenKou/OneDrive/proje
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++io.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fstream.tcc \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/vulkan_fn.h \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model.h \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/hash.hpp \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/functional \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_function.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/unordered_map \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/unordered_map.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hashtable.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hashtable_policy.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/array \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/vec1.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_bool1.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_bool1_precision.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_float1.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_float1_precision.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_double1.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_double1_precision.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_int1.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_int1_sized.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_uint1.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_uint1_sized.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/quaternion.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_relational.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_relational.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/type_float.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_common.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_geometric.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_geometric.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_common.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_float.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/type_quat.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_relational.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_relational.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/type_quat.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_float_precision.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_double.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_double_precision.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_trigonometric.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_trigonometric.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_transform.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/quaternion_transform.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/quaternion.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/epsilon.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/setup.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/epsilon.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/dual_quaternion.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/dual_quaternion.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/hash.inl
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model/model.h
 
 src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/vulkan_app.cpp \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/vulkan_app.h \
@@ -1205,7 +1209,21 @@ src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj: C:/Users/ZhenKou/OneDrive/proj
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ranges_algobase.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_algorithm_defs.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/execution_defs.h \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model.h \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/resources.h \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glfw/include/GLFW/glfw3.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdint.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/stdint.h \
+  D:/VulkanSDK/1.3.268.0/Include/vulkan/vulkan.h \
+  D:/VulkanSDK/1.3.268.0/Include/vulkan/vk_platform.h \
+  D:/VulkanSDK/1.3.268.0/Include/vulkan/vulkan_core.h \
+  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h264std.h \
+  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codecs_common.h \
+  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h264std_decode.h \
+  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h264std.h \
+  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h265std.h \
+  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h265std_decode.h \
+  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h265std.h \
+  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/GL/gl.h \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/glm.hpp \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/_fixes.hpp \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cmath \
@@ -1228,8 +1246,6 @@ src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj: C:/Users/ZhenKou/OneDrive/proj
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/assert.h \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/simd/platform.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstdint \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdint.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/stdint.h \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/climits \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cfloat \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/float.h \
@@ -1365,6 +1381,20 @@ src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj: C:/Users/ZhenKou/OneDrive/proj
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/type_half.inl \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/integer.hpp \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/func_integer.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/matrix_transform.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/matrix_projection.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/constants.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/scalar_constants.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/scalar_constants.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/constants.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/matrix_projection.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/matrix_clip_space.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/matrix_clip_space.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/matrix_transform.hpp \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/matrix_transform.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/matrix_transform.inl \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model/texture.h \
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model/mesh.h \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/hash.hpp \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/functional \
   C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_function.h \
@@ -1385,18 +1415,6 @@ src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj: C:/Users/ZhenKou/OneDrive/proj
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_uint1.hpp \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_uint1_sized.hpp \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/quaternion.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/constants.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/scalar_constants.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/scalar_constants.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/constants.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/matrix_transform.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/matrix_projection.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/matrix_projection.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/matrix_clip_space.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/matrix_clip_space.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/matrix_transform.hpp \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/matrix_transform.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/matrix_transform.inl \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_relational.hpp \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_relational.inl \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/type_float.hpp \
@@ -1422,20 +1440,7 @@ src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj: C:/Users/ZhenKou/OneDrive/proj
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/epsilon.inl \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/dual_quaternion.hpp \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/dual_quaternion.inl \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/hash.inl \
-  D:/VulkanSDK/1.3.268.0/Include/vulkan/vulkan.h \
-  D:/VulkanSDK/1.3.268.0/Include/vulkan/vk_platform.h \
-  D:/VulkanSDK/1.3.268.0/Include/vulkan/vulkan_core.h \
-  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h264std.h \
-  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codecs_common.h \
-  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h264std_decode.h \
-  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h264std.h \
-  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h265std.h \
-  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h265std_decode.h \
-  D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h265std.h \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/resources.h \
-  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glfw/include/GLFW/glfw3.h \
-  C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/x86_64-w64-mingw32/include/GL/gl.h
+  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/hash.inl
 
 src/CMakeFiles/VulkanRenderer.dir/vulkan_fn.obj: C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/vulkan_fn.cpp \
   C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/vulkan_fn.h \
@@ -1577,6 +1582,8 @@ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x8
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/entry_point.cpp:
 
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/tinyobjloader/tiny_obj_loader.h:
+
+C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model/mesh.h:
 
 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ostream:
 
@@ -2074,11 +2081,37 @@ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x8
 
 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/istream.tcc:
 
-C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/dual_quaternion.hpp:
+C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model/model.cpp:
 
-C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model.cpp:
+C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/algorithm:
 
-C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model.h:
+C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/func_trigonometric.inl:
+
+C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/hypergeometric.tcc:
+
+C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model/model.h:
+
+C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model/texture.h:
+
+D:/VulkanSDK/1.3.268.0/Include/vulkan/vulkan.h:
+
+C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/_vectorize.hpp:
+
+D:/VulkanSDK/1.3.268.0/Include/vulkan/vk_platform.h:
+
+C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/common.hpp:
+
+C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdint.h:
+
+D:/VulkanSDK/1.3.268.0/Include/vulkan/vulkan_core.h:
+
+C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_float2.hpp:
+
+D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codecs_common.h:
+
+D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h264std_decode.h:
+
+D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h265std_decode.h:
 
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/glm.hpp:
 
@@ -2102,12 +2135,6 @@ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x8
 
 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/exp_integral.tcc:
 
-C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/algorithm:
-
-C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/func_trigonometric.inl:
-
-C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/hypergeometric.tcc:
-
 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/legendre_function.tcc:
 
 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/modified_bessel_func.tcc:
@@ -2125,10 +2152,6 @@ C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x8
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/matrix_float3x3.hpp:
 
 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstdint:
-
-C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/common.hpp:
-
-C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdint.h:
 
 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/float.h:
 
@@ -2153,10 +2176,6 @@ C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/type_
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/compute_vector_relational.hpp:
 
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_bool2_precision.hpp:
-
-D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codecs_common.h:
-
-C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_float2.hpp:
 
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/vector_float2_precision.hpp:
 
@@ -2318,10 +2337,6 @@ C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/type_
 
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/type_vec1.inl:
 
-D:/VulkanSDK/1.3.268.0/Include/vulkan/vk_platform.h:
-
-C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/detail/_vectorize.hpp:
-
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/matrix_double2x2_precision.hpp:
 
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/ext/matrix_float2x2.hpp:
@@ -2396,15 +2411,9 @@ C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/epsilon.
 
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/epsilon.inl:
 
+C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/dual_quaternion.hpp:
+
 C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/hash.inl:
-
-D:/VulkanSDK/1.3.268.0/Include/vulkan/vulkan.h:
-
-D:/VulkanSDK/1.3.268.0/Include/vulkan/vulkan_core.h:
-
-D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h264std_decode.h:
-
-D:/VulkanSDK/1.3.268.0/Include/vk_video/vulkan_video_codec_h265std_decode.h:
 
 C:/library_cpp/MinGW/x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstring:
 

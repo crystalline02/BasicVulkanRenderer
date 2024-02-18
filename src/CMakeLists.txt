@@ -3,8 +3,8 @@ set(SOURCES
     entry_point.cpp
     vulkan_app.cpp
     vulkan_fn.cpp
-    model.cpp
     resources.cpp
+    ./model/model.cpp
     )
 add_executable(VulkanRenderer ${SOURCES})
 target_include_directories(VulkanRenderer PRIVATE

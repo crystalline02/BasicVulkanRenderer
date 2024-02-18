@@ -190,19 +190,19 @@ entry_point.s:
 .PHONY : entry_point.s
 
 # target to build an object file
-model.obj:
-	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/model.obj
-.PHONY : model.obj
+model/model.obj:
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/model/model.obj
+.PHONY : model/model.obj
 
 # target to preprocess a source file
-model.i:
-	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/model.i
-.PHONY : model.i
+model/model.i:
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/model/model.i
+.PHONY : model/model.i
 
 # target to generate assembly for a file
-model.s:
-	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/model.s
-.PHONY : model.s
+model/model.s:
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/model/model.s
+.PHONY : model/model.s
 
 # target to build an object file
 resources.obj:
@@ -265,9 +265,9 @@ help:
 	@echo ... entry_point.obj
 	@echo ... entry_point.i
 	@echo ... entry_point.s
-	@echo ... model.obj
-	@echo ... model.i
-	@echo ... model.s
+	@echo ... model/model.obj
+	@echo ... model/model.i
+	@echo ... model/model.s
 	@echo ... resources.obj
 	@echo ... resources.i
 	@echo ... resources.s

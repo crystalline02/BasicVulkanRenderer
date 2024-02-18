@@ -7,7 +7,6 @@
 #include <limits>
 #include <algorithm>
 
-#include "model.h"
 #include "resources.h"
 
 void VulkanApp::run()
