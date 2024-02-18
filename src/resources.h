@@ -71,6 +71,7 @@ public:
     void createLogicalDevices();
     void createSwapChain();
     void createSwapChainImageViews();
+    void createColorResources();
     void createDepthResources();
     void createGraphicCommandPool();
     void allocateDrawCommandBuffers();
@@ -93,7 +94,7 @@ public:
     // public helper functions
     void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags requiredProperties, 
         VkBuffer& buffer, VkDeviceMemory& memory) const;
-    void createImage(int width, int height, VkFormat format, VkImageUsageFlags usage, uint32_t mipLevel,
+    void createImage(int width, int height, VkFormat format, VkImageUsageFlags usage, uint32_t mipLevel, VkSampleCountFlagBits samples,
         VkMemoryPropertyFlags requiredMemoryProperty, VkImage& image, VkDeviceMemory& imageMemory) const;
     void copyBuffer2Buffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size) const;
     void copyBuffer2Image(VkBuffer srcBuffer, VkImage dstImage, uint32_t width, uint32_t height) const;
@@ -140,7 +141,7 @@ private:
     void cleanUpSwapChain();
     void recreateSwapChain();
 private:
-    // instance
+    // class instance
     static Resources* instance;
 
     // Model
@@ -149,12 +150,12 @@ private:
     // window relate class variables
     GLFWwindow* m_window;
     uint32_t m_windowWidth = 1920, 
-    m_windowHeight = 1080;
+        m_windowHeight = 1080;
     uint32_t m_maxInflightFrames = 2;
     uint32_t m_currentFrame = 0;
     bool m_framebufferResized = false;
 
-    // vkInstance and it's subordinates
+    // vulkan instance
     VkInstance m_vkInstance;
     VkDebugUtilsMessengerEXT m_vkMessenger;
     std::vector<const char*> m_instanceExtensionNames;
@@ -165,28 +166,42 @@ private:
     const bool m_enbaleValidationLayer = false;  // Release
 #endif
     VkSurfaceKHR m_vkSurface;
+
+    // physcial device
     VkPhysicalDevice m_vkPhysicalDevice;
     VkPhysicalDeviceFeatures m_vkPhysicalDeviceFeature;
     VkPhysicalDeviceProperties m_vkPhysicalDeviceProperties;
 
-    // VkDevice and its surboradinates
+    // vulkan device
     VkDevice m_vkDevice;
     std::vector<const char*> m_deviceExtensionNames = {VK_KHR_SWAPCHAIN_EXTENSION_NAME};
+
+    // vulkan queue
     VkQueue m_graphicQueue;  // Queue supports graphic operations
     VkQueue m_vkPresentQueue;  // Queue supports presenting images to a vulkan surface
+
+    // swapchain resources
     VkSwapchainKHR m_vkSwapChain;
     std::vector<VkImage> m_swapChainImages;
     std::vector<VkImageView> m_swapChainImageViews;
     std::vector<VkFramebuffer> m_swapChainFrameBuffers;
     VkFormat m_swapChainImageFormat;
-    VkPresentModeKHR m_presentMode;
     VkExtent2D m_swapChainImageExtent;
+    VkPresentModeKHR m_presentMode;
+
+    // renderpass
     VkRenderPass m_vkRenderPass;
-    VkDescriptorSetLayout m_vkDescriptorSetLayout;
+
+    // descriptor set
     VkDescriptorPool m_vkDescriptorPool;
     std::vector<VkDescriptorSet> m_descriptorSets; 
+
+    // graphic pipeline 
     VkPipelineLayout m_vkPipelineLayout;
+    VkDescriptorSetLayout m_vkDescriptorSetLayout;
     VkPipeline m_vkPipeline;
+
+    // drawing command buffesr
     VkCommandPool m_graphicCommandPool;
     std::vector<VkCommandBuffer> m_drawCommandBuffers;
     
@@ -207,11 +222,16 @@ private:
     std::vector<VkDeviceMemory> m_uniformBufferMemories;
     std::vector<void*> m_uniformBuffersMapped;
 
-    // Depth resouces
+    // Depth resources
     VkImage m_depthStencilImage;
     VkImageView m_depthStencilImageView;
     VkDeviceMemory m_depthStencilImageMemory;
     VkFormat m_depthStencilImageFormat;
+
+    // Color resources
+    VkImage m_colorMSAAImage;
+    VkImageView m_colorMSAAImageView;
+    VkDeviceMemory m_colorMSAAImageMemory;
 
     // MSAA sample count
     VkSampleCountFlagBits m_MSAASampleCount;

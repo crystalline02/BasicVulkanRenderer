@@ -308,7 +308,7 @@ void Resources::createDepthResources()
     m_depthStencilImageFormat = findSupportedFormat({VK_FORMAT_D32_SFLOAT, VK_FORMAT_D32_SFLOAT_S8_UINT, 
         VK_FORMAT_D24_UNORM_S8_UINT}, VK_IMAGE_TILING_OPTIMAL, VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT);
     createImage(m_swapChainImageExtent.width, m_swapChainImageExtent.height, m_depthStencilImageFormat, VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT, 1, 
-        VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, m_depthStencilImage, m_depthStencilImageMemory);
+        VK_SAMPLE_COUNT_1_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, m_depthStencilImage, m_depthStencilImageMemory);
     createImageView(m_depthStencilImageView, m_depthStencilImage, m_depthStencilImageFormat, VK_IMAGE_ASPECT_DEPTH_BIT);
 }
 
@@ -740,7 +740,7 @@ void Resources::createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemo
 }
 
 void Resources::createImage(int width, int height, VkFormat format, VkImageUsageFlags usage, uint32_t mipLevel,
-    VkMemoryPropertyFlags requiredMemoryProperty, VkImage& image, VkDeviceMemory& imageMemory) const
+    VkSampleCountFlagBits samples, VkMemoryPropertyFlags requiredMemoryProperty, VkImage& image, VkDeviceMemory& imageMemory) const
 {
     VkImageCreateInfo imageCreateInfo = {};
     imageCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
@@ -751,7 +751,7 @@ void Resources::createImage(int width, int height, VkFormat format, VkImageUsage
     imageCreateInfo.extent.depth = 1;
     imageCreateInfo.mipLevels = mipLevel;
     imageCreateInfo.arrayLayers = 1;
-    imageCreateInfo.samples = VK_SAMPLE_COUNT_1_BIT;
+    imageCreateInfo.samples = samples;
     imageCreateInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
     imageCreateInfo.usage = usage;
     imageCreateInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
@@ -1470,7 +1470,7 @@ void Resources::createTexture(const char* filename, Texture& texture) const
     texture.mipLevels = glm::floor(glm::log2(static_cast<float_t>(glm::max(imageWidth, imageHeight)))) + 1;
     createImage(imageWidth, imageHeight, 
         VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_TRANSFER_SRC_BIT, 
-        texture.mipLevels, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, texture.image, texture.imageMemory);
+        texture.mipLevels, VK_SAMPLE_COUNT_1_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, texture.image, texture.imageMemory);
         
     transitionImageLayout(VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, texture.image, texture.mipLevels);
     
@@ -1651,4 +1651,12 @@ VkSampleCountFlagBits Resources::getMSAASampleCount() const
             return sampleCountFlagBit;
     }
     throw std::runtime_error("VK ERROR: Failed to get a valid MSAA sample count");
+}
+
+void Resources::createColorResources()
+{
+    createImage(m_swapChainImageExtent.width, m_swapChainImageExtent.height, m_swapChainImageFormat, 
+        VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT | VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, 1, m_MSAASampleCount, 
+        VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, m_colorMSAAImage, m_colorMSAAImageMemory);
+    createImageView(m_colorMSAAImageView, m_colorMSAAImage, m_swapChainImageFormat, VK_IMAGE_ASPECT_COLOR_BIT);
 }
