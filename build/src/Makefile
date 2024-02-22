@@ -205,6 +205,21 @@ model/model.s:
 .PHONY : model/model.s
 
 # target to build an object file
+particle/particle.obj:
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/particle/particle.obj
+.PHONY : particle/particle.obj
+
+# target to preprocess a source file
+particle/particle.i:
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/particle/particle.i
+.PHONY : particle/particle.i
+
+# target to generate assembly for a file
+particle/particle.s:
+	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/particle/particle.s
+.PHONY : particle/particle.s
+
+# target to build an object file
 resources.obj:
 	cd /d C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/resources.obj
 .PHONY : resources.obj
@@ -268,6 +283,9 @@ help:
 	@echo ... model/model.obj
 	@echo ... model/model.i
 	@echo ... model/model.s
+	@echo ... particle/particle.obj
+	@echo ... particle/particle.i
+	@echo ... particle/particle.s
 	@echo ... resources.obj
 	@echo ... resources.i
 	@echo ... resources.s

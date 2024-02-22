@@ -30,20 +30,21 @@ private:
     {
         std::optional<uint32_t> graphicFamily;
         std::optional<uint32_t> presentFamily;
+        std::optional<uint32_t> graphicComputeFamily;
 
         bool isComplete()
         {
-            return graphicFamily.has_value() && presentFamily.has_value();
+            return graphicFamily.has_value() && presentFamily.has_value() & graphicComputeFamily.has_value();
         }
 
         std::set<uint32_t> getUniqueFamilyInidces()
         {
-            return std::set<uint32_t>({graphicFamily.value(), presentFamily.value()});
+            return std::set<uint32_t>({graphicFamily.value(), presentFamily.value(), graphicComputeFamily.value()});
         }
 
         std::vector<uint32_t> getAllFamilyIndices()
         {
-            return std::vector<uint32_t>({graphicFamily.value(), presentFamily.value()});
+            return std::vector<uint32_t>({graphicFamily.value(), presentFamily.value(), graphicComputeFamily.value()});
         }
     };
 
@@ -76,6 +77,7 @@ public:
     void createGraphicCommandPool();
     void allocateDrawCommandBuffers();
     void createDescriptorSetLayout();
+    void createPipelineLayout();
     void createRenderPass();
     void createGraphicPipeline();
     void createSwapChainFrameBuffers();
@@ -87,7 +89,8 @@ public:
     void cleanUp();
 
     // public interface
-    bool isValidationLayerEnbaled() const{ return m_enableValidationLayer; }
+    bool isValidationLayerEnbaled() const { return m_enableValidationLayer; }
+    VkExtent2D windowSize() const { return {m_windowWidth, m_windowHeight}; }
     static Resources* get();
     bool m_complete = false;
 
@@ -107,6 +110,9 @@ public:
     void endSingleTimeCommandBuffer(VkCommandBuffer commandBuffer) const;
     void createVertexBuffer(std::vector<Vertex>& vertices, VkBuffer& vertexBuffer, VkDeviceMemory& vertexBufferMemory) const;
     void createIndexBuffer(std::vector<uint32_t>& indices, VkBuffer& indexBuffer, VkDeviceMemory& indexBufferMemory) const;
+    void createParticleSSBOs(std::vector<VkBuffer>& particleSSBOs, std::vector<VkDeviceMemory>& particleSSBOMemories, 
+        const std::vector<Particle>& particles) const;
+    void allocateParticleDescriptorSets(std::vector<VkDescriptorSet> particleDescriptorSets) const;
     void cleanUpTexture(const Texture& texture) const;
     void generateMipmaps(VkImage image, VkFormat format, uint32_t width, uint32_t height, uint32_t mipLevels) const;
 private:
@@ -136,7 +142,6 @@ private:
     std::vector<char> readShaderFile(const std::string filePath) const;
     VkShaderModule createShaderModule(std::vector<char> shaderBytes) const;
     void updateUniformBuffers(uint32_t frameIndex) const;
-    VkPipelineLayout createPipelineLayout() const;
     void recordDrawCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
     void cleanUpSwapChain();
     void recreateSwapChain();
@@ -176,9 +181,10 @@ private:
     VkDevice m_vkDevice;
     std::vector<const char*> m_deviceExtensionNames = {VK_KHR_SWAPCHAIN_EXTENSION_NAME};
 
-    // vulkan queue
-    VkQueue m_graphicQueue;  // Queue supports graphic operations
+    // vulkan queue families
+    VkQueue m_graphicQueue;  // Queue supports graphic operations(and definitly supports transfer opeartions)
     VkQueue m_vkPresentQueue;  // Queue supports presenting images to a vulkan surface
+    VkQueue m_graphicComputeQueue;  // Queue supports graphic operations and compution operations
 
     // swapchain resources
     VkSwapchainKHR m_vkSwapChain;
@@ -194,11 +200,12 @@ private:
 
     // descriptor set
     VkDescriptorPool m_vkDescriptorPool;
-    std::vector<VkDescriptorSet> m_descriptorSets; 
+    std::vector<VkDescriptorSet> m_drawDescriptorSets; 
 
     // graphic pipeline 
     VkPipelineLayout m_vkPipelineLayout;
-    VkDescriptorSetLayout m_vkDescriptorSetLayout;
+    VkDescriptorSetLayout m_drawDescriptorSetLayout;
+    VkDescriptorSetLayout m_particleDescriptorSetLayout;
     VkPipeline m_vkPipeline;
 
     // drawing command buffesr

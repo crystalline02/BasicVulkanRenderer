@@ -313,7 +313,7 @@ glfw: 3rdParty/glfw/src/CMakeFiles/glfw.dir/rule
 3rdParty/glfw/examples/CMakeFiles/boing.dir/all: 3rdParty/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\examples\CMakeFiles\boing.dir\build.make 3rdParty/glfw/examples/CMakeFiles/boing.dir/depend
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\examples\CMakeFiles\boing.dir\build.make 3rdParty/glfw/examples/CMakeFiles/boing.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=5,6,7 "Built target boing"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=6,7,8 "Built target boing"
 .PHONY : 3rdParty/glfw/examples/CMakeFiles/boing.dir/all
 
 # Build rule for subdir invocation for target.
@@ -391,7 +391,7 @@ heightmap: 3rdParty/glfw/examples/CMakeFiles/heightmap.dir/rule
 3rdParty/glfw/examples/CMakeFiles/offscreen.dir/all: 3rdParty/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\examples\CMakeFiles\offscreen.dir\build.make 3rdParty/glfw/examples/CMakeFiles/offscreen.dir/depend
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\examples\CMakeFiles\offscreen.dir\build.make 3rdParty/glfw/examples/CMakeFiles/offscreen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=60,61,62 "Built target offscreen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=61,62,63 "Built target offscreen"
 .PHONY : 3rdParty/glfw/examples/CMakeFiles/offscreen.dir/all
 
 # Build rule for subdir invocation for target.
@@ -443,12 +443,12 @@ particles: 3rdParty/glfw/examples/CMakeFiles/particles.dir/rule
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/all: 3rdParty/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\examples\CMakeFiles\sharing.dir\build.make 3rdParty/glfw/examples/CMakeFiles/sharing.dir/depend
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\examples\CMakeFiles\sharing.dir\build.make 3rdParty/glfw/examples/CMakeFiles/sharing.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=72,73,74,75 "Built target sharing"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=73,74,75 "Built target sharing"
 .PHONY : 3rdParty/glfw/examples/CMakeFiles/sharing.dir/all
 
 # Build rule for subdir invocation for target.
 3rdParty/glfw/examples/CMakeFiles/sharing.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 3rdParty/glfw/examples/CMakeFiles/sharing.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 0
 .PHONY : 3rdParty/glfw/examples/CMakeFiles/sharing.dir/rule
@@ -547,7 +547,7 @@ wave: 3rdParty/glfw/examples/CMakeFiles/wave.dir/rule
 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/all: 3rdParty/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\clipboard.dir\build.make 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/depend
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\clipboard.dir\build.make 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=8,9,10 "Built target clipboard"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=9,10,11 "Built target clipboard"
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/all
 
 # Build rule for subdir invocation for target.
@@ -573,7 +573,7 @@ clipboard: 3rdParty/glfw/tests/CMakeFiles/clipboard.dir/rule
 3rdParty/glfw/tests/CMakeFiles/events.dir/all: 3rdParty/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\events.dir\build.make 3rdParty/glfw/tests/CMakeFiles/events.dir/depend
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\events.dir\build.make 3rdParty/glfw/tests/CMakeFiles/events.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=16,17,18 "Built target events"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=17,18,19 "Built target events"
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/events.dir/all
 
 # Build rule for subdir invocation for target.
@@ -599,7 +599,7 @@ events: 3rdParty/glfw/tests/CMakeFiles/events.dir/rule
 3rdParty/glfw/tests/CMakeFiles/msaa.dir/all: 3rdParty/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\msaa.dir\build.make 3rdParty/glfw/tests/CMakeFiles/msaa.dir/depend
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\msaa.dir\build.make 3rdParty/glfw/tests/CMakeFiles/msaa.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=57,58,59 "Built target msaa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=58,59,60 "Built target msaa"
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/msaa.dir/all
 
 # Build rule for subdir invocation for target.
@@ -677,7 +677,7 @@ iconify: 3rdParty/glfw/tests/CMakeFiles/iconify.dir/rule
 3rdParty/glfw/tests/CMakeFiles/monitors.dir/all: 3rdParty/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\monitors.dir\build.make 3rdParty/glfw/tests/CMakeFiles/monitors.dir/depend
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\monitors.dir\build.make 3rdParty/glfw/tests/CMakeFiles/monitors.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=54,55,56 "Built target monitors"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=55,56,57 "Built target monitors"
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/monitors.dir/all
 
 # Build rule for subdir invocation for target.
@@ -703,12 +703,12 @@ monitors: 3rdParty/glfw/tests/CMakeFiles/monitors.dir/rule
 3rdParty/glfw/tests/CMakeFiles/reopen.dir/all: 3rdParty/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\reopen.dir\build.make 3rdParty/glfw/tests/CMakeFiles/reopen.dir/depend
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\reopen.dir\build.make 3rdParty/glfw/tests/CMakeFiles/reopen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=70,71 "Built target reopen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=70,71,72 "Built target reopen"
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/reopen.dir/all
 
 # Build rule for subdir invocation for target.
 3rdParty/glfw/tests/CMakeFiles/reopen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 3rdParty/glfw/tests/CMakeFiles/reopen.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 0
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/reopen.dir/rule
@@ -729,7 +729,7 @@ reopen: 3rdParty/glfw/tests/CMakeFiles/reopen.dir/rule
 3rdParty/glfw/tests/CMakeFiles/cursor.dir/all: 3rdParty/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\cursor.dir\build.make 3rdParty/glfw/tests/CMakeFiles/cursor.dir/depend
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\cursor.dir\build.make 3rdParty/glfw/tests/CMakeFiles/cursor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=11,12 "Built target cursor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=12,13 "Built target cursor"
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/cursor.dir/all
 
 # Build rule for subdir invocation for target.
@@ -755,7 +755,7 @@ cursor: 3rdParty/glfw/tests/CMakeFiles/cursor.dir/rule
 3rdParty/glfw/tests/CMakeFiles/empty.dir/all: 3rdParty/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\empty.dir\build.make 3rdParty/glfw/tests/CMakeFiles/empty.dir/depend
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\empty.dir\build.make 3rdParty/glfw/tests/CMakeFiles/empty.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=13,14,15 "Built target empty"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=14,15,16 "Built target empty"
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/empty.dir/all
 
 # Build rule for subdir invocation for target.
@@ -781,12 +781,12 @@ empty: 3rdParty/glfw/tests/CMakeFiles/empty.dir/rule
 3rdParty/glfw/tests/CMakeFiles/gamma.dir/all: 3rdParty/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\gamma.dir\build.make 3rdParty/glfw/tests/CMakeFiles/gamma.dir/depend
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\gamma.dir\build.make 3rdParty/glfw/tests/CMakeFiles/gamma.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=19,20,21 "Built target gamma"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=20,21 "Built target gamma"
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/gamma.dir/all
 
 # Build rule for subdir invocation for target.
 3rdParty/glfw/tests/CMakeFiles/gamma.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 3rdParty/glfw/tests/CMakeFiles/gamma.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 0
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/gamma.dir/rule
@@ -859,12 +859,12 @@ inputlag: 3rdParty/glfw/tests/CMakeFiles/inputlag.dir/rule
 3rdParty/glfw/tests/CMakeFiles/joysticks.dir/all: 3rdParty/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\joysticks.dir\build.make 3rdParty/glfw/tests/CMakeFiles/joysticks.dir/depend
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\joysticks.dir\build.make 3rdParty/glfw/tests/CMakeFiles/joysticks.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=52,53 "Built target joysticks"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=52,53,54 "Built target joysticks"
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/joysticks.dir/all
 
 # Build rule for subdir invocation for target.
 3rdParty/glfw/tests/CMakeFiles/joysticks.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 3rdParty/glfw/tests/CMakeFiles/joysticks.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 0
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/joysticks.dir/rule
@@ -885,12 +885,12 @@ joysticks: 3rdParty/glfw/tests/CMakeFiles/joysticks.dir/rule
 3rdParty/glfw/tests/CMakeFiles/opacity.dir/all: 3rdParty/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\opacity.dir\build.make 3rdParty/glfw/tests/CMakeFiles/opacity.dir/depend
 	$(MAKE) $(MAKESILENT) -f 3rdParty\glfw\tests\CMakeFiles\opacity.dir\build.make 3rdParty/glfw/tests/CMakeFiles/opacity.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=63,64,65 "Built target opacity"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=64,65 "Built target opacity"
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/opacity.dir/all
 
 # Build rule for subdir invocation for target.
 3rdParty/glfw/tests/CMakeFiles/opacity.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 3rdParty/glfw/tests/CMakeFiles/opacity.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 0
 .PHONY : 3rdParty/glfw/tests/CMakeFiles/opacity.dir/rule
@@ -1067,12 +1067,12 @@ windows: 3rdParty/glfw/tests/CMakeFiles/windows.dir/rule
 src/CMakeFiles/VulkanRenderer.dir/all: 3rdParty/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/depend
 	$(MAKE) $(MAKESILENT) -f src\CMakeFiles\VulkanRenderer.dir\build.make src/CMakeFiles/VulkanRenderer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=1,2,3,4 "Built target VulkanRenderer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles --progress-num=1,2,3,4,5 "Built target VulkanRenderer"
 .PHONY : src/CMakeFiles/VulkanRenderer.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/VulkanRenderer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 17
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/CMakeFiles/VulkanRenderer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ZhenKou\OneDrive\project\MyVulkanRenderer\build\CMakeFiles 0
 .PHONY : src/CMakeFiles/VulkanRenderer.dir/rule

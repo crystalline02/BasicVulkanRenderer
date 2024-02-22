@@ -5,6 +5,7 @@ set(SOURCES
     vulkan_fn.cpp
     resources.cpp
     ./model/model.cpp
+    ./particle/particle.cpp
     )
 add_executable(VulkanRenderer ${SOURCES})
 target_include_directories(VulkanRenderer PRIVATE

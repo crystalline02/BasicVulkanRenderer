@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/VulkanRenderer.dir/entry_point.obj.d"
   "CMakeFiles/VulkanRenderer.dir/model/model.obj"
   "CMakeFiles/VulkanRenderer.dir/model/model.obj.d"
+  "CMakeFiles/VulkanRenderer.dir/particle/particle.obj"
+  "CMakeFiles/VulkanRenderer.dir/particle/particle.obj.d"
   "CMakeFiles/VulkanRenderer.dir/resources.obj"
   "CMakeFiles/VulkanRenderer.dir/resources.obj.d"
   "CMakeFiles/VulkanRenderer.dir/vulkan_app.obj"

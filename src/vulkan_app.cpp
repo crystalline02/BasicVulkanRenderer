@@ -28,14 +28,17 @@ void VulkanApp::initVulkan()
     m_appResources->createWindowSurface();
     m_appResources->pickPhysicalDevice();
     m_appResources->createLogicalDevices();
+
     m_appResources->createSwapChain();
     m_appResources->createSwapChainImageViews();
+    m_appResources->createColorResources();
     m_appResources->createDepthResources();
 
     m_appResources->createGraphicCommandPool();
     m_appResources->allocateDrawCommandBuffers();
 
     m_appResources->createDescriptorSetLayout();
+    m_appResources->createPipelineLayout();
     m_appResources->createRenderPass();
     m_appResources->createGraphicPipeline();
     m_appResources->createSwapChainFrameBuffers();
