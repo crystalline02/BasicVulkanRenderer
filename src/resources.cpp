@@ -533,7 +533,7 @@ void Resources::createRenderPass()
 
 void Resources::createPipeline()
 {
-    // Create graphic pipeline for drawing scene
+    //// Create graphic pipeline for drawing scene
     // Create info for Shader stage
     std::vector<char> vertexShaderBytes = readShaderFile("./shaders/triangle_vert.spv");
     std::vector<char> fragmentShaderBytes = readShaderFile("./shaders/triangle_frag.spv");
@@ -699,37 +699,12 @@ void Resources::createPipeline()
         &graphicsPipelineCreateInfo, VK_NULL_HANDLE, &m_graphicPipeline) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create VkGraphicPipeline.");
 
-    // Create graphic pipeline for drawing particles
+    //// Create graphic pipeline for drawing particles
 
-    // Create compute pipeline for updating particles
-    std::vector<char> computeShaderBytes = readShaderFile("./shaders/particle_comp.spv");
-    VkShaderModule computeShaderModule = createShaderModule(computeShaderBytes);
-    VkPipelineShaderStageCreateInfo computeShaderStageCreateInfo = {
-        .sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO,
-        .stage = VK_SHADER_STAGE_COMPUTE_BIT,
-        .module = computeShaderModule,
-        .pName = "main",
-        .pSpecializationInfo = VK_NULL_HANDLE
-    };
+    //// Create compute pipeline for updating particles
 
-    createPipelineLayout(m_computePipelineLayout, m_particleDescriptorSetLayout);
-
-    VkComputePipelineCreateInfo computePipelineCreateInfo = {
-        .sType = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO,
-        .pNext = VK_NULL_HANDLE,
-        .flags = 0,
-        .stage = computeShaderStageCreateInfo,
-        .layout = m_computePipelineLayout,
-        .basePipelineHandle = VK_NULL_HANDLE,
-        .basePipelineIndex = 0
-    };
-
-    if(vkCreateComputePipelines(m_device, VK_NULL_HANDLE, 1, &computePipelineCreateInfo, VK_NULL_HANDLE, &m_computePipeline) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR: Failed to create VkComputePipeline");
-    
     vkDestroyShaderModule(m_device, vertexShaderModule, VK_NULL_HANDLE);
     vkDestroyShaderModule(m_device, fragmentShaderModule, VK_NULL_HANDLE);
-    vkDestroyShaderModule(m_device, computeShaderModule, VK_NULL_HANDLE);
 }
 
 void Resources::createSwapChainFrameBuffers()
@@ -1379,7 +1354,7 @@ VkFormat Resources::findSupportedFormat(std::vector<VkFormat> formatCandidates,
     throw std::runtime_error("VK ERROR: Failed to find a supported VkFormat.");
 }
 
-std::vector<char> Resources::readShaderFile(const std::string filePath) const
+std::vector<char> Resources::readShaderFile(const std::string filePath)
 {
     std::vector<char> buffer;
     std::ifstream ifs(filePath, std::ifstream::ate | std::ifstream::binary);
@@ -1979,7 +1954,7 @@ void Resources::createParticleUBOs(std::vector<VkBuffer>& particleUBOs,
 
 void Resources::recordComputeCommandBuffer(VkCommandBuffer commandBuffer)
 {
-    
+    m_particles->recordUpdateParticlesCommandBuffer(commandBuffer);
 }
 
 void Resources::recordUpdateParticleCommandBuffer(VkCommandBuffer commandBuffer, uint32_t particleCount) const

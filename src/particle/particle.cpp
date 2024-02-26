@@ -30,7 +30,7 @@ void ParticleGroup::initParticleGroup(uint32_t particleCount)
     m_resources->createParticleSSBOs(m_particleSSBOs, m_particleSSBOMemories, m_particles);
 }
 
-void ParticleGroup::recordUpdateCommandBuffer(VkCommandBuffer commandBuffer)
+void ParticleGroup::recordUpdateParticlesCommandBuffer(VkCommandBuffer commandBuffer)
 {
     m_resources->recordUpdateParticleCommandBuffer(commandBuffer, static_cast<uint32_t>(m_particles.size()));
 }
@@ -70,4 +70,32 @@ void ParticleGroup::cleanUp(VkDevice device, uint32_t maxInFlightFence)
         vkDestroyBuffer(device, m_particleSSBOs[i], VK_NULL_HANDLE);
         vkFreeMemory(device, m_particleSSBOMemories[i], VK_NULL_HANDLE);
     }
+}
+
+void ParticleGroup::createComputePipeline()
+{
+    std::vector<char> computeShaderBytes = Resources::readShaderFile("./shaders/particle_comp.spv");
+    VkShaderModule computeShaderModule = createShaderModule(computeShaderBytes);
+    VkPipelineShaderStageCreateInfo computeShaderStageCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO,
+        .stage = VK_SHADER_STAGE_COMPUTE_BIT,
+        .module = computeShaderModule,
+        .pName = "main",
+        .pSpecializationInfo = VK_NULL_HANDLE
+    };
+
+    createPipelineLayout(m_computePipelineLayout, m_particleDescriptorSetLayout);
+
+    VkComputePipelineCreateInfo computePipelineCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .flags = 0,
+        .stage = computeShaderStageCreateInfo,
+        .layout = m_computePipelineLayout,
+        .basePipelineHandle = VK_NULL_HANDLE,
+        .basePipelineIndex = 0
+    };
+
+    if(vkCreateComputePipelines(m_device, VK_NULL_HANDLE, 1, &computePipelineCreateInfo, VK_NULL_HANDLE, &m_computePipeline) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to create VkComputePipeline");
 }

@@ -22,10 +22,11 @@ public:
         uint32_t particleCount;
     };
     ParticleGroup(uint32_t particleCount);
-    void recordUpdateCommandBuffer(VkCommandBuffer commandBuffer);
+    void recordUpdateParticlesCommandBuffer(VkCommandBuffer commandBuffer);
     void allocateDescriptorSet(VkDescriptorPool descriptorPool);
     void allocateDrawCommandBuffers();
     void updateUniformBuffers(uint32_t frameIndex, UBOParticle uboParticle);
+    void createComputePipeline();
     uint32_t particleBufferSize() const { return m_particles.size() * sizeof(Particle); }
     void updateParticle();
     void cleanUp(VkDevice device, uint32_t maxInFlightFence);
@@ -40,7 +41,9 @@ private:
     std::vector<VkCommandBuffer> m_drawCommandBuffers;
     VkPipeline m_graphicPipeline,
         m_computePipeline;
-    VkPipelineLayout m_graphicPipelineLayout;
+    VkPipelineLayout m_graphicPipelineLayout,
+        m_computePipelineLayout;
+    VkDescriptorSetLayout m_descriptorSetLayout;
 
     Resources* m_resources;
 

@@ -97,6 +97,8 @@ public:
     bool m_complete = false;
 
     // public helper functions
+    static std::vector<char> readShaderFile(const std::string filePath);
+    VkShaderModule createShaderModule(std::vector<char> shaderBytes) const;
     void createImage(int width, int height, VkFormat format, VkImageUsageFlags usage, uint32_t mipLevel, VkSampleCountFlagBits samples,
         VkMemoryPropertyFlags requiredMemoryProperty, VkImage& image, VkDeviceMemory& imageMemory) const;
     void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags requiredProperties, 
@@ -149,8 +151,6 @@ private:
     VkFormat findSupportedFormat(std::vector<VkFormat> formatCandidates, 
         VkImageTiling tiling, 
         VkFormatFeatureFlags desiredFeatures) const;
-    std::vector<char> readShaderFile(const std::string filePath) const;
-    VkShaderModule createShaderModule(std::vector<char> shaderBytes) const;
     void updateUniformBuffers(uint32_t frameIndex) const;
     void recordDrawCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
     void recordComputeCommandBuffer(VkCommandBuffer commandBuffer);
