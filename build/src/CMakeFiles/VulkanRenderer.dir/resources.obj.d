@@ -426,4 +426,5 @@ src/CMakeFiles/VulkanRenderer.dir/resources.obj: \
  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtc/epsilon.inl \
  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/dual_quaternion.hpp \
  C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/dual_quaternion.inl \
- C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/hash.inl
+ C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/3rdParty/glm/glm/gtx/hash.inl \
+ C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/particle/particle.h

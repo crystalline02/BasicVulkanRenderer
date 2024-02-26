@@ -34,20 +34,20 @@ void VulkanApp::initVulkan()
     m_appResources->createColorResources();
     m_appResources->createDepthResources();
 
-    m_appResources->createGraphicCommandPool();
-    m_appResources->allocateDrawCommandBuffers();
+    m_appResources->createCommandPool();
+    m_appResources->allocateCommandBuffers();
 
     m_appResources->createDescriptorSetLayout();
-    m_appResources->createPipelineLayout();
     m_appResources->createRenderPass();
-    m_appResources->createGraphicPipeline();
+    m_appResources->createPipeline();
     m_appResources->createSwapChainFrameBuffers();
 
     m_appResources->createSyncObjects();
 
     m_appResources->createDescriptorPool();
     m_appResources->loadModel();
-    m_appResources->createUniformBuffers();
+    m_appResources->loadParticles();
+    m_appResources->createDrawUniformBuffers();
     m_appResources->allocateDescriptorSets();
 
     m_appResources->m_complete = true;

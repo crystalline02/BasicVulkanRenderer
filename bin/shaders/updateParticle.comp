@@ -1,0 +1,35 @@
+# version 460 core
+
+struct Particle
+{
+    vec2 position;
+    vec2 velosity;
+    vec4 color;
+};
+
+layout(set = 0, binding = 0) uniform ParticleUBO
+{
+    float deltaTime;
+    int particleCount;
+} particleUBO;
+
+layout(set = 0, binding = 1) readonly buffer particlesReadSSBO
+{
+    Particle particlesIn[];
+};
+
+layout(set = 0, binding = 2) writeonly buffer particlesWriteSBBO
+{
+    Particle particlesOut[];
+};
+
+layout(local_size_x = 256, local_size_y = 1, local_size_z = 1) in;
+
+void main()
+{
+    Particle particleIn = particlesIn[gl_GlobalInvocationID.x];
+    
+    particlesOut[gl_GlobalInvocationID.x].position = particleIn.position + particleIn.velosity * particleUBO.deltaTime;
+    particlesOut[gl_GlobalInvocationID.x].velosity = particleIn.velosity - 0.001f * normalize(particleIn.velosity); 
+    particlesOut[gl_GlobalInvocationID.x].color = particleIn.color;
+}

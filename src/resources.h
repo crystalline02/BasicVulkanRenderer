@@ -16,8 +16,10 @@
 
 // Forward declaration
 class Model;
+class ParticleGroup;
 struct Vertex;
 struct Texture;
+class Particle;
 
 class Resources
 {
@@ -74,16 +76,16 @@ public:
     void createSwapChainImageViews();
     void createColorResources();
     void createDepthResources();
-    void createGraphicCommandPool();
-    void allocateDrawCommandBuffers();
+    void createCommandPool();
+    void allocateCommandBuffers();
     void createDescriptorSetLayout();
-    void createPipelineLayout();
     void createRenderPass();
-    void createGraphicPipeline();
+    void createPipeline();
     void createSwapChainFrameBuffers();
     void createSyncObjects();
     void loadModel();
-    void createUniformBuffers();
+    void loadParticles();
+    void createDrawUniformBuffers();
     void createDescriptorPool();
     void allocateDescriptorSets();
     void cleanUp();
@@ -95,10 +97,10 @@ public:
     bool m_complete = false;
 
     // public helper functions
-    void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags requiredProperties, 
-        VkBuffer& buffer, VkDeviceMemory& memory) const;
     void createImage(int width, int height, VkFormat format, VkImageUsageFlags usage, uint32_t mipLevel, VkSampleCountFlagBits samples,
         VkMemoryPropertyFlags requiredMemoryProperty, VkImage& image, VkDeviceMemory& imageMemory) const;
+    void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags requiredProperties, 
+        VkBuffer& buffer, VkDeviceMemory& memory) const;
     void copyBuffer2Buffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size) const;
     void copyBuffer2Image(VkBuffer srcBuffer, VkImage dstImage, uint32_t width, uint32_t height) const;
     void transitionImageLayout(VkImageLayout oldLayout, VkImageLayout newLayout, VkImage image, uint32_t mipLevels) const;
@@ -110,11 +112,19 @@ public:
     void endSingleTimeCommandBuffer(VkCommandBuffer commandBuffer) const;
     void createVertexBuffer(std::vector<Vertex>& vertices, VkBuffer& vertexBuffer, VkDeviceMemory& vertexBufferMemory) const;
     void createIndexBuffer(std::vector<uint32_t>& indices, VkBuffer& indexBuffer, VkDeviceMemory& indexBufferMemory) const;
-    void createParticleSSBOs(std::vector<VkBuffer>& particleSSBOs, std::vector<VkDeviceMemory>& particleSSBOMemories, 
+    void createParticleUBOs(std::vector<VkBuffer>& particleUBOs, 
+        std::vector<VkDeviceMemory>& paritcleUBOMemories,
+        std::vector<void*>& particleUBOMapped);
+    void createParticleSSBOs(std::vector<VkBuffer>& particleSSBOs, 
+        std::vector<VkDeviceMemory>& particleSSBOMemories,
         const std::vector<Particle>& particles) const;
-    void allocateParticleDescriptorSets(std::vector<VkDescriptorSet> particleDescriptorSets) const;
     void cleanUpTexture(const Texture& texture) const;
     void generateMipmaps(VkImage image, VkFormat format, uint32_t width, uint32_t height, uint32_t mipLevels) const;
+    void allocateParticleDescriptorSets(std::vector<VkDescriptorSet>& particleDescriptorSets,
+        const std::vector<VkBuffer>& particleUBOs, 
+        const std::vector<VkBuffer>& particleSSBOs) const;
+    void allocateDrawParticleCommanBuffers(std::vector<VkCommandBuffer> commandBuffers) const;
+    void recordUpdateParticleCommandBuffer(VkCommandBuffer commandBuffer, uint32_t particleCount) const;
 private:
     // Callback funtions
     static VKAPI_ATTR VkBool32 VKAPI_CALL debugMessageCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
@@ -143,14 +153,19 @@ private:
     VkShaderModule createShaderModule(std::vector<char> shaderBytes) const;
     void updateUniformBuffers(uint32_t frameIndex) const;
     void recordDrawCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
+    void recordComputeCommandBuffer(VkCommandBuffer commandBuffer);
     void cleanUpSwapChain();
     void recreateSwapChain();
+    void createPipelineLayout(VkPipelineLayout& pipelineLayout, VkDescriptorSetLayout descriptorSetLayout);
 private:
     // class instance
     static Resources* instance;
 
     // Model
     Model* m_model;
+
+    // Particle group
+    ParticleGroup* m_particles;
 
     // window relate class variables
     GLFWwindow* m_window;
@@ -173,12 +188,12 @@ private:
     VkSurfaceKHR m_vkSurface;
 
     // physcial device
-    VkPhysicalDevice m_vkPhysicalDevice;
-    VkPhysicalDeviceFeatures m_vkPhysicalDeviceFeature;
-    VkPhysicalDeviceProperties m_vkPhysicalDeviceProperties;
+    VkPhysicalDevice m_physicalDevice;
+    VkPhysicalDeviceFeatures m_physicalDeviceFeature;
+    VkPhysicalDeviceProperties m_physicalDeviceProperties;
 
     // vulkan device
-    VkDevice m_vkDevice;
+    VkDevice m_device;
     std::vector<const char*> m_deviceExtensionNames = {VK_KHR_SWAPCHAIN_EXTENSION_NAME};
 
     // vulkan queue families
@@ -196,28 +211,34 @@ private:
     VkPresentModeKHR m_presentMode;
 
     // renderpass
-    VkRenderPass m_vkRenderPass;
+    VkRenderPass m_renderPass;
 
     // descriptor set
-    VkDescriptorPool m_vkDescriptorPool;
+    VkDescriptorPool m_descriptorPool;
     std::vector<VkDescriptorSet> m_drawDescriptorSets; 
 
-    // graphic pipeline 
-    VkPipelineLayout m_vkPipelineLayout;
-    VkDescriptorSetLayout m_drawDescriptorSetLayout;
-    VkDescriptorSetLayout m_particleDescriptorSetLayout;
-    VkPipeline m_vkPipeline;
+    // pipeline 
+    VkPipelineLayout m_graphicPipelineLayout,
+        m_computePipelineLayout;
+    VkDescriptorSetLayout m_drawDescriptorSetLayout, 
+        m_particleDescriptorSetLayout;
+    VkPipeline m_graphicPipeline,
+        m_computePipeline;
 
-    // drawing command buffesr
-    VkCommandPool m_graphicCommandPool;
-    std::vector<VkCommandBuffer> m_drawCommandBuffers;
+    // command buffers
+    VkCommandPool m_graphicCommandPool, 
+        m_computeCommandPool;
+    std::vector<VkCommandBuffer> m_drawCommandBuffers,
+        m_computeCommandBuffers;
     
-    // Semaphore and fence
-    std::vector<VkSemaphore> m_acquireImageSemaphores;
-    std::vector<VkSemaphore> m_drawSemaphores;
-    std::vector<VkFence> m_inFlightFences;
+    // synchronization primitives
+    std::vector<VkSemaphore> m_acquireImageSemaphores,
+        m_drawSemaphores,
+        m_computeCompleteSemaphores;
+    std::vector<VkFence> m_inFlightFences,
+        m_computeInFlightFences;
 
-    struct UBOMatrices
+    struct UBOProjectionMatrices
     {
         alignas(16) glm::mat4 model;  // alignment:16B, size:64B
         alignas(16) glm::mat4 view;  // alignment:16B, size:64B
