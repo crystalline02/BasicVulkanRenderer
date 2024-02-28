@@ -21,7 +21,7 @@ void ParticleGroup::initParticleGroup(uint32_t particleCount)
             posY = (dist(rndEngine) - 0.5f) * .1f,
             posZ = dist(rndEngine) * 0.05f;
 
-        float velR = 3.f * glm::sqrt(dist(rndEngine));
+        float velR = 2.f * glm::sqrt(dist(rndEngine));
         float velTheta = 2.f * 3.1415926535f * dist(rndEngine);
         float velPhy = 3.1415926535f * dist(rndEngine) * 0.25f;
         float velX = velR * glm::sin(velPhy) * glm::cos(velTheta),

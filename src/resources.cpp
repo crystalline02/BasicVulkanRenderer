@@ -32,8 +32,9 @@ void Resources::initWindow()
     glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
     m_window = glfwCreateWindow(m_windowWidth, m_windowHeight, "Vulkan Renderer", VK_NULL_HANDLE, VK_NULL_HANDLE);
-    glfwSetFramebufferSizeCallback(m_window, framebufferResizeCallback);
     glfwSetWindowUserPointer(m_window, this);
+    glfwSetFramebufferSizeCallback(m_window, framebufferResizeCallback);
+    glfwSetMouseButtonCallback(m_window, mouseButtonCallback);
 }
 
 void Resources::recordComputeCommandBuffer(VkCommandBuffer commandBuffer)
@@ -70,7 +71,8 @@ void Resources::drawFrame()
     vkResetCommandBuffer(m_computeCommandBuffers[m_currentFrameIndex], 0);
 
     //// Record and submit compute command buffer
-    recordComputeCommandBuffer(m_computeCommandBuffers[m_currentFrameIndex]);
+    if(m_mouseLeftButtonDown)
+        recordComputeCommandBuffer(m_computeCommandBuffers[m_currentFrameIndex]);
     VkSubmitInfo computeSubmitInfo = {
         .sType = VK_STRUCTURE_TYPE_SUBMIT_INFO,
         .pNext = VK_NULL_HANDLE,
@@ -1153,7 +1155,13 @@ VKAPI_ATTR VkBool32 VKAPI_CALL Resources::debugMessageCallback(VkDebugUtilsMessa
 void Resources::framebufferResizeCallback(GLFWwindow *window, int width, int height)
 {
     Resources* app = reinterpret_cast<Resources*>(glfwGetWindowUserPointer(window));
-    app->m_framebufferResized = true;
+    app->m_framebufferResized = VK_TRUE;
+}
+
+void Resources::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
+{
+    Resources* app = reinterpret_cast<Resources*>(glfwGetWindowUserPointer(window));
+    app->m_mouseLeftButtonDown = VK_TRUE;
 }
 
 bool Resources::checkInstanceValidationLayersSupported(std::vector<const char*> validationLayerNames) const

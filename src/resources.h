@@ -154,6 +154,7 @@ private:
         const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
         void* pUserData);
     static void framebufferResizeCallback(GLFWwindow* window, int width, int height);
+    static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 
     // private helper functions
     void createPipelineLayout(VkPipelineLayout& pipelineLayout, VkDescriptorSetLayout descriptorSetLayout) const;
@@ -195,7 +196,8 @@ private:
         m_windowHeight = 1080;
     uint32_t m_maxInflightFrames = 2;
     uint32_t m_currentFrameIndex = 0;
-    bool m_framebufferResized = false;
+    VkBool32 m_framebufferResized = VK_FALSE;
+    VkBool32 m_mouseLeftButtonDown = VK_FALSE;
 
     // time related class varables
     double m_timeLastFrame = 0.f,
