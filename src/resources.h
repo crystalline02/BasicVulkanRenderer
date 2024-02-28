@@ -258,7 +258,7 @@ private:
     std::vector<VkSemaphore> m_acquireImageSemaphores,
         m_drawSemaphores,
         m_computeCompleteSemaphores;
-    std::vector<VkFence> m_inFlightFences,
+    std::vector<VkFence> m_graphicInFlightFences,
         m_computeInFlightFences;
 
     struct UBOProjectionMatrices

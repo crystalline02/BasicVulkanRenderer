@@ -17,5 +17,5 @@ void main()
     gl_Position = matrices.projection * matrices.view * matrices.model * vec4(aPos, 1.f);
     particleColor = aColor;
 
-    gl_PointSize = 3.0f;
+    gl_PointSize = 4.0f;
 }

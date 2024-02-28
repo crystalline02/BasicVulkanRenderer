@@ -8,9 +8,9 @@ class Resources;
 
 struct Particle
 {
-    glm::vec3 position;
-    glm::vec4 color;
-    glm::vec3 velosity;
+    alignas(16) glm::vec3 position;  // algnment: 16B, size: 12B
+    glm::vec4 color;  // algnment: 16B, size: 12B
+    alignas(16) glm::vec3 velosity;  // algnment: 16B, size: 12B
 };
 
 class ParticleGroup

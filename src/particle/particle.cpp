@@ -17,14 +17,18 @@ void ParticleGroup::initParticleGroup(uint32_t particleCount)
     m_particles.resize(particleCount);
     for(uint32_t i = 0; i < particleCount; ++i)
     {
-        float r = 0.5f * glm::sqrt(dist(rndEngine));
-        float theta = 2.f * 3.1415926535 * dist(rndEngine);
-        float phy = 2.f * 3.1415926835 * dist(rndEngine);
-        float x = r * glm::cos(phy) * glm::cos(theta);
-        float z = r * glm::cos(phy) * glm::sin(theta);
-        float y = r * glm::sin(phy);
-        m_particles[i].position = {x, y, z};
-        m_particles[i].velosity = glm::vec3(0.f, 0.25f, 0.f);
+        float posX = (dist(rndEngine) - 0.5f) * 1.6f,
+            posY = (dist(rndEngine) - 0.5f) * 1.6f,
+            posZ = dist(rndEngine) * 2.2f + 1.f;
+
+        float velR = 3.f * dist(rndEngine);
+        float velTheta = 2.f * 3.1415926535f * dist(rndEngine);
+        float velPhy = 3.1415926535f * dist(rndEngine);
+        float velX = velR * glm::sin(velPhy) * glm::cos(velTheta),
+            velY = velR * glm::sin(velPhy) * glm::sin(velTheta),
+            velZ = velR * glm::cos(velPhy);
+        m_particles[i].position = {posX, posY, posZ};
+        m_particles[i].velosity = {velX, velY, velZ};
         m_particles[i].color = {dist(rndEngine), dist(rndEngine), dist(rndEngine), 1.f};
     }
     

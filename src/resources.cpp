@@ -45,24 +45,24 @@ void Resources::recordComputeCommandBuffer(VkCommandBuffer commandBuffer)
         .pInheritanceInfo = VK_NULL_HANDLE
     };
     if(vkBeginCommandBuffer(commandBuffer, &beginInfo) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR: Failed to begin a command buffer.");
+        throw std::runtime_error("VK ERROR: Failed to begin recording compute command buffer.");
 
     // Record update particles commandBuffer
     m_particles->cmdUpdateParticles(commandBuffer, m_currentFrameIndex);
 
     if(vkEndCommandBuffer(commandBuffer) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR:Failed to end a command buffer");
+        throw std::runtime_error("VK ERROR:Failed to end recording compute command buffer.");
 }
 
 void Resources::drawFrame()
 {
-    // Wait for m_inFlightFence to be signaled.So that we won't record the command buffer in the next frame 
-    // while the GPU is still using the command buffer in current frame.
-    vkWaitForFences(m_device, 1, &m_inFlightFences[m_currentFrameIndex], VK_TRUE, UINT64_MAX);
+    // Wait for inFlightFence to be signaled.So that we won't record the command buffer in the next frame 
+    // while the GPU is still using the command buffer in current frame(which is to be recorded and used as the next frame).
+    vkWaitForFences(m_device, 1, &m_graphicInFlightFences[m_currentFrameIndex], VK_TRUE, UINT64_MAX);
     vkWaitForFences(m_device, 1, &m_computeInFlightFences[m_currentFrameIndex], VK_TRUE, UINT64_MAX);
 
     // Reset fence to unsignaled
-    vkResetFences(m_device, 1, &m_inFlightFences[m_currentFrameIndex]);
+    vkResetFences(m_device, 1, &m_graphicInFlightFences[m_currentFrameIndex]);
     vkResetFences(m_device, 1, &m_computeInFlightFences[m_currentFrameIndex]);
 
     // Reset commandbuffer
@@ -121,7 +121,7 @@ void Resources::drawFrame()
         .signalSemaphoreCount = 1,
         .pSignalSemaphores = &m_drawSemaphores[m_currentFrameIndex]
     };
-    if(vkQueueSubmit(m_graphicQueue, 1, &graphicSubmitInfo, m_inFlightFences[m_currentFrameIndex]) != VK_SUCCESS)
+    if(vkQueueSubmit(m_graphicQueue, 1, &graphicSubmitInfo, m_graphicInFlightFences[m_currentFrameIndex]) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to submit draw commandBuffer to graphic queue.");
 
     // Present scene image to screen
@@ -780,7 +780,7 @@ void Resources::createSyncObjects()
 {
     m_acquireImageSemaphores.resize(m_maxInflightFrames);
     m_drawSemaphores.resize(m_maxInflightFrames);
-    m_inFlightFences.resize(m_maxInflightFrames);
+    m_graphicInFlightFences.resize(m_maxInflightFrames);
     m_computeCompleteSemaphores.resize(m_maxInflightFrames);
     m_computeInFlightFences.resize(m_maxInflightFrames);
 
@@ -794,7 +794,7 @@ void Resources::createSyncObjects()
     {
         if((vkCreateSemaphore(m_device, &semaphoreCreateInfo, VK_NULL_HANDLE, &m_acquireImageSemaphores[i]) != VK_SUCCESS) ||
             (vkCreateSemaphore(m_device, &semaphoreCreateInfo, VK_NULL_HANDLE, &m_drawSemaphores[i]) != VK_SUCCESS) || 
-            (vkCreateFence(m_device, &fenceCreateInfo, VK_NULL_HANDLE, &m_inFlightFences[i]) != VK_SUCCESS) ||
+            (vkCreateFence(m_device, &fenceCreateInfo, VK_NULL_HANDLE, &m_graphicInFlightFences[i]) != VK_SUCCESS) ||
             (vkCreateSemaphore(m_device, &semaphoreCreateInfo, VK_NULL_HANDLE, &m_computeCompleteSemaphores[i]) != VK_SUCCESS) ||
             (vkCreateFence(m_device, &fenceCreateInfo, VK_NULL_HANDLE, &m_computeInFlightFences[i]) != VK_SUCCESS))
             throw std::runtime_error("VK ERROR: Failed to create VkSemaphore or VkFence.");
@@ -1468,7 +1468,7 @@ void Resources::updateUniformBuffers()
 
     // update draw shader ubo
     UBOProjectionMatrices uboProjectionMatrices;
-    uboProjectionMatrices.model = glm::rotate(glm::mat4(1.f), glm::radians(90.f) * (float)m_timeCurrentFrame, glm::vec3(0.f, 0.f, 1.f));
+    uboProjectionMatrices.model = glm::rotate(glm::mat4(1.f), glm::radians(90.f) * (float)m_timeCurrentFrame * 0.2f, glm::vec3(0.f, 0.f, 1.f));
     uboProjectionMatrices.view = glm::lookAt(glm::vec3(2.f, 2.f, 2.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 0.f, -1.f));
     uboProjectionMatrices.projection = glm::perspective(glm::radians(45.f), 
         float(m_swapChainImageExtent.width) / m_swapChainImageExtent.height,
@@ -1533,7 +1533,7 @@ void Resources::recordDrawCommandBuffer(VkCommandBuffer commandBuffer, uint32_t 
     vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
 
     // Record `draw` command
-    // m_model->cmdDrawIndexed(commandBuffer);
+    m_model->cmdDrawIndexed(commandBuffer);
 
     // Record `draw particles` command
     m_particles->cmdDrawParticles(commandBuffer, m_currentFrameIndex);
@@ -1636,7 +1636,7 @@ void Resources::cleanUp()
     
     for(uint32_t i = 0; i < m_maxInflightFrames; ++i)
     {
-        vkDestroyFence(m_device, m_inFlightFences[i], VK_NULL_HANDLE);
+        vkDestroyFence(m_device, m_graphicInFlightFences[i], VK_NULL_HANDLE);
         vkDestroyFence(m_device, m_computeInFlightFences[i], VK_NULL_HANDLE);
         vkDestroySemaphore(m_device, m_acquireImageSemaphores[i], VK_NULL_HANDLE);
         vkDestroySemaphore(m_device, m_computeCompleteSemaphores[i], VK_NULL_HANDLE);
