@@ -11,22 +11,23 @@ void ParticleGroup::initParticleGroup(uint32_t particleCount)
     m_resources = Resources::get();
 
     std::default_random_engine rndEngine((unsigned)time(nullptr));
-    std::uniform_real_distribution<float> dist(0.1f, 1.f);
+    std::uniform_real_distribution<float> dist(0.f, 1.f);
 
     // Fill in particle data
     m_particles.resize(particleCount);
     for(uint32_t i = 0; i < particleCount; ++i)
     {
-        float posX = (dist(rndEngine) - 0.5f) * 1.6f,
-            posY = (dist(rndEngine) - 0.5f) * 1.6f,
-            posZ = dist(rndEngine) * 2.2f + 1.f;
+        float posX = (dist(rndEngine) - 0.5f) * .1f,
+            posY = (dist(rndEngine) - 0.5f) * .1f,
+            posZ = dist(rndEngine) * 2.2f + 1.8f;
 
-        float velR = 3.f * dist(rndEngine);
+        float velR = 3.f * glm::sqrt(dist(rndEngine));
         float velTheta = 2.f * 3.1415926535f * dist(rndEngine);
         float velPhy = 3.1415926535f * dist(rndEngine);
         float velX = velR * glm::sin(velPhy) * glm::cos(velTheta),
             velY = velR * glm::sin(velPhy) * glm::sin(velTheta),
             velZ = velR * glm::cos(velPhy);
+
         m_particles[i].position = {posX, posY, posZ};
         m_particles[i].velosity = {velX, velY, velZ};
         m_particles[i].color = {dist(rndEngine), dist(rndEngine), dist(rndEngine), 1.f};

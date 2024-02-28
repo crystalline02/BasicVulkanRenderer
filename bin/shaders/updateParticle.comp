@@ -25,27 +25,42 @@ layout(std140, set = 0, binding = 2) writeonly buffer particlesWriteSBBO
 
 layout(local_size_x = 256, local_size_y = 1, local_size_z = 1) in;
 
+const float dampingFactor = 0.8f;
+const float k = 0.6f;
+
 void main()
 {
     // if(gl_GlobalInvocationID.x > particleUBO.particleCount) return;
     uint index = gl_GlobalInvocationID.x;
     Particle particleIn = particlesIn[index];
 
-    vec3 newPos = particleIn.position + particleIn.velosity * particleUBO.deltaTime;
-    vec3 a = vec3(0.f, 0.f, -0.9f) + normalize(particleIn.velosity) * (-length(particleIn.velosity) * 0.9f);
-    vec3 newVelosity = particleIn.velosity + a * particleUBO.deltaTime;
-    vec4 newColor = particleIn.color;
-    if(newPos.z < 0.f)
+    vec3 newPos, newVelosity;
+    vec4 newColor;
+    if(length(particleIn.velosity) == 0)
     {
-        newPos.z = 0.f;
-        newVelosity.z *= -0.8f;
+        newPos = particleIn.position;
+        newVelosity = particleIn.velosity;
+        newColor = particleIn.color;
     }
+    else
+    {
+        newPos = particleIn.position + particleIn.velosity * particleUBO.deltaTime;
+        vec3 a = vec3(0.f, 0.f, -0.9f) + normalize(particleIn.velosity) * (-length(particleIn.velosity) * k);
+        newVelosity = particleIn.velosity + a * particleUBO.deltaTime;
+        newColor = particleIn.color;
+        
+        if(newPos.z < 0.f)
+        {
+            newPos.z = 0.f;
+            newVelosity.z *= -1.f * dampingFactor;
+        }
+
+        if(abs(newPos.z) < 0.05f && length(newVelosity) < 0.005f)
+            newVelosity = vec3(0.f);
+    }
+
     
     particlesOut[gl_GlobalInvocationID.x].position = newPos;
     particlesOut[gl_GlobalInvocationID.x].velosity = newVelosity;
     particlesOut[gl_GlobalInvocationID.x].color = newColor;
-
-    // particlesOut[index].position = particleIn.position + vec3(0.01f, 0.f, 0.f);
-    // particlesOut[index].color = particleIn.color; 
-    // particlesOut[index].velosity = particleIn.velosity;
 }
