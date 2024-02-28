@@ -4,7 +4,7 @@
 
 #include <random>
 #include <time.h>
-
+#include <iostream>
 
 void ParticleGroup::initParticleGroup(uint32_t particleCount)
 {
@@ -19,45 +19,60 @@ void ParticleGroup::initParticleGroup(uint32_t particleCount)
     {
         float r = 0.5f * glm::sqrt(dist(rndEngine));
         float theta = 2.f * 3.1415926535 * dist(rndEngine);
-        float x = r * glm::cos(theta) * (m_resources->windowSize().height / m_resources->windowSize().width);
-        float y = r * glm::sin(theta);
-        m_particles[i].position = {x, y};
-        m_particles[i].velosity = glm::normalize(m_particles[i].position) * 0.00025f;
+        float phy = 2.f * 3.1415926835 * dist(rndEngine);
+        float x = r * glm::cos(phy) * glm::cos(theta);
+        float z = r * glm::cos(phy) * glm::sin(theta);
+        float y = r * glm::sin(phy);
+        m_particles[i].position = {x, y, z};
+        m_particles[i].velosity = glm::vec3(0.f, 0.25f, 0.f);
         m_particles[i].color = {dist(rndEngine), dist(rndEngine), dist(rndEngine), 1.f};
     }
-
+    
     m_resources->createParticleUBOs(m_particleUBOs, m_particleUBOMemories, m_particleUBOMapped);
     m_resources->createParticleSSBOs(m_particleSSBOs, m_particleSSBOMemories, m_particles);
 }
 
-void ParticleGroup::recordUpdateParticlesCommandBuffer(VkCommandBuffer commandBuffer)
+void ParticleGroup::cmdUpdateParticles(VkCommandBuffer commandBuffer, uint32_t frameIndex)
 {
-    m_resources->recordUpdateParticleCommandBuffer(commandBuffer, static_cast<uint32_t>(m_particles.size()));
+    m_resources->cmdUpdateParticles(commandBuffer, 
+        m_computePipeline, 
+        m_computePipelineLayout, 
+        m_computeDescriptorSets[frameIndex], 
+        static_cast<uint32_t>(m_particles.size()));
 }
 
-ParticleGroup::ParticleGroup(uint32_t particleCount)
+void ParticleGroup::cmdDrawParticles(VkCommandBuffer commandBuffer, uint32_t frameIndex)
 {
-    initParticleGroup(particleCount);
+    m_resources->cmdDrawParticles(commandBuffer, 
+        m_graphicPipeline,
+        m_graphicPipelineLayout,
+        m_particleSSBOs[frameIndex], 
+        m_graphicDescriptorSets[frameIndex],
+        static_cast<uint32_t>(m_particles.size()));
 }
 
-void ParticleGroup::allocateDescriptorSet(VkDescriptorPool descriptorPool)
+ParticleGroup::ParticleGroup()
 {
-    m_resources->allocateParticleDescriptorSets(m_particleDescriptorSets, m_particleUBOs, m_particleSSBOs);
+    m_resources = Resources::get();
 }
 
-void ParticleGroup::updateParticle()
+void ParticleGroup::allocateDescriptorSet()
 {
-
+    m_resources->allocateParticleDescriptorSets(m_computeDescriptorSets,
+        m_graphicDescriptorSets, 
+        m_particleUBOs, 
+        m_particleSSBOs, 
+        m_graphicDescriptorSetLayout,
+        m_computeDescriptorSetLayout);
 }
 
-void ParticleGroup::updateUniformBuffers(uint32_t frameIndex, UBOParticle uboParticle)
+void ParticleGroup::updateUniformBuffers(uint32_t frameIndex, float deltaTime)
 {
-    memcpy(m_particleUBOs[frameIndex], &uboParticle, sizeof(UBOParticle));
-}
-
-void ParticleGroup::allocateDrawCommandBuffers()
-{
-    m_resources->allocateDrawParticleCommanBuffers(m_drawCommandBuffers);
+    UBOParticle uboParticle = {
+        .deltaTime = deltaTime,
+        .particleCount = static_cast<uint32_t>(m_particles.size())
+    };
+    memcpy(m_particleUBOMapped[frameIndex], &uboParticle, sizeof(UBOParticle));
 }
 
 void ParticleGroup::cleanUp(VkDevice device, uint32_t maxInFlightFence)
@@ -70,32 +85,25 @@ void ParticleGroup::cleanUp(VkDevice device, uint32_t maxInFlightFence)
         vkDestroyBuffer(device, m_particleSSBOs[i], VK_NULL_HANDLE);
         vkFreeMemory(device, m_particleSSBOMemories[i], VK_NULL_HANDLE);
     }
+    vkDestroyDescriptorSetLayout(device, m_computeDescriptorSetLayout, VK_NULL_HANDLE);
+    vkDestroyDescriptorSetLayout(device, m_graphicDescriptorSetLayout, VK_NULL_HANDLE);
+    vkDestroyPipelineLayout(device, m_graphicPipelineLayout, VK_NULL_HANDLE);
+    vkDestroyPipelineLayout(device, m_computePipelineLayout, VK_NULL_HANDLE);
+    vkDestroyPipeline(device, m_graphicPipeline, VK_NULL_HANDLE);
+    vkDestroyPipeline(device, m_computePipeline, VK_NULL_HANDLE);
+}
+
+void ParticleGroup::createGraphicPipeline()
+{
+    m_resources->createParticleGraphicPipeline(m_graphicPipeline, m_graphicPipelineLayout, m_graphicDescriptorSetLayout);
+}
+
+void ParticleGroup::createDescriptorSetLayout()
+{
+    m_resources->createParticlesDescriptorSetLayout(m_computeDescriptorSetLayout, m_graphicDescriptorSetLayout);
 }
 
 void ParticleGroup::createComputePipeline()
 {
-    std::vector<char> computeShaderBytes = Resources::readShaderFile("./shaders/particle_comp.spv");
-    VkShaderModule computeShaderModule = createShaderModule(computeShaderBytes);
-    VkPipelineShaderStageCreateInfo computeShaderStageCreateInfo = {
-        .sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO,
-        .stage = VK_SHADER_STAGE_COMPUTE_BIT,
-        .module = computeShaderModule,
-        .pName = "main",
-        .pSpecializationInfo = VK_NULL_HANDLE
-    };
-
-    createPipelineLayout(m_computePipelineLayout, m_particleDescriptorSetLayout);
-
-    VkComputePipelineCreateInfo computePipelineCreateInfo = {
-        .sType = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO,
-        .pNext = VK_NULL_HANDLE,
-        .flags = 0,
-        .stage = computeShaderStageCreateInfo,
-        .layout = m_computePipelineLayout,
-        .basePipelineHandle = VK_NULL_HANDLE,
-        .basePipelineIndex = 0
-    };
-
-    if(vkCreateComputePipelines(m_device, VK_NULL_HANDLE, 1, &computePipelineCreateInfo, VK_NULL_HANDLE, &m_computePipeline) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR: Failed to create VkComputePipeline");
+    m_resources->createParticleComputePipeline(m_computePipeline, m_computePipelineLayout, m_computeDescriptorSetLayout);
 }

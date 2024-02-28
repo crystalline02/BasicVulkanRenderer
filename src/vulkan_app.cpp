@@ -13,6 +13,7 @@ void VulkanApp::run()
 {
     m_appResources = Resources::get();
     
+    m_appResources->distributeResources();
     m_appResources->initWindow();
     initVulkan();
     m_appResources->mainLoop();

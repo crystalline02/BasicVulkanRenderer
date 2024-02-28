@@ -19,7 +19,8 @@ class Model;
 class ParticleGroup;
 struct Vertex;
 struct Texture;
-class Particle;
+struct Particle;
+
 
 class Resources
 {
@@ -64,6 +65,7 @@ private:
 
 public:
     // functions to init vulkan resouces(in order)
+    void distributeResources();
     void initWindow();
     void mainLoop();
     void drawFrame();
@@ -97,8 +99,6 @@ public:
     bool m_complete = false;
 
     // public helper functions
-    static std::vector<char> readShaderFile(const std::string filePath);
-    VkShaderModule createShaderModule(std::vector<char> shaderBytes) const;
     void createImage(int width, int height, VkFormat format, VkImageUsageFlags usage, uint32_t mipLevel, VkSampleCountFlagBits samples,
         VkMemoryPropertyFlags requiredMemoryProperty, VkImage& image, VkDeviceMemory& imageMemory) const;
     void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags requiredProperties, 
@@ -112,8 +112,8 @@ public:
     uint32_t findMemoryTypeIndex(uint32_t requiredMemoryTypeBit, VkMemoryPropertyFlags requirdMemoryPropertyFlags) const;
     VkCommandBuffer beginSingleTimeCommandBuffer() const;
     void endSingleTimeCommandBuffer(VkCommandBuffer commandBuffer) const;
-    void createVertexBuffer(std::vector<Vertex>& vertices, VkBuffer& vertexBuffer, VkDeviceMemory& vertexBufferMemory) const;
-    void createIndexBuffer(std::vector<uint32_t>& indices, VkBuffer& indexBuffer, VkDeviceMemory& indexBufferMemory) const;
+    void createModelVertexBuffer(const std::vector<Vertex>& vertices, VkBuffer& vertexBuffer, VkDeviceMemory& vertexBufferMemory) const;
+    void createModelIndexBuffer(const std::vector<uint32_t>& indices, VkBuffer& indexBuffer, VkDeviceMemory& indexBufferMemory) const;
     void createParticleUBOs(std::vector<VkBuffer>& particleUBOs, 
         std::vector<VkDeviceMemory>& paritcleUBOMemories,
         std::vector<void*>& particleUBOMapped);
@@ -122,11 +122,31 @@ public:
         const std::vector<Particle>& particles) const;
     void cleanUpTexture(const Texture& texture) const;
     void generateMipmaps(VkImage image, VkFormat format, uint32_t width, uint32_t height, uint32_t mipLevels) const;
-    void allocateParticleDescriptorSets(std::vector<VkDescriptorSet>& particleDescriptorSets,
+    void allocateParticleDescriptorSets(std::vector<VkDescriptorSet>& computeDescriptorSets, 
+        std::vector<VkDescriptorSet>& graphicDescriptorSets,
         const std::vector<VkBuffer>& particleUBOs, 
-        const std::vector<VkBuffer>& particleSSBOs) const;
-    void allocateDrawParticleCommanBuffers(std::vector<VkCommandBuffer> commandBuffers) const;
-    void recordUpdateParticleCommandBuffer(VkCommandBuffer commandBuffer, uint32_t particleCount) const;
+        const std::vector<VkBuffer>& particleSSBOs,
+        VkDescriptorSetLayout graphicDescriptorSetLayout,
+        VkDescriptorSetLayout computeDescriptorSetLayout) const;
+    void cmdUpdateParticles(VkCommandBuffer commandBuffer, 
+        VkPipeline computePipeline,
+        VkPipelineLayout computePipelineLayout, 
+        VkDescriptorSet computeDescriptorSet,
+        uint32_t particleCount) const;
+    void cmdDrawParticles(VkCommandBuffer commandBuffer, 
+        VkPipeline graphicPipeline,
+        VkPipelineLayout graphicPipelineLayout,
+        VkBuffer vertexBuffer, 
+        VkDescriptorSet graphicDescriptorSet,
+        uint32_t particleCount) const;
+    void createParticlesDescriptorSetLayout(VkDescriptorSetLayout& computeDescriptorSetLayout,
+        VkDescriptorSetLayout& graphicDescriptorSetLayout) const;
+    void createParticleComputePipeline(VkPipeline& computePipeline, 
+        VkPipelineLayout& computePipelineLayout, 
+        VkDescriptorSetLayout computeDescriptorSetLayout) const;
+    void createParticleGraphicPipeline(VkPipeline& graphicPipeline,
+        VkPipelineLayout& graphicPipelineLayout,
+        VkDescriptorSetLayout graphicDescriptorSetLayout) const;
 private:
     // Callback funtions
     static VKAPI_ATTR VkBool32 VKAPI_CALL debugMessageCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
@@ -136,6 +156,9 @@ private:
     static void framebufferResizeCallback(GLFWwindow* window, int width, int height);
 
     // private helper functions
+    void createPipelineLayout(VkPipelineLayout& pipelineLayout, VkDescriptorSetLayout descriptorSetLayout) const;
+    std::vector<char> readShaderFile(const std::string filePath) const;
+    VkShaderModule createShaderModule(std::vector<char> shaderBytes) const;
     VkSampleCountFlagBits getMSAASampleCount() const;
     bool checkInstanceValidationLayersSupported(std::vector<const char*> validationLayerNames) const;
     void populateMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT& messengerCreateInfo) const;
@@ -151,12 +174,11 @@ private:
     VkFormat findSupportedFormat(std::vector<VkFormat> formatCandidates, 
         VkImageTiling tiling, 
         VkFormatFeatureFlags desiredFeatures) const;
-    void updateUniformBuffers(uint32_t frameIndex) const;
+    void updateUniformBuffers();
     void recordDrawCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
     void recordComputeCommandBuffer(VkCommandBuffer commandBuffer);
     void cleanUpSwapChain();
     void recreateSwapChain();
-    void createPipelineLayout(VkPipelineLayout& pipelineLayout, VkDescriptorSetLayout descriptorSetLayout);
 private:
     // class instance
     static Resources* instance;
@@ -172,8 +194,12 @@ private:
     uint32_t m_windowWidth = 1920, 
         m_windowHeight = 1080;
     uint32_t m_maxInflightFrames = 2;
-    uint32_t m_currentFrame = 0;
+    uint32_t m_currentFrameIndex = 0;
     bool m_framebufferResized = false;
+
+    // time related class varables
+    double m_timeLastFrame = 0.f,
+        m_timeCurrentFrame = 0.f;
 
     // vulkan instance
     VkInstance m_vkInstance;
@@ -215,20 +241,17 @@ private:
 
     // descriptor set
     VkDescriptorPool m_descriptorPool;
-    std::vector<VkDescriptorSet> m_drawDescriptorSets; 
+    std::vector<VkDescriptorSet> m_graphicDescriptorSets; 
 
     // pipeline 
-    VkPipelineLayout m_graphicPipelineLayout,
-        m_computePipelineLayout;
-    VkDescriptorSetLayout m_drawDescriptorSetLayout, 
-        m_particleDescriptorSetLayout;
-    VkPipeline m_graphicPipeline,
-        m_computePipeline;
+    VkPipelineLayout m_graphicPipelineLayout;
+    VkDescriptorSetLayout m_graphicDescriptorSetLayout;
+    VkPipeline m_graphicPipeline;
 
     // command buffers
     VkCommandPool m_graphicCommandPool, 
         m_computeCommandPool;
-    std::vector<VkCommandBuffer> m_drawCommandBuffers,
+    std::vector<VkCommandBuffer> m_graphicCommandBuffers,
         m_computeCommandBuffers;
     
     // synchronization primitives

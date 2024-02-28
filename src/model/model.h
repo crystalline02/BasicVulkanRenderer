@@ -12,16 +12,13 @@ class Resources;
 class Model
 {
 public:
-    Model(const char* filename);
-
+    Model();
     void cmdBindBuffers(VkCommandBuffer commandBuffer) const;
     void cmdDrawIndexed(VkCommandBuffer commandBuffer) const;
     void cleanUp(VkDevice device);
-    VkDescriptorImageInfo getTextureDescriptorImageInfo() const;
-
-private:
     void loadModel(const char* filename);
-
+    VkDescriptorImageInfo getTextureDescriptorImageInfo() const;
+private:
     // Images
     Texture m_texture;
 

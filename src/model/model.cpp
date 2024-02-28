@@ -10,11 +10,9 @@
 #include "mesh.h"
 #include "../resources.h"
 
-Model::Model(const char* filename)
+Model::Model()
 {
     m_appResources = Resources::get();
-    
-    loadModel(filename);
 }
 
 void Model::cmdBindBuffers(VkCommandBuffer commandBuffer) const
@@ -69,8 +67,8 @@ void Model::loadModel(const char* filename)
         }
     }
 
-    m_appResources->createVertexBuffer(m_vertices, m_vertexBuffer, m_vertexBufferMemory);
-    m_appResources->createIndexBuffer(m_indices, m_indexBuffer, m_indexBufferMemory);
+    m_appResources->createModelVertexBuffer(m_vertices, m_vertexBuffer, m_vertexBufferMemory);
+    m_appResources->createModelIndexBuffer(m_indices, m_indexBuffer, m_indexBufferMemory);
 
     m_appResources->createTexture("./textures/viking_room.png", m_texture);
 }

@@ -16,7 +16,13 @@
 
 Resources::Resources()
 {
-    
+
+}
+
+void Resources::distributeResources()
+{
+    m_model = new Model();
+    m_particles = new ParticleGroup();
 }
 
 void Resources::initWindow()
@@ -30,22 +36,41 @@ void Resources::initWindow()
     glfwSetWindowUserPointer(m_window, this);
 }
 
+void Resources::recordComputeCommandBuffer(VkCommandBuffer commandBuffer)
+{
+    VkCommandBufferBeginInfo beginInfo = {
+        .sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .flags = 0,
+        .pInheritanceInfo = VK_NULL_HANDLE
+    };
+    if(vkBeginCommandBuffer(commandBuffer, &beginInfo) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to begin a command buffer.");
+
+    // Record update particles commandBuffer
+    m_particles->cmdUpdateParticles(commandBuffer, m_currentFrameIndex);
+
+    if(vkEndCommandBuffer(commandBuffer) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR:Failed to end a command buffer");
+}
+
 void Resources::drawFrame()
 {
     // Wait for m_inFlightFence to be signaled.So that we won't record the command buffer in the next frame 
     // while the GPU is still using the command buffer in current frame.
-    vkWaitForFences(m_device, 1, &m_inFlightFences[m_currentFrame], VK_TRUE, UINT64_MAX);
-    vkWaitForFences(m_device, 1, &m_computeInFlightFences[m_currentFrame], VK_TRUE, UINT64_MAX);
+    vkWaitForFences(m_device, 1, &m_inFlightFences[m_currentFrameIndex], VK_TRUE, UINT64_MAX);
+    vkWaitForFences(m_device, 1, &m_computeInFlightFences[m_currentFrameIndex], VK_TRUE, UINT64_MAX);
 
-    // Reset fence
-    vkResetFences(m_device, 1, &m_inFlightFences[m_currentFrame]);  // Reset fence to unsignaled
+    // Reset fence to unsignaled
+    vkResetFences(m_device, 1, &m_inFlightFences[m_currentFrameIndex]);
+    vkResetFences(m_device, 1, &m_computeInFlightFences[m_currentFrameIndex]);
 
     // Reset commandbuffer
-    vkResetCommandBuffer(m_drawCommandBuffers[m_currentFrame], 0);
-    vkResetCommandBuffer(m_computeCommandBuffers[m_currentFrame], 0);
+    vkResetCommandBuffer(m_graphicCommandBuffers[m_currentFrameIndex], 0);
+    vkResetCommandBuffer(m_computeCommandBuffers[m_currentFrameIndex], 0);
 
-    //// Compute submission
-    recordComputeCommandBuffer(m_computeCommandBuffers[m_currentFrame]);
+    //// Record and submit compute command buffer
+    recordComputeCommandBuffer(m_computeCommandBuffers[m_currentFrameIndex]);
     VkSubmitInfo computeSubmitInfo = {
         .sType = VK_STRUCTURE_TYPE_SUBMIT_INFO,
         .pNext = VK_NULL_HANDLE,
@@ -53,17 +78,17 @@ void Resources::drawFrame()
         .pWaitSemaphores = VK_NULL_HANDLE,
         .pWaitDstStageMask = VK_NULL_HANDLE,
         .commandBufferCount = 1,
-        .pCommandBuffers = &m_computeCommandBuffers[m_currentFrame],
+        .pCommandBuffers = &m_computeCommandBuffers[m_currentFrameIndex],
         .signalSemaphoreCount = 1,
-        .pSignalSemaphores = &m_computeCompleteSemaphores[m_currentFrame]
+        .pSignalSemaphores = &m_computeCompleteSemaphores[m_currentFrameIndex]
     };
-    if(vkQueueSubmit(m_graphicComputeQueue, 1, &computeSubmitInfo, m_computeInFlightFences[m_currentFrame]) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR: Failed to submit compute command buffer to grahicAndCompute queue.");
+    if(vkQueueSubmit(m_graphicComputeQueue, 1, &computeSubmitInfo, m_computeInFlightFences[m_currentFrameIndex]) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to submit compute commandBuffer to grahicAndCompute queue.");
 
-    //// Render scene graphic submission
+    //// Record and submit graphic command buffer
     // Acquire an image for swapchain
     uint32_t imageIndex;
-    VkResult acquireImageResult = vkAcquireNextImageKHR(m_device, m_vkSwapChain, UINT64_MAX, m_acquireImageSemaphores[m_currentFrame], VK_NULL_HANDLE, &imageIndex);
+    VkResult acquireImageResult = vkAcquireNextImageKHR(m_device, m_vkSwapChain, UINT64_MAX, m_acquireImageSemaphores[m_currentFrameIndex], VK_NULL_HANDLE, &imageIndex);
     if(acquireImageResult == VK_ERROR_OUT_OF_DATE_KHR ||
         acquireImageResult == VK_SUBOPTIMAL_KHR)
     {
@@ -83,26 +108,27 @@ void Resources::drawFrame()
     }
     else if(acquireImageResult != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to acquire an image for the swap chain.");
-
-    recordDrawCommandBuffer(m_drawCommandBuffers[m_currentFrame], imageIndex);
-    VkSubmitInfo graphicSubmitInfo = {};
-    graphicSubmitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
-    graphicSubmitInfo.waitSemaphoreCount = 1;
-    graphicSubmitInfo.pWaitSemaphores = &m_acquireImageSemaphores[m_currentFrame];
-    VkPipelineStageFlags stageMask[] = {VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT};
-    graphicSubmitInfo.pWaitDstStageMask = stageMask;
-    graphicSubmitInfo.commandBufferCount = 1;
-    graphicSubmitInfo.pCommandBuffers = &m_drawCommandBuffers[m_currentFrame];
-    graphicSubmitInfo.signalSemaphoreCount = 1;
-    graphicSubmitInfo.pSignalSemaphores = &m_drawSemaphores[m_currentFrame];
-    if(vkQueueSubmit(m_graphicQueue, 1, &graphicSubmitInfo, m_inFlightFences[m_currentFrame]) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR: Failed to submit drawCommandBuffer to graphic queue.");
+    recordDrawCommandBuffer(m_graphicCommandBuffers[m_currentFrameIndex], imageIndex);
+    VkSemaphore pWaitSemaphores[2] = {m_computeCompleteSemaphores[m_currentFrameIndex], m_acquireImageSemaphores[m_currentFrameIndex]};
+    VkPipelineStageFlags pWaitStageMask[2] = {VK_PIPELINE_STAGE_VERTEX_SHADER_BIT, VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT};
+    VkSubmitInfo graphicSubmitInfo = {
+        .sType = VK_STRUCTURE_TYPE_SUBMIT_INFO,
+        .waitSemaphoreCount = 2,
+        .pWaitSemaphores = pWaitSemaphores,
+        .pWaitDstStageMask = pWaitStageMask,
+        .commandBufferCount = 1,
+        .pCommandBuffers = &m_graphicCommandBuffers[m_currentFrameIndex],
+        .signalSemaphoreCount = 1,
+        .pSignalSemaphores = &m_drawSemaphores[m_currentFrameIndex]
+    };
+    if(vkQueueSubmit(m_graphicQueue, 1, &graphicSubmitInfo, m_inFlightFences[m_currentFrameIndex]) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to submit draw commandBuffer to graphic queue.");
 
     // Present scene image to screen
     VkPresentInfoKHR presentInfo = {
         .sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR,
         .waitSemaphoreCount = 1,
-        .pWaitSemaphores = &m_drawSemaphores[m_currentFrame],
+        .pWaitSemaphores = &m_drawSemaphores[m_currentFrameIndex],
         .swapchainCount = 1,
         .pSwapchains = &m_vkSwapChain,
         .pImageIndices = &imageIndex,
@@ -118,11 +144,8 @@ void Resources::drawFrame()
     else if(queuePresentResult != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to present an image to screen.");
 
-
-    //// Render particles graphic submission
-
-    updateUniformBuffers(m_currentFrame);
-    m_currentFrame = (m_currentFrame + 1) % m_maxInflightFrames;
+    updateUniformBuffers();
+    m_currentFrameIndex = (m_currentFrameIndex + 1) % m_maxInflightFrames;
 }
 
 void Resources::createInstance()
@@ -355,7 +378,7 @@ void Resources::createCommandPool()
 void Resources::allocateCommandBuffers()
 {
     // Allocate draw command buffers
-    m_drawCommandBuffers.resize(m_maxInflightFrames);
+    m_graphicCommandBuffers.resize(m_maxInflightFrames);
 
     VkCommandBufferAllocateInfo drawCommandBufferAllocateInfo = {};
     drawCommandBufferAllocateInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
@@ -363,12 +386,9 @@ void Resources::allocateCommandBuffers()
     drawCommandBufferAllocateInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
     drawCommandBufferAllocateInfo.commandBufferCount = m_maxInflightFrames;
 
-    if(vkAllocateCommandBuffers(m_device, &drawCommandBufferAllocateInfo, m_drawCommandBuffers.data()) != VK_SUCCESS)
+    if(vkAllocateCommandBuffers(m_device, &drawCommandBufferAllocateInfo, m_graphicCommandBuffers.data()) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to allocate draw command buffers");
     
-    // Allocate draw particle command buffers
-    m_particles->allocateDrawCommandBuffers();
-
     // Allocate compute command buffers
     m_computeCommandBuffers.resize(m_maxInflightFrames);
 
@@ -384,7 +404,7 @@ void Resources::allocateCommandBuffers()
 
 void Resources::createDescriptorSetLayout()
 {
-    // Descriptor set for drawing
+    // Descriptor set for drawing scene
     VkDescriptorSetLayoutBinding drawSetPBindings[2] = {
         // mvp matrices
         {
@@ -409,11 +429,36 @@ void Resources::createDescriptorSetLayout()
         .bindingCount = 2,
         .pBindings = drawSetPBindings
     };
-    if(vkCreateDescriptorSetLayout(m_device, &drawDescriptorSetLayoutCreateInfo, VK_NULL_HANDLE, &m_drawDescriptorSetLayout) != VK_SUCCESS)
+    if(vkCreateDescriptorSetLayout(m_device, &drawDescriptorSetLayoutCreateInfo, VK_NULL_HANDLE, &m_graphicDescriptorSetLayout) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create VkDescriptorSetLayout.");
 
     // Descriptor set for updating particle status
-    VkDescriptorSetLayoutBinding particlePBindings[3] = {
+    m_particles->createDescriptorSetLayout();
+}
+
+void Resources::createParticlesDescriptorSetLayout(VkDescriptorSetLayout& computeDescriptorSetLayout,
+    VkDescriptorSetLayout& graphicDescriptorSetLayout) const
+{
+    // Create graphic descriptorset layout
+    VkDescriptorSetLayoutBinding pGraphicBindings[1] ={
+        {
+            .binding = 0, 
+            .descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
+            .descriptorCount = 1,
+            .stageFlags = VK_SHADER_STAGE_VERTEX_BIT,
+            .pImmutableSamplers = VK_NULL_HANDLE
+        }
+    };
+    VkDescriptorSetLayoutCreateInfo graphicDescriptorSetLayoutCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO,
+        .bindingCount = 1,
+        .pBindings = pGraphicBindings
+    };
+    if(vkCreateDescriptorSetLayout(m_device, &graphicDescriptorSetLayoutCreateInfo, VK_NULL_HANDLE, &graphicDescriptorSetLayout) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to create descriptor set layout for particle graphic pipeline.");
+
+    // Create compute descriptorset layout
+    VkDescriptorSetLayoutBinding pComputeBindings[3] = {
         // delta time
         {
             .binding = 0,
@@ -439,13 +484,13 @@ void Resources::createDescriptorSetLayout()
             .pImmutableSamplers = VK_NULL_HANDLE
         }
     };
-    VkDescriptorSetLayoutCreateInfo particleDescriptorSetLayoutCreateInfo = {
+    VkDescriptorSetLayoutCreateInfo computeDescriptorSetLayoutCreateInfo = {
         .sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO,
         .bindingCount = 3,
-        .pBindings = particlePBindings
+        .pBindings = pComputeBindings
     };
-    if(vkCreateDescriptorSetLayout(m_device, &particleDescriptorSetLayoutCreateInfo, VK_NULL_HANDLE, &m_particleDescriptorSetLayout) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR: Failed to create VkDescriptorSetLayout.");
+    if(vkCreateDescriptorSetLayout(m_device, &computeDescriptorSetLayoutCreateInfo, VK_NULL_HANDLE, &computeDescriptorSetLayout) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to create descriptor set layout for particle compute pipeline.");
 }
 
 void Resources::createRenderPass()
@@ -535,8 +580,8 @@ void Resources::createPipeline()
 {
     //// Create graphic pipeline for drawing scene
     // Create info for Shader stage
-    std::vector<char> vertexShaderBytes = readShaderFile("./shaders/triangle_vert.spv");
-    std::vector<char> fragmentShaderBytes = readShaderFile("./shaders/triangle_frag.spv");
+    std::vector<char> vertexShaderBytes = readShaderFile("./shaders/albedo_vert.spv");
+    std::vector<char> fragmentShaderBytes = readShaderFile("./shaders/albedo_frag.spv");
     
     VkShaderModule vertexShaderModule = createShaderModule(vertexShaderBytes);
     VkShaderModule fragmentShaderModule = createShaderModule(fragmentShaderBytes);
@@ -607,7 +652,7 @@ void Resources::createPipeline()
     viewportStateCreateInfo.scissorCount = 1;
 
     // Create graphic pipeline layout
-    createPipelineLayout(m_graphicPipelineLayout, m_drawDescriptorSetLayout);
+    createPipelineLayout(m_graphicPipelineLayout, m_graphicDescriptorSetLayout);
 
     // Create info for rasterization state
     VkPipelineRasterizationStateCreateInfo rasterizationStateCreateInfo = {};
@@ -697,14 +742,16 @@ void Resources::createPipeline()
 
     if(vkCreateGraphicsPipelines(m_device, VK_NULL_HANDLE, 1, 
         &graphicsPipelineCreateInfo, VK_NULL_HANDLE, &m_graphicPipeline) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR: Failed to create VkGraphicPipeline.");
-
-    //// Create graphic pipeline for drawing particles
-
-    //// Create compute pipeline for updating particles
+        throw std::runtime_error("VK ERROR: Failed to create graphic pipeline for rendering scene.");
 
     vkDestroyShaderModule(m_device, vertexShaderModule, VK_NULL_HANDLE);
     vkDestroyShaderModule(m_device, fragmentShaderModule, VK_NULL_HANDLE);
+
+    //// Create graphic pipeline for drawing particles
+    m_particles->createGraphicPipeline();
+
+    //// Create compute pipeline for updating particles
+    m_particles->createComputePipeline();
 }
 
 void Resources::createSwapChainFrameBuffers()
@@ -778,26 +825,26 @@ void Resources::createDescriptorPool()
 {
     VkDescriptorPoolSize descriptorPoolSize[3];
     descriptorPoolSize[0].type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-    descriptorPoolSize[0].descriptorCount = m_maxInflightFrames * 2;
+    descriptorPoolSize[0].descriptorCount = m_maxInflightFrames * (1 + m_particles->uniformDescriptorCount());
     descriptorPoolSize[1].type = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-    descriptorPoolSize[1].descriptorCount = m_maxInflightFrames;
+    descriptorPoolSize[1].descriptorCount = m_maxInflightFrames * (1 + m_particles->combinedImageSamplerCount());
     descriptorPoolSize[2].type = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER;
-    descriptorPoolSize[2].descriptorCount = m_maxInflightFrames * 2;
+    descriptorPoolSize[2].descriptorCount = m_maxInflightFrames * (0 + m_particles->storageDescriptorCount());
 
     VkDescriptorPoolCreateInfo descriptorPoolCreateInfo = {};
     descriptorPoolCreateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
-    descriptorPoolCreateInfo.maxSets = m_maxInflightFrames * 2;
+    descriptorPoolCreateInfo.maxSets = m_maxInflightFrames * 3;
     descriptorPoolCreateInfo.poolSizeCount = 3;
     descriptorPoolCreateInfo.pPoolSizes = descriptorPoolSize;
     if(vkCreateDescriptorPool(m_device, &descriptorPoolCreateInfo, VK_NULL_HANDLE, &m_descriptorPool) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR: Failed to create VkDescriptorPool.");
+        throw std::runtime_error("VK ERROR: Failed to create descriptor pool.");
 }
 
 void Resources::allocateDescriptorSets()
 {
-    // allocate draw descriptor sets
-    m_drawDescriptorSets.resize(m_maxInflightFrames);
-    std::vector<VkDescriptorSetLayout> descriptorSetLayouts(m_maxInflightFrames, m_drawDescriptorSetLayout);
+    // allocate graphic descriptor sets
+    m_graphicDescriptorSets.resize(m_maxInflightFrames);
+    std::vector<VkDescriptorSetLayout> descriptorSetLayouts(m_maxInflightFrames, m_graphicDescriptorSetLayout);
 
     VkDescriptorSetAllocateInfo descriptorSetAllocateInfo = {
         .sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO,
@@ -805,7 +852,7 @@ void Resources::allocateDescriptorSets()
         .descriptorSetCount = m_maxInflightFrames,
         .pSetLayouts = descriptorSetLayouts.data()
     };
-    if(vkAllocateDescriptorSets(m_device, &descriptorSetAllocateInfo, m_drawDescriptorSets.data()) != VK_SUCCESS)
+    if(vkAllocateDescriptorSets(m_device, &descriptorSetAllocateInfo, m_graphicDescriptorSets.data()) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to allocate VkDescriptorSet.");
     
     for(uint32_t i = 0; i < m_maxInflightFrames; ++i)
@@ -820,7 +867,7 @@ void Resources::allocateDescriptorSets()
         VkWriteDescriptorSet writeDescriptorSets[2];
         writeDescriptorSets[0].sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
         writeDescriptorSets[0].pNext = VK_NULL_HANDLE;
-        writeDescriptorSets[0].dstSet = m_drawDescriptorSets[i];
+        writeDescriptorSets[0].dstSet = m_graphicDescriptorSets[i];
         writeDescriptorSets[0].dstBinding = 0;
         writeDescriptorSets[0].dstArrayElement = 0;
         writeDescriptorSets[0].descriptorCount = 1;
@@ -830,7 +877,7 @@ void Resources::allocateDescriptorSets()
         writeDescriptorSets[0].pTexelBufferView = VK_NULL_HANDLE;
         writeDescriptorSets[1].sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
         writeDescriptorSets[1].pNext = VK_NULL_HANDLE;
-        writeDescriptorSets[1].dstSet = m_drawDescriptorSets[i];
+        writeDescriptorSets[1].dstSet = m_graphicDescriptorSets[i];
         writeDescriptorSets[1].dstBinding = 1;
         writeDescriptorSets[1].dstArrayElement = 0;
         writeDescriptorSets[1].descriptorCount = 1;
@@ -842,7 +889,7 @@ void Resources::allocateDescriptorSets()
     }
 
     // allocate particle descriptor sets
-    m_particles->allocateDescriptorSet(m_descriptorPool);
+    m_particles->allocateDescriptorSet();
 }
 
 void Resources::createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags requiredProperties, 
@@ -1354,7 +1401,39 @@ VkFormat Resources::findSupportedFormat(std::vector<VkFormat> formatCandidates,
     throw std::runtime_error("VK ERROR: Failed to find a supported VkFormat.");
 }
 
-std::vector<char> Resources::readShaderFile(const std::string filePath)
+void Resources::createParticleComputePipeline(VkPipeline& computePipeline, 
+        VkPipelineLayout& computePipelineLayout, 
+        VkDescriptorSetLayout computeDescriptorSetLayout) const
+{
+    std::vector<char> computeShaderBytes = readShaderFile("./shaders/updateParticle_comp.spv");
+    VkShaderModule computeShaderModule = createShaderModule(computeShaderBytes);
+    VkPipelineShaderStageCreateInfo computeShaderStageCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO,
+        .stage = VK_SHADER_STAGE_COMPUTE_BIT,
+        .module = computeShaderModule,
+        .pName = "main",
+        .pSpecializationInfo = VK_NULL_HANDLE
+    };
+
+    createPipelineLayout(computePipelineLayout, computeDescriptorSetLayout);
+
+    VkComputePipelineCreateInfo computePipelineCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .flags = 0,
+        .stage = computeShaderStageCreateInfo,
+        .layout = computePipelineLayout,
+        .basePipelineHandle = VK_NULL_HANDLE,
+        .basePipelineIndex = -1
+    };
+
+    if(vkCreateComputePipelines(m_device, VK_NULL_HANDLE, 1, &computePipelineCreateInfo, VK_NULL_HANDLE, &computePipeline) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to create VkComputePipeline");
+    
+    vkDestroyShaderModule(m_device, computeShaderModule, VK_NULL_HANDLE);
+}
+
+std::vector<char> Resources::readShaderFile(const std::string filePath) const
 {
     std::vector<char> buffer;
     std::ifstream ifs(filePath, std::ifstream::ate | std::ifstream::binary);
@@ -1382,26 +1461,26 @@ VkShaderModule Resources::createShaderModule(std::vector<char> shaderBytes) cons
     return shaderModule;
 }
 
-void Resources::updateUniformBuffers(uint32_t frameIndex) const
+void Resources::updateUniformBuffers()
 {
+    m_timeCurrentFrame = glfwGetTime();  // unit: seconds
+    double deltaTime = m_timeCurrentFrame - m_timeLastFrame;
+
     // update draw shader ubo
-    float currentTime = (float)glfwGetTime();  // unit: seconds
-   
     UBOProjectionMatrices uboProjectionMatrices;
-    uboProjectionMatrices.model = glm::rotate(glm::mat4(1.f), glm::radians(90.f) * currentTime, glm::vec3(0.f, 0.f, 1.f));
+    uboProjectionMatrices.model = glm::rotate(glm::mat4(1.f), glm::radians(90.f) * (float)m_timeCurrentFrame, glm::vec3(0.f, 0.f, 1.f));
     uboProjectionMatrices.view = glm::lookAt(glm::vec3(2.f, 2.f, 2.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 0.f, -1.f));
     uboProjectionMatrices.projection = glm::perspective(glm::radians(45.f), 
         float(m_swapChainImageExtent.width) / m_swapChainImageExtent.height,
         0.1f, 10.f
     );
     
-    memcpy(m_uniformBuffersMapped[frameIndex], &uboProjectionMatrices, sizeof(UBOProjectionMatrices));
+    memcpy(m_uniformBuffersMapped[m_currentFrameIndex], &uboProjectionMatrices, sizeof(UBOProjectionMatrices));
 
     // update particle shader ubo
-    ParticleGroup::UBOParticle uboParticle = {
+    m_particles->updateUniformBuffers(m_currentFrameIndex, deltaTime);
 
-    };
-    m_particles->updateUniformBuffers(frameIndex, )
+    m_timeLastFrame = m_timeCurrentFrame;
 }
 
 void Resources::recordDrawCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex)
@@ -1413,7 +1492,7 @@ void Resources::recordDrawCommandBuffer(VkCommandBuffer commandBuffer, uint32_t 
     commandBufferBeginInfo.pInheritanceInfo = VK_NULL_HANDLE;  // Only used for secondary command buffer
 
     if(vkBeginCommandBuffer(commandBuffer, &commandBufferBeginInfo) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR: Failed to begin recording the VkCommandBuffer.");
+        throw std::runtime_error("VK ERROR: Failed to begin recording the commandbuffer for drawing scene.");
 
     // Record `begin renderpass` command
     VkRenderPassBeginInfo renderpassBeginInfo = {};
@@ -1437,7 +1516,7 @@ void Resources::recordDrawCommandBuffer(VkCommandBuffer commandBuffer, uint32_t 
 
     // Record `bind descriptor set` commmand
     vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, m_graphicPipelineLayout, 0, 1, 
-        &m_drawDescriptorSets[m_currentFrame], 0, VK_NULL_HANDLE);
+        &m_graphicDescriptorSets[m_currentFrameIndex], 0, VK_NULL_HANDLE);
 
     // Record `set dynamic state` command(In our case, viewport state and scissor state).
     VkViewport viewPort = {};
@@ -1454,14 +1533,17 @@ void Resources::recordDrawCommandBuffer(VkCommandBuffer commandBuffer, uint32_t 
     vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
 
     // Record `draw` command
-    m_model->cmdDrawIndexed(commandBuffer);
+    // m_model->cmdDrawIndexed(commandBuffer);
+
+    // Record `draw particles` command
+    m_particles->cmdDrawParticles(commandBuffer, m_currentFrameIndex);
     
     // Record `end renderpass` command
     vkCmdEndRenderPass(commandBuffer);
 
     // Finally, end recording command buffer
     if(vkEndCommandBuffer(commandBuffer) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR: Failed to record command buffer.");
+        throw std::runtime_error("VK ERROR: Failed to end recording the commandbuffer for drawing scene.");
 }
 
 void Resources::cleanUpSwapChain()
@@ -1501,48 +1583,48 @@ void Resources::recreateSwapChain()
     createSwapChainFrameBuffers();
 }
 
-void Resources::createVertexBuffer(std::vector<Vertex>& vertices, VkBuffer& vertexBuffer, VkDeviceMemory& vertexBufferMemory) const
+void Resources::createModelVertexBuffer(const std::vector<Vertex>& vertices, VkBuffer& vertexBuffer, VkDeviceMemory& vertexBufferMemory) const
 {
-    VkDeviceSize veretexBufferSize = vertices.size() * sizeof(Vertex);
+    VkDeviceSize bufferSize = vertices.size() * sizeof(Vertex);
     
     VkBuffer stagingBuffer;
     VkDeviceMemory stagingBufferMemory;
-    createBuffer(veretexBufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 
+    createBuffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 
         VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,
         stagingBuffer, stagingBufferMemory);
 
     void* data;
-    vkMapMemory(m_device, stagingBufferMemory, 0, veretexBufferSize, 0, &data);
-    memcpy(data, vertices.data(), veretexBufferSize);
+    vkMapMemory(m_device, stagingBufferMemory, 0, bufferSize, 0, &data);
+    memcpy(data, vertices.data(), bufferSize);
     vkUnmapMemory(m_device, stagingBufferMemory);
 
-    createBuffer(veretexBufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT,
+    createBuffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT,
         VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, vertexBuffer, vertexBufferMemory);
-    copyBuffer2Buffer(stagingBuffer, vertexBuffer, veretexBufferSize);
+    copyBuffer2Buffer(stagingBuffer, vertexBuffer, bufferSize);
 
     vkDestroyBuffer(m_device, stagingBuffer, VK_NULL_HANDLE);
     vkFreeMemory(m_device, stagingBufferMemory, VK_NULL_HANDLE);
 }
 
-void Resources::createIndexBuffer(std::vector<uint32_t>& indices, VkBuffer& indexBuffer, VkDeviceMemory& indexBufferMemory) const
+void Resources::createModelIndexBuffer(const std::vector<uint32_t>& indices, VkBuffer& indexBuffer, VkDeviceMemory& indexBufferMemory) const
 {
-    VkDeviceSize indexBufferSize = indices.size() * sizeof(uint32_t);
+    VkDeviceSize bufferSize = indices.size() * sizeof(uint32_t);
 
     VkBuffer stagingBuffer;
     VkDeviceMemory stagingBufferMemory;
-    createBuffer(indexBufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 
+    createBuffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, 
         VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,
         stagingBuffer, stagingBufferMemory);
 
     void* data;
-    vkMapMemory(m_device, stagingBufferMemory, 0, indexBufferSize, 0, &data);
-    memcpy(data, indices.data(), indexBufferSize);
+    vkMapMemory(m_device, stagingBufferMemory, 0, bufferSize, 0, &data);
+    memcpy(data, indices.data(), bufferSize);
     vkUnmapMemory(m_device, stagingBufferMemory);
 
-    createBuffer(indexBufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_INDEX_BUFFER_BIT,
+    createBuffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_INDEX_BUFFER_BIT,
         VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, indexBuffer, indexBufferMemory);
     
-    copyBuffer2Buffer(stagingBuffer, indexBuffer, indexBufferSize);
+    copyBuffer2Buffer(stagingBuffer, indexBuffer, bufferSize);
     
     vkDestroyBuffer(m_device, stagingBuffer, VK_NULL_HANDLE);
     vkFreeMemory(m_device, stagingBufferMemory, VK_NULL_HANDLE);
@@ -1564,16 +1646,14 @@ void Resources::cleanUp()
         vkFreeMemory(m_device, m_uniformBufferMemories[i], VK_NULL_HANDLE);
     }
     m_model->cleanUp(m_device);
+    m_particles->cleanUp(m_device, m_maxInflightFrames);
 
     vkDestroyCommandPool(m_device, m_graphicCommandPool, VK_NULL_HANDLE);
     vkDestroyCommandPool(m_device, m_computeCommandPool, VK_NULL_HANDLE);
     vkDestroyPipeline(m_device, m_graphicPipeline, VK_NULL_HANDLE);
-    vkDestroyPipeline(m_device, m_computePipeline, VK_NULL_HANDLE);
     vkDestroyRenderPass(m_device, m_renderPass, VK_NULL_HANDLE);
-    vkDestroyDescriptorSetLayout(m_device, m_drawDescriptorSetLayout, VK_NULL_HANDLE);
-    vkDestroyDescriptorSetLayout(m_device, m_particleDescriptorSetLayout, VK_NULL_HANDLE);
+    vkDestroyDescriptorSetLayout(m_device, m_graphicDescriptorSetLayout, VK_NULL_HANDLE);
     vkDestroyPipelineLayout(m_device, m_graphicPipelineLayout, VK_NULL_HANDLE);
-    vkDestroyPipelineLayout(m_device, m_computePipelineLayout, VK_NULL_HANDLE);
     cleanUpSwapChain();
     vkDestroyDevice(m_device, VK_NULL_HANDLE);
     vkDestroySurfaceKHR(m_vkInstance, m_vkSurface, VK_NULL_HANDLE);
@@ -1586,7 +1666,7 @@ void Resources::cleanUp()
 
 void Resources::loadModel()
 {
-    m_model = new Model("./model/viking_room.obj");
+    m_model->loadModel("./model/viking_room.obj");
 }
 
 void Resources::createTexture(const char* filename, Texture& texture) const
@@ -1773,9 +1853,7 @@ Resources* Resources::instance = VK_NULL_HANDLE;
 
 Resources* Resources::get()
 {
-    if(!instance)
-        instance = new Resources();
-    return instance;
+    return instance ? instance : (instance = new Resources());
 }
 
 void Resources::cleanUpTexture(const Texture& texture) const
@@ -1831,7 +1909,7 @@ void Resources::createParticleSSBOs(std::vector<VkBuffer>& particleSSBOs,
 
     for(uint32_t i = 0; i < m_maxInflightFrames; ++i)
     {
-        createBuffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_STORAGE_BUFFER_BIT,
+        createBuffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_STORAGE_BUFFER_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT,
             VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, particleSSBOs[i], particleSSBOMemories[i]);
 
         copyBuffer2Buffer(stagingBuffer, particleSSBOs[i], bufferSize);
@@ -1841,24 +1919,41 @@ void Resources::createParticleSSBOs(std::vector<VkBuffer>& particleSSBOs,
     vkFreeMemory(m_device, stagingBufferMemory, VK_NULL_HANDLE);
 }
 
-void Resources::allocateParticleDescriptorSets(std::vector<VkDescriptorSet>& particleDescriptorSets, 
+void Resources::allocateParticleDescriptorSets(std::vector<VkDescriptorSet>& computeDescriptorSets, 
+    std::vector<VkDescriptorSet>& graphicDescriptorSets,
     const std::vector<VkBuffer>& particleUBOs, 
-    const std::vector<VkBuffer>& particleSSBOs) const
+    const std::vector<VkBuffer>& particleSSBOs,
+    VkDescriptorSetLayout graphicDescriptorSetLayout,
+    VkDescriptorSetLayout computeDescriptorSetLayout) const
 {
-    particleDescriptorSets.resize(m_maxInflightFrames);
-    std::vector<VkDescriptorSetLayout> descriptorSetLayouts(m_maxInflightFrames, m_particleDescriptorSetLayout);
+    computeDescriptorSets.resize(m_maxInflightFrames);
+    graphicDescriptorSets.resize(m_maxInflightFrames);
+    std::vector<VkDescriptorSetLayout> computeDescriptorSetLayouts(m_maxInflightFrames, computeDescriptorSetLayout);
+    std::vector<VkDescriptorSetLayout> graphicDescriptorSetLayouts(m_maxInflightFrames, graphicDescriptorSetLayout);
 
-    VkDescriptorSetAllocateInfo allocateInfo = {
+    // Allocate computeDescriptorSets
+    VkDescriptorSetAllocateInfo computeDescriotorSetAllocateInfo = {
         .sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO,
         .pNext = VK_NULL_HANDLE,
         .descriptorPool = m_descriptorPool,
         .descriptorSetCount = m_maxInflightFrames,
-        .pSetLayouts = descriptorSetLayouts.data()
+        .pSetLayouts = computeDescriptorSetLayouts.data()
     };
+    if(vkAllocateDescriptorSets(m_device, &computeDescriotorSetAllocateInfo, computeDescriptorSets.data()) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to allocate desciptor set for particle compute pipeline.");
+    
+    // Allocate graphicDescriptorSets
+    VkDescriptorSetAllocateInfo graphicDescriptorSetAllocateInfo = {
+        .sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .descriptorPool = m_descriptorPool,
+        .descriptorSetCount = m_maxInflightFrames,
+        .pSetLayouts = graphicDescriptorSetLayouts.data()
+    };
+    if(vkAllocateDescriptorSets(m_device, &graphicDescriptorSetAllocateInfo, graphicDescriptorSets.data()) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to allocate desciptor set for particle graphic pipeline.");
 
-    if(vkAllocateDescriptorSets(m_device, &allocateInfo, particleDescriptorSets.data()) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR: Failed to allocate VkDescriptorSet.");
-
+    // Write computeDescriptorSets
     for(uint32_t i = 0; i < m_maxInflightFrames; ++i)
     {
         VkDescriptorBufferInfo deltaTimeBufferInfo = {
@@ -1867,12 +1962,12 @@ void Resources::allocateParticleDescriptorSets(std::vector<VkDescriptorSet>& par
             .range = sizeof(ParticleGroup::UBOParticle)
         };
         VkDescriptorBufferInfo pariticleReadBufferInfo = {
-            .buffer = particleUBOs[(i - 1) % m_maxInflightFrames],
+            .buffer = particleSSBOs[(i - 1) % m_maxInflightFrames],
             .offset = 0,
             .range = m_particles->particleBufferSize()
         };
         VkDescriptorBufferInfo pariticleWriteBufferInfo = {
-            .buffer = particleUBOs[i],
+            .buffer = particleSSBOs[i],
             .offset = 0,
             .range = m_particles->particleBufferSize()
         };
@@ -1881,7 +1976,7 @@ void Resources::allocateParticleDescriptorSets(std::vector<VkDescriptorSet>& par
             {
                 .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
                 .pNext = VK_NULL_HANDLE,
-                .dstSet = particleDescriptorSets[i],
+                .dstSet = computeDescriptorSets[i],
                 .dstBinding = 0,
                 .dstArrayElement = 0,
                 .descriptorCount = 1,
@@ -1893,7 +1988,7 @@ void Resources::allocateParticleDescriptorSets(std::vector<VkDescriptorSet>& par
             {
                 .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
                 .pNext = VK_NULL_HANDLE,
-                .dstSet = particleDescriptorSets[i],
+                .dstSet = computeDescriptorSets[i],
                 .dstBinding = 1,
                 .dstArrayElement = 0,
                 .descriptorCount = 1,
@@ -1905,7 +2000,7 @@ void Resources::allocateParticleDescriptorSets(std::vector<VkDescriptorSet>& par
             {
                 .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
                 .pNext = VK_NULL_HANDLE,
-                .dstSet = particleDescriptorSets[i],
+                .dstSet = computeDescriptorSets[i],
                 .dstBinding = 2,
                 .dstArrayElement = 0,
                 .descriptorCount = 1,
@@ -1918,9 +2013,216 @@ void Resources::allocateParticleDescriptorSets(std::vector<VkDescriptorSet>& par
 
         vkUpdateDescriptorSets(m_device, 3, writeDescriptorSets, 0, VK_NULL_HANDLE);
     }
+
+    // Write graphicDescriptorSets
+    for(uint32_t i = 0; i < m_maxInflightFrames; ++i)
+    {
+        VkDescriptorBufferInfo bufferInfo = {
+            .buffer = m_uniformBuffers[i],
+            .offset = 0,
+            .range = sizeof(UBOProjectionMatrices)
+        };
+        VkWriteDescriptorSet pWriteDescriptorSets[1] = {
+            {
+                .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
+                .pNext = VK_NULL_HANDLE,
+                .dstSet = graphicDescriptorSets[i],
+                .dstBinding = 0,
+                .dstArrayElement = 0,
+                .descriptorCount = 1,
+                .descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
+                .pImageInfo = VK_NULL_HANDLE,
+                .pBufferInfo = &bufferInfo,
+                .pTexelBufferView = VK_NULL_HANDLE,
+            }
+        };
+        vkUpdateDescriptorSets(m_device, 1, pWriteDescriptorSets, 0, VK_NULL_HANDLE);
+    }
 }
 
-void Resources::createPipelineLayout(VkPipelineLayout& pipelineLayout, VkDescriptorSetLayout descriptorSetLayout)
+void Resources::createParticleGraphicPipeline(VkPipeline& graphicPipeline,
+    VkPipelineLayout& graphicPipelineLayout,
+    VkDescriptorSetLayout graphicDescriptorSetLayout) const
+{
+    VkShaderModule vertexShaderModule = createShaderModule(readShaderFile("./shaders/particles_vert.spv"));
+    VkShaderModule fragmentShaderModule = createShaderModule(readShaderFile("./shaders/particles_frag.spv"));
+    VkPipelineShaderStageCreateInfo shaderStageCreateInfos[2] = {
+        {
+            // Vertex shader stage
+            .sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO,
+            .pNext = VK_NULL_HANDLE,
+            .flags = 0,
+            .stage = VK_SHADER_STAGE_VERTEX_BIT,
+            .module = vertexShaderModule,
+            .pName = "main",
+            .pSpecializationInfo = VK_NULL_HANDLE
+        },
+        {
+            // Fragment shader stage
+            .sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO,
+            .pNext = VK_NULL_HANDLE,
+            .flags = 0,
+            .stage = VK_SHADER_STAGE_FRAGMENT_BIT,
+            .module = fragmentShaderModule,
+            .pName = "main",
+            .pSpecializationInfo = VK_NULL_HANDLE
+        }
+    };
+
+    VkVertexInputBindingDescription vertexInputBindingDescription = {
+        .binding = 0,
+        .stride = sizeof(Particle),
+        .inputRate = VK_VERTEX_INPUT_RATE_VERTEX
+    };
+    VkVertexInputAttributeDescription vertexInputAttributeDescription[2] = {
+        {
+            .location = 0,
+            .binding = 0,
+            .format = VK_FORMAT_R32G32B32_SFLOAT,
+            .offset = offsetof(Particle, position)
+        },
+        {
+            .location = 1,
+            .binding = 0,
+            .format = VK_FORMAT_R32G32B32A32_SFLOAT,
+            .offset = offsetof(Particle, color)
+        }
+    };
+    VkPipelineVertexInputStateCreateInfo vertexInputStateCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .flags = 0,
+        .vertexBindingDescriptionCount = 1,
+        .pVertexBindingDescriptions = &vertexInputBindingDescription,
+        .vertexAttributeDescriptionCount = 2,
+        .pVertexAttributeDescriptions = vertexInputAttributeDescription
+    };
+
+    VkPipelineInputAssemblyStateCreateInfo inputAssemblyStateCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .flags = 0,
+        .topology = VK_PRIMITIVE_TOPOLOGY_POINT_LIST,
+        .primitiveRestartEnable = VK_FALSE
+    };
+    
+    VkPipelineViewportStateCreateInfo pipelineViewportStateCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .flags = 0,
+        .viewportCount = 1,
+        .pViewports = VK_NULL_HANDLE,  // dynamic
+        .scissorCount = 1,  
+        .pScissors = VK_NULL_HANDLE  // dynamic
+    };
+
+    VkPipelineRasterizationStateCreateInfo rasterizationStateCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .flags = 0,
+        .depthClampEnable = VK_FALSE,
+        .rasterizerDiscardEnable = VK_FALSE,
+        .polygonMode = VK_POLYGON_MODE_FILL,
+        .cullMode = VK_CULL_MODE_NONE,
+        .frontFace = VK_FRONT_FACE_CLOCKWISE,
+        .depthBiasEnable = VK_FALSE,
+        .depthBiasConstantFactor = 0.f,
+        .depthBiasClamp = 0.f,
+        .depthBiasSlopeFactor = 0.f,
+        .lineWidth = 1.f
+    };
+
+    VkPipelineMultisampleStateCreateInfo multisampleStateCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .flags = 0,
+        .rasterizationSamples = m_MSAASampleCount,
+        .sampleShadingEnable = m_physicalDeviceFeature.sampleRateShading,
+        .minSampleShading = 0.25f,
+        .pSampleMask = VK_NULL_HANDLE,
+        .alphaToCoverageEnable = VK_FALSE,
+        .alphaToOneEnable = VK_FALSE
+    };
+
+    VkPipelineDepthStencilStateCreateInfo depthStencilStateCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .flags = 0,
+        .depthTestEnable = VK_TRUE,
+        .depthWriteEnable = VK_TRUE,
+        .depthCompareOp = VK_COMPARE_OP_LESS,
+        .depthBoundsTestEnable = VK_FALSE,
+        .stencilTestEnable = VK_FALSE,
+        .front = {},
+        .back = {},
+        .minDepthBounds = 0.f,
+        .maxDepthBounds = 1.f,
+    };
+
+    VkPipelineColorBlendAttachmentState colorBlendAttachmentState = {
+        .blendEnable = VK_FALSE,
+        .srcColorBlendFactor = VK_BLEND_FACTOR_SRC_ALPHA,
+        .dstColorBlendFactor = VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA,
+        .colorBlendOp = VK_BLEND_OP_ADD,
+        .srcAlphaBlendFactor = VK_BLEND_FACTOR_ONE,
+        .dstAlphaBlendFactor = VK_BLEND_FACTOR_ZERO,
+        .alphaBlendOp = VK_BLEND_OP_ADD,
+        .colorWriteMask = VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_G_BIT | VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_A_BIT
+    };
+    VkPipelineColorBlendStateCreateInfo colorBlendStateCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .flags = 0,
+        .logicOpEnable = VK_FALSE,
+        .logicOp = VK_LOGIC_OP_COPY,
+        .attachmentCount = 1,
+        .pAttachments = &colorBlendAttachmentState,
+        .blendConstants = {
+            0.f, 0.f, 0.f, 0.f
+        }
+    };
+
+    VkDynamicState dynamicStates[2] = {VK_DYNAMIC_STATE_VIEWPORT, VK_DYNAMIC_STATE_SCISSOR};
+    VkPipelineDynamicStateCreateInfo dynamicStateCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .flags = 0,
+        .dynamicStateCount = 2,
+        .pDynamicStates = dynamicStates
+    };
+
+    createPipelineLayout(graphicPipelineLayout, graphicDescriptorSetLayout);
+    
+    VkGraphicsPipelineCreateInfo createInfo = {
+        .sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .flags = 0,
+        .stageCount = 2,
+        .pStages = shaderStageCreateInfos,
+        .pVertexInputState = &vertexInputStateCreateInfo, 
+        .pInputAssemblyState = &inputAssemblyStateCreateInfo,
+        .pTessellationState = VK_NULL_HANDLE,
+        .pViewportState = &pipelineViewportStateCreateInfo,
+        .pRasterizationState = &rasterizationStateCreateInfo,
+        .pMultisampleState = &multisampleStateCreateInfo,
+        .pDepthStencilState = &depthStencilStateCreateInfo,
+        .pColorBlendState = &colorBlendStateCreateInfo,
+        .pDynamicState = &dynamicStateCreateInfo,
+        .layout = graphicPipelineLayout,
+        .renderPass = m_renderPass,
+        .subpass = 0,
+        .basePipelineHandle = VK_NULL_HANDLE,
+        .basePipelineIndex = -1
+    };
+
+    if(vkCreateGraphicsPipelines(m_device, VK_NULL_HANDLE, 1, &createInfo, VK_NULL_HANDLE, &graphicPipeline) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed tp create graphic pipeline for rendering particles.");
+    
+    vkDestroyShaderModule(m_device, vertexShaderModule, VK_NULL_HANDLE);
+    vkDestroyShaderModule(m_device, fragmentShaderModule, VK_NULL_HANDLE);
+}
+
+void Resources::createPipelineLayout(VkPipelineLayout& pipelineLayout, VkDescriptorSetLayout descriptorSetLayout) const
 {
     VkPipelineLayoutCreateInfo createInfo = {
         .sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO,
@@ -1932,7 +2234,7 @@ void Resources::createPipelineLayout(VkPipelineLayout& pipelineLayout, VkDescrip
         .pPushConstantRanges = VK_NULL_HANDLE
     };
 
-    if(vkCreatePipelineLayout(m_device, &createInfo, VK_NULL_HANDLE, &m_computePipelineLayout) != VK_SUCCESS)
+    if(vkCreatePipelineLayout(m_device, &createInfo, VK_NULL_HANDLE, &pipelineLayout) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create VkPipelineLayout.");
 }
 
@@ -1946,54 +2248,58 @@ void Resources::createParticleUBOs(std::vector<VkBuffer>& particleUBOs,
 
     for(uint32_t i = 0; i < m_maxInflightFrames; ++i)
     {
-        createBuffer(sizeof(ParticleGroup::UBOParticle), VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT,
-            particleUBOs[i], particleUBOMemories[i]);
+        createBuffer(sizeof(ParticleGroup::UBOParticle), VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
+            VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, particleUBOs[i], particleUBOMemories[i]);
         vkMapMemory(m_device, particleUBOMemories[i], 0, sizeof(ParticleGroup::UBOParticle), 0, &particleUBOMapped[i]);
     }
 }
 
-void Resources::recordComputeCommandBuffer(VkCommandBuffer commandBuffer)
+void Resources::cmdUpdateParticles(VkCommandBuffer commandBuffer, 
+    VkPipeline computePipeline,
+    VkPipelineLayout computePipelineLayout, 
+    VkDescriptorSet computeDescriptorSet,
+    uint32_t particleCount) const
 {
-    m_particles->recordUpdateParticlesCommandBuffer(commandBuffer);
-}
-
-void Resources::recordUpdateParticleCommandBuffer(VkCommandBuffer commandBuffer, uint32_t particleCount) const
-{
-    VkCommandBufferBeginInfo beginInfo = {
-        .sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO,
-        .pNext = VK_NULL_HANDLE,
-        .flags = 0,
-        .pInheritanceInfo = VK_NULL_HANDLE
-    };
-    if(vkBeginCommandBuffer(commandBuffer, &beginInfo) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR: Failed to begin a command buffer.");
-    
+    vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_COMPUTE, computePipeline);
+    vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_COMPUTE, computePipelineLayout, 0, 1, &computeDescriptorSet, 0, VK_NULL_HANDLE);
     if((m_physicalDeviceProperties.limits.maxComputeWorkGroupCount[0] < (particleCount / 256)) || 
         (m_physicalDeviceProperties.limits.maxComputeWorkGroupCount[1] < 1) || 
         (m_physicalDeviceProperties.limits.maxComputeWorkGroupCount[2] < 1))
         throw std::runtime_error("VK ERROR:Workgroup size exceeds the physical device limits.");
     vkCmdDispatch(commandBuffer, particleCount / 256, 1, 1);
-
-    if(vkEndCommandBuffer(commandBuffer) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR:Failed to end a command buffer");
 }
 
 void Resources::loadParticles()
 {
-    m_particles = new ParticleGroup(4096);
+    m_particles->initParticleGroup(4096);
 }
 
-void Resources::allocateDrawParticleCommanBuffers(std::vector<VkCommandBuffer> commandBuffers) const
+void Resources::cmdDrawParticles(VkCommandBuffer commandBuffer, 
+    VkPipeline graphicPipeline,
+    VkPipelineLayout graphicPipelineLayout,
+    VkBuffer vertexBuffer, 
+    VkDescriptorSet graphicDescriptorSet,
+    uint32_t particleCount) const
 {
-    commandBuffers.resize(m_maxInflightFrames);
-    
-    VkCommandBufferAllocateInfo allocateInfo = {
-        .sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO,
-        .pNext = VK_NULL_HANDLE,
-        .commandPool = m_graphicCommandPool,
-        .level = VK_COMMAND_BUFFER_LEVEL_PRIMARY,
-        .commandBufferCount = m_maxInflightFrames
+    VkDeviceSize offset = 0;
+    vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicPipeline);
+    vkCmdBindVertexBuffers(commandBuffer, 0, 1, &vertexBuffer, &offset);
+    vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicPipelineLayout, 0, 1, 
+        &graphicDescriptorSet, 0, VK_NULL_HANDLE);
+    VkViewport viewport = {
+        .x = 0.f,
+        .y = 0.f,
+        .width = static_cast<float>(m_swapChainImageExtent.width),
+        .height = static_cast<float>(m_swapChainImageExtent.height),
+        .minDepth = 0.f,
+        .maxDepth = 1.f
     };
-    if(vkAllocateCommandBuffers(m_device, &allocateInfo, commandBuffers.data()) != VK_SUCCESS)
-        throw std::runtime_error("VK ERROR: Failed to allocate draw particle command buffers.");
+    vkCmdSetViewport(commandBuffer, 0, 1, &viewport);
+    VkRect2D scissor = {
+        .offset = {0, 0},
+        .extent = m_swapChainImageExtent
+    };
+    vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
+
+    vkCmdDraw(commandBuffer, particleCount, 1, 0, 0);
 }
