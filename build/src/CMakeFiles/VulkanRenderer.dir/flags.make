@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp
 
-CXX_FLAGS =  -static-libgcc -static-libstdc++ -O3 -DNDEBUG -O3 -std=gnu++20
+CXX_FLAGS =  -static -O3 -DNDEBUG -O3 -std=gnu++20
 

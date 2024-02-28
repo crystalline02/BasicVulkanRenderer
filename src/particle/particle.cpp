@@ -19,15 +19,15 @@ void ParticleGroup::initParticleGroup(uint32_t particleCount)
     {
         float posX = (dist(rndEngine) - 0.5f) * .1f,
             posY = (dist(rndEngine) - 0.5f) * .1f,
-            posZ = dist(rndEngine) * 2.2f + 1.8f;
+            posZ = dist(rndEngine) * 0.05f;
 
         float velR = 3.f * glm::sqrt(dist(rndEngine));
         float velTheta = 2.f * 3.1415926535f * dist(rndEngine);
-        float velPhy = 3.1415926535f * dist(rndEngine);
+        float velPhy = 3.1415926535f * dist(rndEngine) * 0.25f;
         float velX = velR * glm::sin(velPhy) * glm::cos(velTheta),
             velY = velR * glm::sin(velPhy) * glm::sin(velTheta),
             velZ = velR * glm::cos(velPhy);
-
+        
         m_particles[i].position = {posX, posY, posZ};
         m_particles[i].velosity = {velX, velY, velZ};
         m_particles[i].color = {dist(rndEngine), dist(rndEngine), dist(rndEngine), 1.f};

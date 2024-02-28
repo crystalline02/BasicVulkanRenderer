@@ -517,37 +517,37 @@
 },
 {
   "directory": "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/build/src",
-  "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -O3 -DNDEBUG -O3 -std=gnu++20 -o CMakeFiles\\VulkanRenderer.dir\\entry_point.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\MyVulkanRenderer\\src\\entry_point.cpp",
+  "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp  -static -O3 -DNDEBUG -O3 -std=gnu++20 -o CMakeFiles\\VulkanRenderer.dir\\entry_point.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\MyVulkanRenderer\\src\\entry_point.cpp",
   "file": "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/entry_point.cpp",
   "output": "src/CMakeFiles/VulkanRenderer.dir/entry_point.obj"
 },
 {
   "directory": "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/build/src",
-  "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -O3 -DNDEBUG -O3 -std=gnu++20 -o CMakeFiles\\VulkanRenderer.dir\\vulkan_app.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\MyVulkanRenderer\\src\\vulkan_app.cpp",
+  "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp  -static -O3 -DNDEBUG -O3 -std=gnu++20 -o CMakeFiles\\VulkanRenderer.dir\\vulkan_app.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\MyVulkanRenderer\\src\\vulkan_app.cpp",
   "file": "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/vulkan_app.cpp",
   "output": "src/CMakeFiles/VulkanRenderer.dir/vulkan_app.obj"
 },
 {
   "directory": "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/build/src",
-  "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -O3 -DNDEBUG -O3 -std=gnu++20 -o CMakeFiles\\VulkanRenderer.dir\\vulkan_fn.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\MyVulkanRenderer\\src\\vulkan_fn.cpp",
+  "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp  -static -O3 -DNDEBUG -O3 -std=gnu++20 -o CMakeFiles\\VulkanRenderer.dir\\vulkan_fn.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\MyVulkanRenderer\\src\\vulkan_fn.cpp",
   "file": "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/vulkan_fn.cpp",
   "output": "src/CMakeFiles/VulkanRenderer.dir/vulkan_fn.obj"
 },
 {
   "directory": "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/build/src",
-  "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -O3 -DNDEBUG -O3 -std=gnu++20 -o CMakeFiles\\VulkanRenderer.dir\\resources.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\MyVulkanRenderer\\src\\resources.cpp",
+  "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp  -static -O3 -DNDEBUG -O3 -std=gnu++20 -o CMakeFiles\\VulkanRenderer.dir\\resources.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\MyVulkanRenderer\\src\\resources.cpp",
   "file": "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/resources.cpp",
   "output": "src/CMakeFiles/VulkanRenderer.dir/resources.obj"
 },
 {
   "directory": "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/build/src",
-  "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -O3 -DNDEBUG -O3 -std=gnu++20 -o CMakeFiles\\VulkanRenderer.dir\\model\\model.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\MyVulkanRenderer\\src\\model\\model.cpp",
+  "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp  -static -O3 -DNDEBUG -O3 -std=gnu++20 -o CMakeFiles\\VulkanRenderer.dir\\model\\model.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\MyVulkanRenderer\\src\\model\\model.cpp",
   "file": "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/model/model.cpp",
   "output": "src/CMakeFiles/VulkanRenderer.dir/model/model.obj"
 },
 {
   "directory": "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/build/src",
-  "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -O3 -DNDEBUG -O3 -std=gnu++20 -o CMakeFiles\\VulkanRenderer.dir\\particle\\particle.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\MyVulkanRenderer\\src\\particle\\particle.cpp",
+  "command": "C:\\library_cpp\\MinGW\\x86_64-13.1.0-release-posix-seh-ucrt-rt_v11-rev1\\bin\\g++.exe  @CMakeFiles/VulkanRenderer.dir/includes_CXX.rsp  -static -O3 -DNDEBUG -O3 -std=gnu++20 -o CMakeFiles\\VulkanRenderer.dir\\particle\\particle.obj -c C:\\Users\\ZhenKou\\OneDrive\\project\\MyVulkanRenderer\\src\\particle\\particle.cpp",
   "file": "C:/Users/ZhenKou/OneDrive/project/MyVulkanRenderer/src/particle/particle.cpp",
   "output": "src/CMakeFiles/VulkanRenderer.dir/particle/particle.obj"
 }
