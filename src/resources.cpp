@@ -179,6 +179,7 @@ void Resources::createInstance()
     else
     {
         instanceCreateInfo.enabledLayerCount = 0;
+        instanceCreateInfo.ppEnabledLayerNames = VK_NULL_HANDLE;
         instanceCreateInfo.pNext = VK_NULL_HANDLE;
     }
 
@@ -193,7 +194,8 @@ void Resources::createInstance()
     if(vkCreateInstance(&instanceCreateInfo, VK_NULL_HANDLE, &m_vkInstance) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create VkInstance.");
     
-    if(load_vkInstanceFunctions(m_vkInstance) != VK_SUCCESS)
+    // Load vulkan extension function
+    if(load_vkInstanceFunctions(m_vkInstance, m_enableValidationLayer) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to load vulkan instance functions.");
 }
 
@@ -241,8 +243,6 @@ void Resources::pickPhysicalDevice()
         m_MSAASampleCount = getMSAASampleCount();
     }
     else throw std::runtime_error("VK ERROR: No suitable physical device for current application.");
-
-    
 }
 
 void Resources::createLogicalDevices()
@@ -266,24 +266,27 @@ void Resources::createLogicalDevices()
     physicalDeviceFeatures.samplerAnisotropy = m_physicalDeviceFeature.samplerAnisotropy;
     physicalDeviceFeatures.sampleRateShading = m_physicalDeviceFeature.sampleRateShading;
 
-    VkDeviceCreateInfo deviceCreateInfo = {};
-    deviceCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
-    deviceCreateInfo.queueCreateInfoCount = (uint32_t)queueCreateInfos.size();
-    deviceCreateInfo.pQueueCreateInfos = queueCreateInfos.data();
-    deviceCreateInfo.pEnabledFeatures = &physicalDeviceFeatures;
-    deviceCreateInfo.enabledExtensionCount = (uint32_t)m_deviceExtensionNames.size();
-    deviceCreateInfo.ppEnabledExtensionNames = m_deviceExtensionNames.data();
+    VkDeviceCreateInfo deviceCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .flags = 0,
+        .queueCreateInfoCount = static_cast<uint32_t>(queueCreateInfos.size()),
+        .pQueueCreateInfos = queueCreateInfos.data(),
+        .enabledLayerCount = 0,
+        .ppEnabledLayerNames = VK_NULL_HANDLE,
+        .enabledExtensionCount = static_cast<uint32_t>(m_deviceExtensionNames.size()),
+        .ppEnabledExtensionNames = m_deviceExtensionNames.data(),
+        .pEnabledFeatures = &physicalDeviceFeatures,
+    };
     if(m_enableValidationLayer)
     {
         // Keep device validation layers the same as instance validation layers
         deviceCreateInfo.enabledLayerCount = (uint32_t)m_instanceValidationLayerNames.size();
         deviceCreateInfo.ppEnabledLayerNames = m_instanceValidationLayerNames.data();
     }
-    else
-        deviceCreateInfo.enabledExtensionCount = 0;
-
     if(vkCreateDevice(m_physicalDevice, &deviceCreateInfo, VK_NULL_HANDLE, &m_device) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create VkDevice.");
+    
     vkGetDeviceQueue(m_device, queueFamilyIndices.graphicFamily.value(), 0, &m_graphicQueue);
     vkGetDeviceQueue(m_device, queueFamilyIndices.presentFamily.value(), 0, &m_vkPresentQueue);
     vkGetDeviceQueue(m_device, queueFamilyIndices.graphicComputeFamily.value(), 0, &m_graphicComputeQueue);

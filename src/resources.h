@@ -209,7 +209,8 @@ private:
     std::vector<const char*> m_instanceValidationLayerNames = {"VK_LAYER_KHRONOS_validation"};
     const bool m_enableValidationLayer = true;  // Debug
 #else
-    const bool m_enbaleValidationLayer = false;  // Release
+    std::vector<const char*> m_instanceValidationLayerNames = {};
+    const bool m_enableValidationLayer = false;  // Release
 #endif
     VkSurfaceKHR m_vkSurface;
 

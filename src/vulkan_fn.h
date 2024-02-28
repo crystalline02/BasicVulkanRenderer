@@ -7,4 +7,4 @@ extern PFN_vkCreateDebugUtilsMessengerEXT vulkan_createDebugUtilsMessengerEXT;
 extern PFN_vkDestroyDebugUtilsMessengerEXT vulkan_destroyDebugUtilsMessengerEXT;
 #define vkDestroyDebugUtilsMessengerEXT vulkan_destroyDebugUtilsMessengerEXT
 
-VkResult load_vkInstanceFunctions(const VkInstance& instance);
+VkResult load_vkInstanceFunctions(const VkInstance& instance, VkBool32 enableValdation);
