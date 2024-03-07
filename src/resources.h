@@ -82,6 +82,7 @@ public:
     void allocateCommandBuffers();
     void createDescriptorSetLayout();
     void createRenderPass();
+    void createPipelineCache();
     void createPipeline();
     void createSwapChainFrameBuffers();
     void createSyncObjects();
@@ -99,6 +100,7 @@ public:
     bool m_complete = false;
 
     // public helper functions
+    void writePipelineCacheData() const;
     void createImage(int width, int height, VkFormat format, VkImageUsageFlags usage, uint32_t mipLevel, VkSampleCountFlagBits samples,
         VkMemoryPropertyFlags requiredMemoryProperty, VkImage& image, VkDeviceMemory& imageMemory) const;
     void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags requiredProperties, 
@@ -157,6 +159,8 @@ private:
     static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 
     // private helper functions
+    VkBool32 isValidPipelineCacheData(const char* buf, size_t size, std::string& info) const;
+    std::string getCurrentTime() const;
     void createPipelineLayout(VkPipelineLayout& pipelineLayout, VkDescriptorSetLayout descriptorSetLayout) const;
     std::vector<char> readShaderFile(const std::string filePath) const;
     VkShaderModule createShaderModule(std::vector<char> shaderBytes) const;
@@ -250,6 +254,8 @@ private:
     VkPipelineLayout m_graphicPipelineLayout;
     VkDescriptorSetLayout m_graphicDescriptorSetLayout;
     VkPipeline m_graphicPipeline;
+    VkPipelineCache m_pipelineCache;
+    std::string m_pipelineCachePath = "./graphicPipeline";
 
     // command buffers
     VkCommandPool m_graphicCommandPool, 

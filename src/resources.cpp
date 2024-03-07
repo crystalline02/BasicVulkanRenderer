@@ -7,6 +7,7 @@
 #include <limits>
 #include <algorithm>
 #include <fstream>
+#include <chrono>
 
 #include "vulkan_fn.h"
 #include "./model/model.h"
@@ -49,7 +50,8 @@ void Resources::recordComputeCommandBuffer(VkCommandBuffer commandBuffer)
         throw std::runtime_error("VK ERROR: Failed to begin recording compute command buffer.");
 
     // Record update particles commandBuffer
-    m_particles->cmdUpdateParticles(commandBuffer, m_currentFrameIndex);
+    if(m_mouseLeftButtonDown)
+        m_particles->cmdUpdateParticles(commandBuffer, m_currentFrameIndex);
 
     if(vkEndCommandBuffer(commandBuffer) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR:Failed to end recording compute command buffer.");
@@ -71,8 +73,7 @@ void Resources::drawFrame()
     vkResetCommandBuffer(m_computeCommandBuffers[m_currentFrameIndex], 0);
 
     //// Record and submit compute command buffer
-    if(m_mouseLeftButtonDown)
-        recordComputeCommandBuffer(m_computeCommandBuffers[m_currentFrameIndex]);
+    recordComputeCommandBuffer(m_computeCommandBuffers[m_currentFrameIndex]);
     VkSubmitInfo computeSubmitInfo = {
         .sType = VK_STRUCTURE_TYPE_SUBMIT_INFO,
         .pNext = VK_NULL_HANDLE,
@@ -745,7 +746,7 @@ void Resources::createPipeline()
         .basePipelineIndex = -1
     };  
 
-    if(vkCreateGraphicsPipelines(m_device, VK_NULL_HANDLE, 1, 
+    if(vkCreateGraphicsPipelines(m_device, m_pipelineCache, 1, 
         &graphicsPipelineCreateInfo, VK_NULL_HANDLE, &m_graphicPipeline) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create graphic pipeline for rendering scene.");
 
@@ -1438,7 +1439,7 @@ void Resources::createParticleComputePipeline(VkPipeline& computePipeline,
         .basePipelineIndex = -1
     };
 
-    if(vkCreateComputePipelines(m_device, VK_NULL_HANDLE, 1, &computePipelineCreateInfo, VK_NULL_HANDLE, &computePipeline) != VK_SUCCESS)
+    if(vkCreateComputePipelines(m_device, m_pipelineCache, 1, &computePipelineCreateInfo, VK_NULL_HANDLE, &computePipeline) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create VkComputePipeline");
     
     vkDestroyShaderModule(m_device, computeShaderModule, VK_NULL_HANDLE);
@@ -1661,6 +1662,9 @@ void Resources::cleanUp()
 
     vkDestroyCommandPool(m_device, m_graphicCommandPool, VK_NULL_HANDLE);
     vkDestroyCommandPool(m_device, m_computeCommandPool, VK_NULL_HANDLE);
+    
+    writePipelineCacheData();
+    vkDestroyPipelineCache(m_device, m_pipelineCache, VK_NULL_HANDLE);
     vkDestroyPipeline(m_device, m_graphicPipeline, VK_NULL_HANDLE);
     vkDestroyRenderPass(m_device, m_renderPass, VK_NULL_HANDLE);
     vkDestroyDescriptorSetLayout(m_device, m_graphicDescriptorSetLayout, VK_NULL_HANDLE);
@@ -2226,7 +2230,7 @@ void Resources::createParticleGraphicPipeline(VkPipeline& graphicPipeline,
         .basePipelineIndex = -1
     };
 
-    if(vkCreateGraphicsPipelines(m_device, VK_NULL_HANDLE, 1, &createInfo, VK_NULL_HANDLE, &graphicPipeline) != VK_SUCCESS)
+    if(vkCreateGraphicsPipelines(m_device, m_pipelineCache, 1, &createInfo, VK_NULL_HANDLE, &graphicPipeline) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed tp create graphic pipeline for rendering particles.");
     
     vkDestroyShaderModule(m_device, vertexShaderModule, VK_NULL_HANDLE);
@@ -2313,4 +2317,129 @@ void Resources::cmdDrawParticles(VkCommandBuffer commandBuffer,
     vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
 
     vkCmdDraw(commandBuffer, particleCount, 1, 0, 0);
+}
+
+void Resources::writePipelineCacheData() const
+{
+    size_t dataSize;  // unit: B
+    if(vkGetPipelineCacheData(m_device, m_pipelineCache, &dataSize, VK_NULL_HANDLE) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to get pipeline cache data size.");
+    std::vector<char> cacheData(sizeof(char) * dataSize);
+    if(vkGetPipelineCacheData(m_device, m_pipelineCache, &dataSize, cacheData.data()) != VK_SUCCESS)
+        throw std::runtime_error("VK ERROR: Failed to get pipeline cache data.");
+
+    std::ofstream ofs(m_pipelineCachePath, std::ios::binary);
+    if(!ofs.is_open())
+        throw std::runtime_error("VK ERROR:Failed to write pipline cache to" + m_pipelineCachePath + ".");
+    ofs.write(cacheData.data(), dataSize);
+    ofs.close();
+}
+
+void Resources::createPipelineCache()
+{
+    std::ifstream ifs(m_pipelineCachePath, std::ios::ate | std::ios::binary);
+    size_t dataSize = 0;
+    std::vector<char> cacheData;
+    if(ifs.is_open())
+    {
+        dataSize = ifs.tellg();
+        cacheData.resize(dataSize);
+        ifs.seekg(0, std::ios::beg);
+        ifs.read(cacheData.data(), dataSize);
+
+        std::string info;
+        if(!isValidPipelineCacheData(cacheData.data(), dataSize, info))
+            throw std::runtime_error("VK ERROR: Incompatible pipeline cache data.\n" + info);
+    }
+    ifs.close();
+
+    VkPipelineCacheCreateInfo pipelineCacheCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .flags = 0,
+        .initialDataSize = dataSize,
+        .pInitialData = cacheData.data(),
+    };
+    
+    if(vkCreatePipelineCache(m_device, &pipelineCacheCreateInfo, VK_NULL_HANDLE, &m_pipelineCache) != VK_SUCCESS)
+        throw std::runtime_error("");
+}
+
+VkBool32 Resources::isValidPipelineCacheData(const char* buf, size_t size, std::string& info) const
+{
+    if(size < 32) return VK_FALSE;
+    uint32_t header, version, vendor, deviceID;  // 4B
+    uint8_t pipelineCacheUUID[VK_UUID_SIZE];  // 1B
+    memcpy(&header, buf, 4);
+    memcpy(&version, buf + 4, 4);
+    memcpy(&vendor, buf + 8, 4);
+    memcpy(&deviceID, buf + 12, 4);
+    memcpy(pipelineCacheUUID, buf + 16, VK_UUID_SIZE);
+
+    if(header <= 0)
+    {
+        std::stringstream ss;
+        ss << std::hex << std::setfill('0') << std::setw(8) << header;
+        info += "Bad pipeline cache data header length: " + ss.str() + ".\n";
+        return VK_FALSE;
+    }
+    
+    if(version != VK_PIPELINE_CACHE_HEADER_VERSION_ONE)
+    {
+        std::stringstream ss;
+        ss << "Bad pipeline cache data version: 0x" << std::hex << std::setfill('0') << std::setw(8) << 
+            version << ".\n";
+        info += ss.str();
+        return VK_FALSE;
+    }
+
+    if(vendor != m_physicalDeviceProperties.vendorID)
+    {
+        std::stringstream ss;
+        ss << "Vendor id mismatch, current device requires: 0x" << std::hex << std::setfill('0') << std::setw(8) << 
+            m_physicalDeviceProperties.vendorID << ",but pipleine cache data has: 0x" << 
+            std::hex << std::setfill('0') << std::setw(8) << vendor << ".\n";
+        info += ss.str();
+        return VK_FALSE;
+    }
+
+    if(deviceID != m_physicalDeviceProperties.deviceID)
+    {
+        std::stringstream ss;
+        ss << "Device id mismatch, current device requires: 0x" << std::hex << std::setfill('0') << std::setw(8) << 
+            m_physicalDeviceProperties.deviceID << ",but pipleine cache data has: 0x" << 
+            std::hex << std::setfill('0') << std::setw(8) << deviceID << ".\n";
+        info += ss.str();
+        return VK_FALSE;
+    }
+
+    if(memcmp(pipelineCacheUUID, m_physicalDeviceProperties.pipelineCacheUUID, VK_UUID_SIZE) != 0)
+    {
+        auto getUUIDString = [](const uint8_t* cacheUUID) -> std::string
+        {
+            std::stringstream ss;
+            for(uint32_t i = 0; i < VK_UUID_SIZE; ++i)
+            {
+                ss << std::setfill('0') << std::setw(2) << static_cast<uint32_t>(cacheUUID[i]);
+                if(i == 3 || i == 5 || i == 7 || i == 9) ss << "-";
+            }
+            return ss.str();
+        };
+
+        std::stringstream ss;
+        ss << "Pipeline cache UUID mismatch, current device requries: " << getUUIDString(m_physicalDeviceProperties.pipelineCacheUUID) << "," <<
+            "but pipeline cache data has: " << getUUIDString(pipelineCacheUUID) << ".\n";
+        info += ss.str();
+        return VK_FALSE;
+    }
+    return VK_TRUE;
+}
+
+std::string Resources::getCurrentTime() const
+{
+    auto time = std::chrono::system_clock::now();
+    time_t timeT = std::chrono::system_clock::to_time_t(time);  // 系统时间
+    std::stringstream ss;
+    ss << std::put_time(std::localtime(&timeT), "%Y%m%d%H%M%S");
+    return ss.str();
 }

@@ -40,6 +40,7 @@ void VulkanApp::initVulkan()
 
     m_appResources->createDescriptorSetLayout();
     m_appResources->createRenderPass();
+    m_appResources->createPipelineCache();
     m_appResources->createPipeline();
     m_appResources->createSwapChainFrameBuffers();
 
