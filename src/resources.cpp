@@ -189,7 +189,7 @@ void Resources::createInstance()
     // Add&check extensions
     m_instanceExtensionNames = getRequiredExtentions();
     if(!checkInstanceExtensionsSupported(m_instanceExtensionNames))
-        throw std::runtime_error("VK ERROR: Unsurpported vulkan instance extensions.");
+        throw std::runtime_error("VK ERROR: Unsupported vulkan instance extensions.");
     instanceCreateInfo.enabledExtensionCount = (uint32_t)m_instanceExtensionNames.size();
     instanceCreateInfo.ppEnabledExtensionNames = m_instanceExtensionNames.data();
 
@@ -837,11 +837,14 @@ void Resources::createDescriptorPool()
     descriptorPoolSize[2].type = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER;
     descriptorPoolSize[2].descriptorCount = m_maxInflightFrames * (0 + m_particles->storageDescriptorCount());
 
-    VkDescriptorPoolCreateInfo descriptorPoolCreateInfo = {};
-    descriptorPoolCreateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
-    descriptorPoolCreateInfo.maxSets = m_maxInflightFrames * 3;
-    descriptorPoolCreateInfo.poolSizeCount = 3;
-    descriptorPoolCreateInfo.pPoolSizes = descriptorPoolSize;
+    VkDescriptorPoolCreateInfo descriptorPoolCreateInfo = {
+        .sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO,
+        .pNext = VK_NULL_HANDLE,
+        .flags = 0,
+        .maxSets = m_maxInflightFrames * 3,
+        .poolSizeCount = 3,
+        .pPoolSizes = descriptorPoolSize,
+    };
     if(vkCreateDescriptorPool(m_device, &descriptorPoolCreateInfo, VK_NULL_HANDLE, &m_descriptorPool) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create descriptor pool.");
 }
@@ -1356,13 +1359,23 @@ Resources::SwapChainSupportDetails Resources::querySwapChainSupportedDetails(con
 
 VkSurfaceFormatKHR Resources::chooseSwapChainSurfaceFormat(std::vector<VkSurfaceFormatKHR> avaliableSurfaceFormats) const
 {
-    for(const VkSurfaceFormatKHR& surfaceFormat: avaliableSurfaceFormats)
+    if(avaliableSurfaceFormats.size() == 1)
     {
-        if(VK_FORMAT_B8G8R8A8_SRGB == surfaceFormat.format && 
-            VK_COLOR_SPACE_SRGB_NONLINEAR_KHR == surfaceFormat.colorSpace)
-            return surfaceFormat;
+        if(avaliableSurfaceFormats[0].format == VK_FORMAT_UNDEFINED)
+            return {VK_FORMAT_B8G8R8A8_SRGB, VK_COLOR_SPACE_SRGB_NONLINEAR_KHR};
+        else 
+            return avaliableSurfaceFormats[0];
     }
-    return avaliableSurfaceFormats[0];
+    else
+    {
+        for(const VkSurfaceFormatKHR& surfaceFormat: avaliableSurfaceFormats)
+        {
+            if(VK_FORMAT_B8G8R8A8_SRGB == surfaceFormat.format && 
+                VK_COLOR_SPACE_SRGB_NONLINEAR_KHR == surfaceFormat.colorSpace)
+                return surfaceFormat;
+        }
+        return avaliableSurfaceFormats[0];
+    }
 }
 
 VkPresentModeKHR Resources::chooseSwapChainPresentMode(std::vector<VkPresentModeKHR> avalibalePresentModes) const
