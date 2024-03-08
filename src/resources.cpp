@@ -33,6 +33,8 @@ void Resources::initWindow()
     glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
     m_window = glfwCreateWindow(m_windowWidth, m_windowHeight, "Vulkan Renderer", VK_NULL_HANDLE, VK_NULL_HANDLE);
+    if(!glfwVulkanSupported())
+        throw std::runtime_error("GLFW: Vulkan not supported.");
     glfwSetWindowUserPointer(m_window, this);
     glfwSetFramebufferSizeCallback(m_window, framebufferResizeCallback);
     glfwSetMouseButtonCallback(m_window, mouseButtonCallback);
@@ -215,6 +217,7 @@ void Resources::createWindowSurface()
 {
     if(glfwCreateWindowSurface(m_vkInstance, m_window, VK_NULL_HANDLE, &m_vkSurface) != VK_SUCCESS)
         throw std::runtime_error("VK ERROR: Failed to create VkSurfaceKHR");
+     
 }
 
 void Resources::pickPhysicalDevice()
@@ -1363,8 +1366,6 @@ VkSurfaceFormatKHR Resources::chooseSwapChainSurfaceFormat(std::vector<VkSurface
     {
         if(avaliableSurfaceFormats[0].format == VK_FORMAT_UNDEFINED)
             return {VK_FORMAT_B8G8R8A8_SRGB, VK_COLOR_SPACE_SRGB_NONLINEAR_KHR};
-        else 
-            return avaliableSurfaceFormats[0];
     }
     else
     {
@@ -1374,8 +1375,9 @@ VkSurfaceFormatKHR Resources::chooseSwapChainSurfaceFormat(std::vector<VkSurface
                 VK_COLOR_SPACE_SRGB_NONLINEAR_KHR == surfaceFormat.colorSpace)
                 return surfaceFormat;
         }
-        return avaliableSurfaceFormats[0];
     }
+    
+    return avaliableSurfaceFormats[0];
 }
 
 VkPresentModeKHR Resources::chooseSwapChainPresentMode(std::vector<VkPresentModeKHR> avalibalePresentModes) const

@@ -255,7 +255,7 @@ private:
     VkDescriptorSetLayout m_graphicDescriptorSetLayout;
     VkPipeline m_graphicPipeline;
     VkPipelineCache m_pipelineCache;
-    std::string m_pipelineCachePath = "./graphicPipeline";
+    std::string m_pipelineCachePath = "./graphicPipeline.cache";
 
     // command buffers
     VkCommandPool m_graphicCommandPool, 
